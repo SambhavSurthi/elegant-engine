@@ -29,13 +29,13 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           clearInterval(interval);
           setTimeout(() => {
             setIsAnimatingOut(true);
-            setTimeout(onComplete, 800); // Wait for slide-up animation
-          }, 500);
+            onComplete(); // Call immediately when animation starts
+          }, 300);
           return prev;
         }
         return next;
       });
-    }, 400); // Change greeting every 400ms
+    }, 200); // Change greeting every 200ms
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -43,7 +43,7 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center transition-transform duration-800 ease-in-out ${
       isAnimatingOut ? '-translate-y-full' : 'translate-y-0'
-    }`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.85)' }}>
+    }`} style={{ backgroundColor: 'rgba(248, 248, 248, 0.95)' }}>
       {/* Background Logo */}
       <div className="absolute inset-0 flex items-center justify-center opacity-20">
         <img 
