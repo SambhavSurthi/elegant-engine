@@ -20,8 +20,14 @@ const greetings = [
 export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [currentGreeting, setCurrentGreeting] = useState(0);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
+    // Preload the image
+    const img = new Image();
+    img.src = "/lovable-uploads/c2011f8c-5fdb-4e8c-84ee-4da7ae2eba27.png";
+    img.onload = () => setImageLoaded(true);
+    
     const interval = setInterval(() => {
       setCurrentGreeting((prev) => {
         const next = prev + 1;
@@ -29,13 +35,13 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           clearInterval(interval);
           setTimeout(() => {
             setIsAnimatingOut(true);
-            onComplete(); // Call immediately when animation starts
-          }, 300);
+            setTimeout(() => onComplete(), 100); // Small delay for smooth transition
+          }, 200);
           return prev;
         }
         return next;
       });
-    }, 200); // Change greeting every 200ms
+    }, 150); // Faster greeting changes
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -45,11 +51,11 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       isAnimatingOut ? '-translate-y-full' : 'translate-y-0'
     }`} style={{ backgroundColor: 'rgba(248, 248, 248, 0.95)' }}>
       {/* Background Logo */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-20">
+      <div className="absolute inset-0 flex items-center justify-center opacity-30">
         <img 
-          src="/lovable-uploads/44f0f5e7-e53b-4f92-bb49-826d66aae41d.png" 
+          src="/lovable-uploads/c2011f8c-5fdb-4e8c-84ee-4da7ae2eba27.png" 
           alt="Logo" 
-          className="max-w-md max-h-md object-contain"
+          className={`w-80 h-80 object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
         />
       </div>
       

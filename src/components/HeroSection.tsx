@@ -6,7 +6,8 @@ export const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    setIsVisible(true);
+    // Add bounce effect on mount
+    setTimeout(() => setIsVisible(true), 50);
     
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
@@ -20,7 +21,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero transition-all duration-500 ${isVisible ? 'animate-bounce-in' : 'opacity-0 scale-95'}`}>
       {/* Animated background elements */}
       <div 
         className="absolute inset-0 opacity-20"
@@ -46,8 +47,8 @@ export const HeroSection = () => {
       </div>
 
       {/* Main content */}
-      <div className={`relative z-10 text-center px-6 transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      <div className={`relative z-10 text-center px-6 ${
+        isVisible ? 'animate-bounce-in' : 'opacity-0 scale-95'
       }`}>
         <div className="mb-6">
           <h1 className="text-6xl md:text-8xl font-bold mb-4 gradient-text animate-glow">
