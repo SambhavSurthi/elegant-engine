@@ -20,6 +20,7 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [currentGreeting, setCurrentGreeting] = useState(0);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
 
   useEffect(() => {
     // Preload the image
@@ -27,26 +28,31 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
     img.src = "/lovable-uploads/c2011f8c-5fdb-4e8c-84ee-4da7ae2eba27.png";
     img.onload = () => setImageLoaded(true);
     
-    const interval = setInterval(() => {
-      setCurrentGreeting((prev) => {
-        const next = prev + 1;
-        if (next >= greetings.length) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setIsAnimatingOut(true);
-            setTimeout(() => onComplete(), 200); // Small delay for smooth transition
-          }, 250);
-          return prev;
-        }
-        return next; 
-      });
-    }, 180); // Faster greeting changes
+    // Show first greeting with animation
+    setTimeout(() => setShowGreeting(true), 100);
+    
+    // Start cycling after initial delay
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentGreeting((prev) => {
+          const next = prev + 1;
+          if (next >= greetings.length) {
+            clearInterval(interval);
+            setTimeout(() => {
+              setIsAnimatingOut(true);
+              setTimeout(() => onComplete(), 500); // Delay for slower transition
+            }, 250);
+            return prev;
+          }
+          return next; 
+        });
+      }, 180);
+    }, 800); // Wait 800ms before starting cycling
 
-    return () => clearInterval(interval);
   }, [onComplete]);
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center transition-transform duration-[1s] ease-in-out ${
+    <div className={`fixed inset-0 z-50 flex items-center justify-center transition-transform duration-[2s] ease-in-out ${
       isAnimatingOut ? '-translate-y-full' : 'translate-y-0'
     }`} style={{ backgroundColor: 'rgba(248, 248, 248, 0.95)' }}>
       {/* Background Logo */}
@@ -60,7 +66,9 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       
       {/* Greeting Text */}
       <div className="relative z-10 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 transition-all duration-300 animate-fade-in">
+        <h1 className={`text-4xl md:text-6xl font-bold text-gray-900 transition-all duration-500 ${
+          showGreeting ? 'animate-bounce-in opacity-100' : 'opacity-0'
+        }`}>
           {greetings[currentGreeting]}
         </h1>
       </div>
