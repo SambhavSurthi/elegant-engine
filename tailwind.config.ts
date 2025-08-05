@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import("tailwindcss-animate")
+import("tailwindcss-animate");
 
 export default {
   darkMode: ["class"],
@@ -80,6 +80,15 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        fadeInLeft: {
+          "0%": { opacity: "0", transform: "translateX(-50px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        fadeInRight: {
+          "0%": { opacity: "0", transform: "translateX(50px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -124,6 +133,8 @@ export default {
         "fade-in": "fade-in 1s ease-out forwards",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "bounce-in": "bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        'fade-in-left': 'fadeInLeft 1s ease-out forwards',
+      'fade-in-right': 'fadeInRight 1s ease-out forwards',
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
