@@ -35,7 +35,7 @@ export default function NavbarDemo() {
 
   return (
     <div className="relative w-full">
-      <Navbar>
+      <Navbar className="top-2" >
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />

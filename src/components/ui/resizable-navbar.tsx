@@ -241,7 +241,7 @@ export const NavbarLogo = () => {
         height={40}
         className="rounded-full"
       />
-      <span className="font-medium text-black dark:text-white">Sambhav Surthi</span>
+      <span className="font-medium text-lg text-black dark:text-white">Sambhav Surthi</span>
     </a>
   );
 };
@@ -287,7 +287,7 @@ export const MagneticButton = () => {
             transition={{
               duration: 4,
               repeat: Infinity,
-              ease: "linear"
+              ease: "linear",
             }}
           >
             <span className="inline-block">Let's Connect → Let's Connect → Let's Connect → </span>

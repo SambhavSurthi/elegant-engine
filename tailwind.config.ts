@@ -123,6 +123,10 @@ export default {
           "70%": { transform: "scale(0.9)" },
           "100%": { transform: "scale(1)", opacity: "1" },
         },
+        "scroll": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -134,7 +138,8 @@ export default {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "bounce-in": "bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
         'fade-in-left': 'fadeInLeft 1s ease-out forwards',
-      'fade-in-right': 'fadeInRight 1s ease-out forwards',
+        'fade-in-right': 'fadeInRight 1s ease-out forwards',
+        'scroll': 'scroll 8s linear infinite',
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
