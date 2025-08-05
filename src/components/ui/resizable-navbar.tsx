@@ -282,28 +282,20 @@ export const MagneticButton = () => {
       <div className="relative overflow-hidden w-32">
         {!isHovered ? (
           <motion.div
-            className="flex whitespace-nowrap"
-            animate={{ x: [0, -100] }}
+            className="whitespace-nowrap flex"
+            animate={{ x: [-200, 0] }}
             transition={{
-              duration: 2,
+              duration: 4,
               repeat: Infinity,
-              ease: "linear",
-              repeatType: "loop"
+              ease: "linear"
             }}
           >
-            <span className="inline-block mr-4">Let's Connect →</span>
-            <span className="inline-block mr-4">Let's Connect →</span>
-            <span className="inline-block mr-4">Let's Connect →</span>
+            <span className="inline-block">Let's Connect → Let's Connect → Let's Connect → </span>
           </motion.div>
         ) : (
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          >
+          <div className="text-center">
             Let's Connect →
-          </motion.div>
+          </div>
         )}
       </div>
     </motion.button>
