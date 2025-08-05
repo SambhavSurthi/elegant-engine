@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { HeroSection } from '@/components/HeroSection';
+import NavbarDemo from '@/components/Navbar';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +11,10 @@ const Index = () => {
       {isLoading ? (
         <LoadingScreen onComplete={() => setIsLoading(false)} />
       ) : (
-        <HeroSection />
+        <>
+          <NavbarDemo />
+          <HeroSection />
+        </>
       )}
     </div>
   );
