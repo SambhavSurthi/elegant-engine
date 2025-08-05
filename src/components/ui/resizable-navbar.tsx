@@ -279,25 +279,32 @@ export const MagneticButton = () => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className="relative overflow-hidden">
-        <motion.div
-          className="whitespace-nowrap"
-          animate={{
-            x: isHovered ? 0 : [-100, 0],
-          }}
-          transition={{
-            x: isHovered 
-              ? { duration: 0.3 } 
-              : { 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  ease: "linear",
-                  repeatType: "loop"
-                }
-          }}
-        >
-          Let's Connect → Let's Connect → Let's Connect →
-        </motion.div>
+      <div className="relative overflow-hidden w-32">
+        {!isHovered ? (
+          <motion.div
+            className="flex whitespace-nowrap"
+            animate={{ x: [0, -100] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear",
+              repeatType: "loop"
+            }}
+          >
+            <span className="inline-block mr-4">Let's Connect →</span>
+            <span className="inline-block mr-4">Let's Connect →</span>
+            <span className="inline-block mr-4">Let's Connect →</span>
+          </motion.div>
+        ) : (
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            Let's Connect →
+          </motion.div>
+        )}
       </div>
     </motion.button>
   );
