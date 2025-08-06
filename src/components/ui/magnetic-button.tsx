@@ -42,7 +42,7 @@ export const MagneticButton = () => {
       }}
       className="cursor-pointer"
     >
-      <StarBorder className="transition-all duration-300 ease-out">
+      <StarBorder className="transition-all  duration-300 ease-out">
         <motion.div
           className="flex items-center gap-2 font-medium"
           animate={{

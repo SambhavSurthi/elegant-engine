@@ -19,7 +19,7 @@ export function StarBorder<T extends ElementType = "button">({
   ...props
 }: StarBorderProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof StarBorderProps<T>>) {
   const Component = as || "button";
-  const defaultColor = color || "hsl(var(--primary))";
+  const defaultColor = color || "red";
 
   return (
     <Component 
@@ -31,8 +31,8 @@ export function StarBorder<T extends ElementType = "button">({
     >
       <div
         className={cn(
-          "absolute w-[300%] h-[50%] bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0",
-          "opacity-30 dark:opacity-80" 
+          "absolute w-[500%] h-[100%] bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0",
+          "opacity-0 dark:opacity-0" 
         )}
         style={{
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
@@ -41,8 +41,8 @@ export function StarBorder<T extends ElementType = "button">({
       />
       <div
         className={cn(
-          "absolute w-[300%] h-[50%] top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0",
-          "opacity-30 dark:opacity-80"
+          "absolute w-[500%] h-[100%] top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0",
+          "opacity-0 dark:opacity-0"
         )}
         style={{
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
