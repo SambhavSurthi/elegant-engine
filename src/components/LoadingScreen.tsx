@@ -114,13 +114,12 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-transform duration-[1.5s] ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-900 transition-transform duration-[1.5s] ease-in-out ${
         isAnimatingOut ? "-translate-y-full" : "translate-y-0"
       }`}
-      style={{ backgroundColor: "rgba(248, 248, 248, 0.95)" }}
     >
       {/* Background Logo */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-30">
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
         {/* <img 
           src="/lovable-uploads/c2011f8c-5fdb-4e8c-84ee-4da7ae2eba27.png" 
           alt="Logo" 
@@ -155,7 +154,7 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       {/* Greeting Text */}
       <div className="relative z-10 text-center">
         <h1
-          className={`text-7xl md:text-6xl font-bold text-black transition-all duration-500 ${
+          className={`text-7xl md:text-6xl font-bold text-white transition-all duration-500 ${
             showGreeting ? " animate-fade-in opacity-100" : "opacity-0"
           }`}
         >
