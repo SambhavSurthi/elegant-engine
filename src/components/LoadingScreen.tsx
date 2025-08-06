@@ -114,7 +114,7 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-gray-900 transition-transform duration-[1.5s] ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black opacity-90 transition-transform duration-[1.5s] ease-in-out ${
         isAnimatingOut ? "-translate-y-full" : "translate-y-0"
       }`}
     >
