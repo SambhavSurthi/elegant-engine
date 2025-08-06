@@ -19,7 +19,7 @@ export function StarBorder<T extends ElementType = "button">({
   ...props
 }: StarBorderProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof StarBorderProps<T>>) {
   const Component = as || "button";
-  const defaultColor = color || "hsl(var(--foreground))";
+  const defaultColor = color || "hsl(var(--primary))";
 
   return (
     <Component 
@@ -32,7 +32,7 @@ export function StarBorder<T extends ElementType = "button">({
       <div
         className={cn(
           "absolute w-[300%] h-[50%] bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0",
-          "opacity-20 dark:opacity-70" 
+          "opacity-30 dark:opacity-80" 
         )}
         style={{
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
@@ -42,7 +42,7 @@ export function StarBorder<T extends ElementType = "button">({
       <div
         className={cn(
           "absolute w-[300%] h-[50%] top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0",
-          "opacity-20 dark:opacity-70"
+          "opacity-30 dark:opacity-80"
         )}
         style={{
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
@@ -50,9 +50,10 @@ export function StarBorder<T extends ElementType = "button">({
         }}
       />
       <div className={cn(
-        "relative z-1 border text-foreground text-center text-base py-4 px-6 rounded-[20px]",
-        "bg-gradient-to-b from-background/90 to-muted/90 border-border/40",
-        "dark:from-background dark:to-muted dark:border-border"
+        "relative z-1 border text-foreground text-center text-sm py-2 px-4 rounded-[20px]",
+        "bg-gradient-to-b from-background/95 to-muted/95 border-primary/30",
+        "dark:from-background dark:to-muted dark:border-primary/50",
+        "backdrop-blur-sm shadow-lg hover:shadow-primary/20 transition-all duration-300"
       )}>
         {children}
       </div>
