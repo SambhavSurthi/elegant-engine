@@ -1,8 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { StarBorder } from "./star-border";
-import { Send, MessageCircle } from "lucide-react";
+import { FlowButton } from "./flow-button";
 
 export const MagneticButton = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -42,27 +41,7 @@ export const MagneticButton = () => {
       }}
       className="cursor-pointer"
     >
-      <StarBorder className="transition-all  duration-300 ease-out">
-        <motion.div
-          className="flex items-center gap-2 font-medium"
-          animate={{
-            opacity: 1,
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          {isHovered ? (
-            <>
-              <span>Let's Collaborate</span>
-              <MessageCircle size={16} />
-            </>
-          ) : (
-            <>
-              <span>Let's Connect</span>
-              <Send size={16} />
-            </>
-          )}
-        </motion.div>
-      </StarBorder>
+      <FlowButton text={isHovered ? "Let's Collaborate" : "Let's Connect"} />
     </motion.div>
   );
 };
