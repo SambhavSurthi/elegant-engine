@@ -234,14 +234,10 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
-        src="/lovable-uploads/29ad5e6e-d877-470a-93f2-7841ff9f36ef.png"
-        alt="logo"
-        width={40}
-        height={40}
-        className="rounded-full"
-      />
-      <span className="font-medium text-lg text-black dark:text-white">Sambhav Surthi</span>
+      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+        <span className="text-white font-bold text-sm">S</span>
+      </div>
+      <span className="font-medium text-black dark:text-white">Sambhav Surthi</span>
     </a>
   );
 };

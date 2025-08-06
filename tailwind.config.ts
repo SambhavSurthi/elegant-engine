@@ -127,6 +127,14 @@ export default {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        "star-movement-bottom": {
+          "0%": { transform: "translate(0%, 0%)", opacity: "1" },
+          "100%": { transform: "translate(-100%, 0%)", opacity: "0" },
+        },
+        "star-movement-top": {
+          "0%": { transform: "translate(0%, 0%)", opacity: "1" },
+          "100%": { transform: "translate(100%, 0%)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -140,6 +148,8 @@ export default {
         'fade-in-left': 'fadeInLeft 1s ease-out forwards',
         'fade-in-right': 'fadeInRight 1s ease-out forwards',
         'scroll': 'scroll 8s linear infinite',
+        'star-movement-bottom': 'star-movement-bottom linear infinite alternate',
+        'star-movement-top': 'star-movement-top linear infinite alternate',
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",

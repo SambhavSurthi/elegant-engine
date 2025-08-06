@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import NavbarDemo from '@/components/ui/resizable-navbar-demo';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +10,7 @@ const Index = () => {
       {isLoading ? (
         <LoadingScreen onComplete={() => setIsLoading(false)} />
       ) : (
-        <div className="min-h-screen bg-white"></div>
+        <NavbarDemo />
       )}
     </div>
   );
