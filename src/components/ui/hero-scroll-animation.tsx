@@ -22,16 +22,18 @@ const Section1: React.FC<SectionProps> = ({ scrollYProgress }) => {
 
       <div className='w-full px-6 flex flex-col items-center justify-center gap-6'>
         <div className='flex flex-wrap items-center justify-center gap-3'>
-          <span className='text-5xl md:text-7xl font-semibold tracking-tight text-center'>Heyy.. I&apos;m</span>
-          <ContainerTextFlip words={["Sambhav Surthi", "Developer", "Designer"]} />
+          <span className='text-6xl md:text-7xl font-bold tracking-tight text-center'>Heyy.. I&apos;m</span>
+          <ContainerTextFlip words={["Sambhav", "Developer", "Designer"]} />
         </div>
         <div className='max-w-4xl text-center'>
-          <TextGenerateEffect
+          {/* <TextGenerateEffect
             className='text-xl md:text-2xl font-semibold'
-            words={'I build thoughtful end-to-end digital products with clean code and clear intent, made to be scalable, user-first, and'}
-          />
-          <div className='mt-2 text-2xl md:text-3xl font-bold'>
-            <FlipWords words={["creative", "adaptive", "modern", "impactful", "seamless"]} />
+            words={'I build thoughtful end-to-end digital products with clean code and clear intent, made to be scalable, user-first, and'} 
+          /> */}
+          <div className='mt-2 text-xl md:text-2xl font-semibold'>
+          I build thoughtful end-to-end digital products with clean code and clear intent, made to be scalable, user-first, and
+          <span className='font-bold md:text-3xl text-2xl' ><FlipWords words={["creative", "adaptive", "modern", "impactful", "seamless"]} /></span>
+            
           </div>
         </div>
       </div>
