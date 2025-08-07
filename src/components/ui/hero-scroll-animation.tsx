@@ -2,6 +2,9 @@
 
 import { useScroll, useTransform, motion, MotionValue } from 'motion/react';
 import React, { useRef, forwardRef } from 'react';
+import { ContainerTextFlip } from '@/components/ui/container-text-flip';
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
+import { FlipWords } from '@/components/ui/flip-words';
 
 interface SectionProps {
   scrollYProgress: MotionValue<number>;
@@ -17,9 +20,21 @@ const Section1: React.FC<SectionProps> = ({ scrollYProgress }) => {
     >
       <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
 
-      <h1 className='2xl:text-7xl text-6xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
-        An Hero section Animation <br /> Scroll Please 👇
-      </h1>
+      <div className='w-full px-6 flex flex-col items-center justify-center gap-6'>
+        <div className='flex flex-wrap items-center justify-center gap-3'>
+          <span className='text-5xl md:text-7xl font-semibold tracking-tight text-center'>Heyy.. I&apos;m</span>
+          <ContainerTextFlip words={["Sambhav Surthi", "Developer", "Designer"]} />
+        </div>
+        <div className='max-w-4xl text-center'>
+          <TextGenerateEffect
+            className='text-xl md:text-2xl font-semibold'
+            words={'I build thoughtful end-to-end digital products with clean code and clear intent, made to be scalable, user-first, and'}
+          />
+          <div className='mt-2 text-2xl md:text-3xl font-bold'>
+            <FlipWords words={["creative", "adaptive", "modern", "impactful", "seamless"]} />
+          </div>
+        </div>
+      </div>
     </motion.section>
   );
 };
