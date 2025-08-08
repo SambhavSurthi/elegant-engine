@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LoadingScreen } from '@/components/LoadingScreen';
-import NavbarDemo from '@/components/ui/resizable-navbar-demo';
+import { MainLayout } from '@/components/layout';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +10,7 @@ const Index = () => {
       {isLoading ? (
         <LoadingScreen onComplete={() => setIsLoading(false)} />
       ) : (
-        <NavbarDemo />
+        <MainLayout />
       )}
     </div>
   );

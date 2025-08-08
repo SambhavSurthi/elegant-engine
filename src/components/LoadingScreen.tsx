@@ -1,4 +1,4 @@
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import { gsap } from "gsap";
 
 interface LoadingScreenProps {
@@ -8,16 +8,15 @@ interface LoadingScreenProps {
 const greetings = [
   "• Hello", // English
   "• Hola", // Spanish
-  "• Bonjour", // French     // German
+  "• Bonjour", // French
   "• こんにちは", // Japanese
   "• 안녕하세요", // Korean
-  "• 你好",
+  "• 你好", // Chinese
   "• नमस्ते", // Hindi
   "• నమస్కారం", // Telugu
-  // Chinese      // Russian
 ];
 
-export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
+const LoadingScreen = memo(({ onComplete }: LoadingScreenProps) => {
   const [currentGreeting, setCurrentGreeting] = useState(0);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -163,4 +162,8 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       </div>
     </div>
   );
-};
+});
+
+LoadingScreen.displayName = 'LoadingScreen';
+
+export { LoadingScreen };
