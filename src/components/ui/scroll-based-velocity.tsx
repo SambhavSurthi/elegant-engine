@@ -106,13 +106,16 @@ export function VelocityScroll({
   }
 
   return (
-    <section className="relative w-full">
+    <section className="relative bg-blue-300  w-full">
       <ParallaxText baseVelocity={default_velocity} className={className}>
         {text}
       </ParallaxText>
-      <ParallaxText baseVelocity={-default_velocity} className={className}>
-        {text}
-      </ParallaxText>
+      <section className="bg-red-400">
+        <ParallaxText baseVelocity={-default_velocity} className={className}>
+          {text}
+        </ParallaxText>
+      </section>
+      
     </section>
   );
 }

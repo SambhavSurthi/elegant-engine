@@ -94,7 +94,7 @@ const Section1: React.FC<SectionProps> = ({ scrollYProgress }) => {
             as="a"
             href="#explore"
             containerClassName="rounded-full"
-            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 px-6 py-3"
+            className="bg-black dark:bg-white dark:text-black text-white flex items-center space-x-2 px-6 py-3"
           >
             <span>Explore me</span>
           </HoverBorderGradient>

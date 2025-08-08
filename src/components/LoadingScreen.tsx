@@ -6,14 +6,14 @@ interface LoadingScreenProps {
 }
 
 const greetings = [
-  ". Hello", // English
-  ". Hola", // Spanish
-  ". Bonjour", // French     // German
-  ". こんにちは", // Japanese
-  ". 안녕하세요", // Korean
-  ". 你好",
-  ". नमस्ते", // Hindi
-  ". నమస్కారం", // Telugu
+  "• Hello", // English
+  "• Hola", // Spanish
+  "• Bonjour", // French     // German
+  "• こんにちは", // Japanese
+  "• 안녕하세요", // Korean
+  "• 你好",
+  "• नमस्ते", // Hindi
+  "• నమస్కారం", // Telugu
   // Chinese      // Russian
 ];
 
