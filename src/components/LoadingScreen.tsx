@@ -153,7 +153,7 @@ const LoadingScreen = memo(({ onComplete }: LoadingScreenProps) => {
       {/* Greeting Text */}
       <div className="relative z-10 text-center">
         <h1
-          className={`text-7xl md:text-6xl font-bold text-white transition-all duration-500 ${
+          className={`text-4xl md:text-6xl font-bold text-white transition-all duration-500 ${
             showGreeting ? " animate-fade-in opacity-100" : "opacity-0"
           }`}
         >

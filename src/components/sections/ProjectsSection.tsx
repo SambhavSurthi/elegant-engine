@@ -4,6 +4,7 @@ import { useTransform, motion, MotionValue } from 'motion/react';
 import React, { memo, useEffect } from 'react';
 import { preloadImages } from '@/components/utils/performance';
 import { CometCard } from '@/components/ui/comet-card';
+import Aboutme from './Aboutme';
 
 interface ProjectsSectionProps {
   scrollYProgress: MotionValue<number>;
@@ -17,22 +18,22 @@ const PROJECT_IMAGES = [
   //   className: 'object-cover w-full rounded-md h-full'
   // },
   {
-    src: 'https://images.unsplash.com/photo-1717618389115-88db6d7d8f77?w=600&auto=format&fit=crop&q=80',
+    src: 'personal/MyPic1.jpg',
     alt: 'Project showcase 2',
     className: 'object-cover w-full rounded-md h-full'
   },
   {
-    src: 'https://images.unsplash.com/photo-1717618389115-88db6d7d8f77?w=600&auto=format&fit=crop&q=80',
+    src: 'personal/MyPic2.jpg',
     alt: 'Project showcase 2',
     className: 'object-cover w-full rounded-md h-full'
   },
   {
-    src: 'https://images.unsplash.com/photo-1717588604557-55b2888f59a6?w=600&auto=format&fit=crop&q=80',
+    src: 'personal/MyPic3.jpg',
     alt: 'Project showcase 3',
     className: 'object-cover w-full rounded-md h-full'
   },
   {
-    src: 'https://images.unsplash.com/photo-1713417338603-1b6b72fcade2?w=600&auto=format&fit=crop&q=80',
+    src: 'personal/MyPic4.jpg',
     alt: 'Project showcase 4',
     className: 'object-cover w-full rounded-md h-full'
   }
@@ -106,6 +107,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ scrollYProgress }) =>
     >
       <BackgroundGrid />
       <SectionContent />
+      <Aboutme/>
     </motion.section>
   );
 };

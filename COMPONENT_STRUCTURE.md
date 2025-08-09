@@ -18,7 +18,7 @@ src/
 │   │   ├── index.ts                  # Section component exports
 │   │   ├── HeroSection.tsx           # Hero section with animations
 │   │   ├── ProjectsSection.tsx       # Projects showcase section
-│   │   ├── Footer.tsx                # Footer component
+│   │   ├── Aboutme.tsx               # About Me component
 │   │   └── ScrollContainer.tsx       # Scroll animation coordinator
 │   ├── utils/
 │   │   └── performance.ts            # Performance optimization utilities
@@ -60,10 +60,10 @@ src/
   - Optimized image loading
   - Scroll animations
 
-#### `Footer.tsx`
-- **Purpose**: Footer section
+#### `Aboutme.tsx`
+- **Purpose**: About Me section (previously Footer)
 - **Responsibilities**:
-  - Footer content display
+  - About Me content display
   - Gradient text effects
 
 #### `ScrollContainer.tsx`

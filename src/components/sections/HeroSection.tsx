@@ -59,7 +59,7 @@ LiquidButton.displayName = 'LiquidButton';
 const HeroContent = memo(() => (
   <div className='w-full px-6 flex flex-col items-center justify-center gap-6'>
     <div className='flex flex-wrap items-center justify-center gap-3'>
-      <span className='text-6xl md:text-7xl font-bold tracking-tight text-center'>
+      <span className='text-6xl md:text-8xl font-bold tracking-tight text-center'>
         Heyy.. I&apos;m
       </span>
       <ContainerTextFlip words={HERO_WORDS} />

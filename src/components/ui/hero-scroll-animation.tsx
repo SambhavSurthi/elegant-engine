@@ -121,11 +121,11 @@ const Section2: React.FC<SectionProps> = ({ scrollYProgress }) => {
   return (
     <motion.section
       style={{ scale, rotate }}
-      className='relative h-screen bg-gradient-to-t to-[#1a1919] from-[#06060e] text-white will-change-transform'
+      className='relative h-auto md:h-screen bg-gradient-to-t to-[#1a1919] from-[#06060e] text-white will-change-transform'
     >
       <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
       <article className='container mx-auto relative z-10 '>
-        <h1 className='text-6xl leading-[100%] py-10 font-semibold  tracking-tight '>
+        <h1 className='text-4xl md:text-6xl leading-[100%] py-6 md:py-10 font-semibold  tracking-tight '>
         Turning ideas into elegant code,<br /> and code into meaningful experiences.
         </h1>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
@@ -181,14 +181,14 @@ const Component = forwardRef<HTMLElement>((props, ref) => {
 
   return (
     <>
-      <main ref={container} className='relative h-[200vh] bg-black'>
+      <main ref={container} className='relative h-auto md:h-[200vh] bg-black'>
         <Section1 scrollYProgress={scrollYProgress} />
         <Section2 scrollYProgress={scrollYProgress} />
         <footer className='group bg-[#06060e] '>
-          <h1 className='text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-400 to-gray-800 bg-clip-text text-transparent transition-all ease-linear'>
-            ui-layout
+          <h1 className='text-[18vw] md:text-[16vw] translate-y-10 md:translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-400 to-gray-800 bg-clip-text text-transparent transition-all ease-linear'>
+            I'M POSSIBLE
           </h1>
-          <div className='bg-black text-white h-40 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full'></div>
+          <div className='bg-black text-white h-24 md:h-40 -mt-6 md:mt-0 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full'></div>
         </footer>
       </main>
     </>
