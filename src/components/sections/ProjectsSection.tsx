@@ -3,6 +3,7 @@
 import { useTransform, motion, MotionValue } from 'motion/react';
 import React, { memo, useEffect } from 'react';
 import { preloadImages } from '@/components/utils/performance';
+import { CometCard } from '@/components/ui/comet-card';
 
 interface ProjectsSectionProps {
   scrollYProgress: MotionValue<number>;
@@ -10,15 +11,20 @@ interface ProjectsSectionProps {
 
 // Optimized image data with proper sizing
 const PROJECT_IMAGES = [
+  // {
+  //   src: 'https://images.unsplash.com/photo-1717893777838-4e222311630b?w=800&auto=format&fit=crop&q=80',
+  //   alt: 'Project showcase 1',
+  //   className: 'object-cover w-full rounded-md h-full'
+  // },
   {
-    src: 'https://images.unsplash.com/photo-1717893777838-4e222311630b?w=800&auto=format&fit=crop&q=80',
-    alt: 'Project showcase 1',
+    src: 'https://images.unsplash.com/photo-1717618389115-88db6d7d8f77?w=600&auto=format&fit=crop&q=80',
+    alt: 'Project showcase 2',
     className: 'object-cover w-full rounded-md h-full'
   },
   {
     src: 'https://images.unsplash.com/photo-1717618389115-88db6d7d8f77?w=600&auto=format&fit=crop&q=80',
     alt: 'Project showcase 2',
-    className: 'object-cover w-full rounded-md'
+    className: 'object-cover w-full rounded-md h-full'
   },
   {
     src: 'https://images.unsplash.com/photo-1717588604557-55b2888f59a6?w=600&auto=format&fit=crop&q=80',
@@ -54,14 +60,17 @@ ProjectImage.displayName = 'ProjectImage';
 
 // Memoized projects grid component
 const ProjectsGrid = memo(() => (
-  <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+  <div className='grid grid-cols-4 gap-2 sm:gap-3 md:gap-4'>
     {PROJECT_IMAGES.map((image, index) => (
-      <ProjectImage
-        key={index}
-        src={image.src}
-        alt={image.alt}
-        className={image.className}
-      />
+      <CometCard key={index} className='[transform-style:preserve-3d]'>
+        <div className='relative w-full aspect-[3/4]'>
+          <ProjectImage
+            src={image.src}
+            alt={image.alt}
+            className={'absolute inset-0 w-full h-full object-cover rounded-md'}
+          />
+        </div>
+      </CometCard>
     ))}
   </div>
 ));
@@ -72,7 +81,7 @@ ProjectsGrid.displayName = 'ProjectsGrid';
 const SectionContent = memo(() => (
   <article className='container mx-auto relative z-10 px-6'>
     <h1 className='text-4xl md:text-6xl leading-[100%] py-10 font-semibold tracking-tight'>
-      Images That doesn't Make any sense <br /> but still in this section
+    Turning ideas into elegant code, <br /> and code into meaningful experiences.
     </h1>
     <ProjectsGrid />
   </article>
