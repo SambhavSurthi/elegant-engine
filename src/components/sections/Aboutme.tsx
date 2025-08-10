@@ -1,16 +1,18 @@
 "use client";
 
-import React, { memo, useLayoutEffect, useRef } from "react";
+import React, { memo, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
+import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 
 const Aboutme: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleAnimRef = useRef<VerticalCutRevealRef | null>(null);
   const subtitleAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const [isNameActive, setIsNameActive] = useState(false);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -37,6 +39,7 @@ const Aboutme: React.FC = () => {
         });
         titleAnimRef.current?.startAnimation();
         subtitleAnimRef.current?.startAnimation();
+        setIsNameActive(true);
       };
 
       const toDark = () => {
@@ -52,6 +55,7 @@ const Aboutme: React.FC = () => {
         });
         titleAnimRef.current?.reset();
         subtitleAnimRef.current?.reset();
+        setIsNameActive(false);
       };
 
       ScrollTrigger.create({
@@ -75,7 +79,7 @@ const Aboutme: React.FC = () => {
           staggerFrom="center"
           transition={{ type: "spring", stiffness: 230, damping: 26 }}
           containerClassName="inline-block"
-          elementLevelClassName="will-change-transform bg-gradient-to-r from-gray-400 to-gray-800 bg-clip-text text-transparent"
+          elementLevelClassName="will-change-transform bg-gradient-to-r from-gray-500 to-gray-900 bg-clip-text text-transparent"
           autoStart={false}
         >
           {`I'M POSSIBLE`}
@@ -100,12 +104,23 @@ const Aboutme: React.FC = () => {
           </VerticalCutReveal>
         </h1>
 
-        <div className="md:ml-20 md:mr-20 text-3xl  md:text-5xl mt-10">
-          <h2>Hi, I’m Sambhav Surthi</h2>
+        <div className="md:ml-20 md:mr-20 ml-5 mr-5 text-3xl  md:text-5xl mt-10">
+          <h2 className="leading-tight">
+            Hi, I’m {" "}
+            <span className="inline-block align-baseline">
+              <AnimatedText
+                text="Sambhav Surthi"
+                isActive={isNameActive}
+                className="inline-flex align-baseline"
+                textClassName="text-inherit font-bold"
+                underlineClassName="text-current"
+              />
+            </span>
+          </h2>
           <br />
 
           <TextRevealByWord
-            className=""
+            className="h-[84vh]"
             text={`I’m a pre-final year Computer Science and Engineering undergrad at KL Deemed to be University, India — a student, developer, and creative problem solver.
             
             
