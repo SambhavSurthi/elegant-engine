@@ -104,7 +104,7 @@ const Aboutme: React.FC = () => {
           </VerticalCutReveal>
         </h1>
 
-        <div className="md:ml-20 md:mr-20 ml-5 mr-5 text-3xl  md:text-5xl mt-10">
+        <div className="md:ml-20 md:mr-20  ml-5 mr-5 text-3xl  md:text-5xl mt-10">
           <h2 className="leading-tight">
             Hi, I’m {" "}
             <span className="inline-block align-baseline">
@@ -112,7 +112,7 @@ const Aboutme: React.FC = () => {
                 text="Sambhav Surthi"
                 isActive={isNameActive}
                 className="inline-flex align-baseline"
-                textClassName="text-inherit font-bold"
+                textClassName="text-inherit  font-semibold"
                 underlineClassName="text-current"
               />
             </span>
@@ -120,7 +120,7 @@ const Aboutme: React.FC = () => {
           <br />
 
           <TextRevealByWord
-            className="h-[84vh]"
+            className=""
             text={`I’m a pre-final year Computer Science and Engineering undergrad at KL Deemed to be University, India — a student, developer, and creative problem solver.
             
             

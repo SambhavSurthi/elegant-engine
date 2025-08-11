@@ -5,6 +5,7 @@ import React, { memo, useEffect } from 'react';
 import { preloadImages } from '@/components/utils/performance';
 import { CometCard } from '@/components/ui/comet-card';
 import Aboutme from './Aboutme';
+import Skills from './Skills';
 
 interface ProjectsSectionProps {
   scrollYProgress: MotionValue<number>;
@@ -108,6 +109,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ scrollYProgress }) =>
       <BackgroundGrid />
       <SectionContent />
       <Aboutme/>
+      <Skills/>
     </motion.section>
   );
 };
