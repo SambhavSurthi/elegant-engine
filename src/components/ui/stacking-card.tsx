@@ -136,7 +136,7 @@ export const Card = ({
               Technologies & Tools
             </motion.h3>
             
-            <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 max-h-[200px] sm:max-h-[250px] md:max-h-none overflow-y-auto">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
               {skills.map((skill, index) => {
                 const IconComponent = techIcons[skill];
                 return (
