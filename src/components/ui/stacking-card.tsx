@@ -3,6 +3,7 @@ import { ReactLenis } from 'lenis/react';
 import { useTransform, motion, useScroll, MotionValue } from 'motion/react';
 import { useRef, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { 
   SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript,
   SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiPython,
@@ -142,7 +143,7 @@ export const Card = ({
                 return (
                   <motion.div
                     key={index}
-                    className="group/skill bg-black/10 hover:bg-black/20 backdrop-blur-sm rounded-lg px-2 py-2 sm:px-3 sm:py-3 md:px-4 md:py-3 lg:px-5 lg:py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer border border-black/10"
+                    className="relative group/skill bg-black/10 hover:bg-black/20 backdrop-blur-sm rounded-lg px-2 py-2 sm:px-3 sm:py-3 md:px-4 md:py-3 lg:px-5 lg:py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer border border-black/10"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
@@ -152,7 +153,16 @@ export const Card = ({
                     }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="flex items-center gap-1 sm:gap-2 lg:gap-3">
+                    <GlowingEffect
+                      spread={30}
+                      glow={true}
+                      disabled={false}
+                      proximity={48}
+                      inactiveZone={0.01}
+                      borderWidth={2}
+                      movementDuration={1.5}
+                    />
+                    <div className="relative flex items-center gap-1 sm:gap-2 lg:gap-3">
                       {IconComponent && (
                         <motion.div
                           whileHover={{ rotate: 360 }}
