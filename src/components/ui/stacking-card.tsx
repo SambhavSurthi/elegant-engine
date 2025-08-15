@@ -128,7 +128,7 @@ export const Card = ({
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.h3 
-              className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-black mb-3 sm:mb-4 lg:mb-6 tracking-wide"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-black mb-3 sm:mb-4 lg:mb-6 tracking-wide"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -163,7 +163,7 @@ export const Card = ({
                           />
                         </motion.div>
                       )}
-                      <span className="text-black font-medium text-xs sm:text-sm md:text-sm lg:text-base group-hover/skill:font-semibold transition-all duration-300 flex-1 truncate">
+                      <span className="text-black font-medium text-sm sm:text-base md:text-base lg:text-lg group-hover/skill:font-semibold transition-all duration-300 flex-1 truncate">
                         {skill}
                       </span>
                     </div>
