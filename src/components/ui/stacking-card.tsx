@@ -4,6 +4,7 @@ import { useTransform, motion, useScroll, MotionValue } from 'motion/react';
 import { useRef, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
+import { Spotlight } from '@/components/ui/spotlight';
 import { 
   SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript,
   SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiPython,
@@ -78,7 +79,7 @@ export const Card = ({
   return (
     <div
       ref={container}
-      className='h-screen flex items-center justify-center sticky top-0'
+      className='h-screen flex items-center  justify-center sticky top-0'
     >
       <motion.div
         style={{
@@ -88,6 +89,11 @@ export const Card = ({
         }}
         className={`group flex flex-col relative -top-[25%] h-[500px] sm:h-[450px] md:h-[500px] lg:h-[550px] w-[95%] sm:w-[90%] md:w-[85%] lg:w-[100%] rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 origin-top transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden`}
       >
+        {/* Spotlight Effect */}
+        <Spotlight
+          className="from-blue-100 via-blue-100 to-blue-100"
+          size={150}
+        />
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.1),transparent_50%)]"></div>
@@ -98,7 +104,7 @@ export const Card = ({
           
           {/* Left Section - TechStack Name & Description */}
           <motion.div 
-            className="w-full md:w-1/2 flex flex-col justify-center space-y-3 sm:space-y-4 lg:space-y-6"
+            className="w-full md:w-1/2 flex flex-col md:flex md:flex-col md:justify-start md:mt-20 justify-center space-y-3 sm:space-y-4 lg:space-y-6"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
