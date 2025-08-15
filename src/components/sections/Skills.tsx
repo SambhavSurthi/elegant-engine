@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Cover } from '@/components/ui/cover';
 import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
 import StackingCards from '@/components/ui/stacking-card';
+import Experience from './Experience';
 
 const skillsProjects = [
   {
@@ -105,9 +106,9 @@ const Skills: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full md:pl-10 bg-white text-black">
-      <div ref={containerRef} className="container mx-auto px-6 tracking-wide py-20">
-        <h2 className="text-6xl md:text-8xl md:mr-20">
+    <section ref={sectionRef} className="w-full  bg-white text-black">
+      <div ref={containerRef} className="container md:pl-10 mx-auto px-6 tracking-wide py-20">
+        <h2 className="text-6xl md:mt-32 md:text-8xl md:mr-20">
           <VerticalCutReveal
             ref={titleAnimRef}
             splitBy="characters"
@@ -127,7 +128,20 @@ const Skills: React.FC = () => {
         <div className="mt-20">
           <StackingCards projects={skillsProjects} />
         </div>
+
+
+        <div className='' >
+
+        {/* Add the Experiemce Time Line Here */}
+        <Experience />
+
+        </div>
+
         
+      </div>
+
+      <div className='' >
+        <h1 className='text-9xl text-white' >PROJECTS</h1>
       </div>
     </section>
   );
