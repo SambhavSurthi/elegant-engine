@@ -85,7 +85,7 @@ export const Card = ({
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className={`group flex flex-col relative -top-[25%] h-[450px] md:h-[500px] lg:h-[550px] w-[90%] md:w-[85%] lg:w-[100%] rounded-xl p-8 md:p-10 lg:p-12 origin-top transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden`}
+        className={`group flex flex-col relative -top-[25%] h-[500px] sm:h-[450px] md:h-[500px] lg:h-[550px] w-[95%] sm:w-[90%] md:w-[85%] lg:w-[100%] rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 origin-top transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden`}
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -93,17 +93,17 @@ export const Card = ({
         </div>
         
         {/* Main Content Container */}
-        <div className="relative z-10 flex flex-col lg:flex-row h-full gap-6 lg:gap-12">
+        <div className="relative z-10 flex flex-col md:flex-row h-full gap-4 sm:gap-6 md:gap-8 lg:gap-12">
           
           {/* Left Section - TechStack Name & Description */}
           <motion.div 
-            className="w-full lg:w-1/2 flex flex-col justify-center space-y-4 lg:space-y-6"
+            className="w-full md:w-1/2 flex flex-col justify-center space-y-3 sm:space-y-4 lg:space-y-6"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <motion.h2 
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-black leading-tight tracking-tight"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black leading-tight tracking-tight"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -111,7 +111,7 @@ export const Card = ({
             </motion.h2>
             
             <motion.p 
-              className="text-sm sm:text-base lg:text-lg xl:text-xl text-black/80 leading-relaxed font-medium"
+              className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black/80 leading-relaxed font-medium"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -122,13 +122,13 @@ export const Card = ({
 
           {/* Right Section - Skills/Technologies */}
           <motion.div 
-            className="w-full lg:w-1/2 flex flex-col justify-center"
+            className="w-full md:w-1/2 flex flex-col justify-center"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.h3 
-              className="text-lg sm:text-xl lg:text-2xl font-semibold text-black mb-4 lg:mb-6 tracking-wide"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-black mb-3 sm:mb-4 lg:mb-6 tracking-wide"
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -136,13 +136,13 @@ export const Card = ({
               Technologies & Tools
             </motion.h3>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 max-h-[200px] sm:max-h-[250px] md:max-h-none overflow-y-auto">
               {skills.map((skill, index) => {
                 const IconComponent = techIcons[skill];
                 return (
                   <motion.div
                     key={index}
-                    className="group/skill bg-black/10 hover:bg-black/20 backdrop-blur-sm rounded-xl px-3 py-3 sm:px-4 sm:py-3 lg:px-5 lg:py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer border border-black/10"
+                    className="group/skill bg-black/10 hover:bg-black/20 backdrop-blur-sm rounded-lg px-2 py-2 sm:px-3 sm:py-3 md:px-4 md:py-3 lg:px-5 lg:py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer border border-black/10"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
@@ -152,25 +152,25 @@ export const Card = ({
                     }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="flex items-center gap-2 lg:gap-3">
+                    <div className="flex items-center gap-1 sm:gap-2 lg:gap-3">
                       {IconComponent && (
                         <motion.div
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
                         >
                           <IconComponent 
-                            className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-black/80 group-hover/skill:text-black transition-colors duration-300" 
+                            className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-black/80 group-hover/skill:text-black transition-colors duration-300 flex-shrink-0" 
                           />
                         </motion.div>
                       )}
-                      <span className="text-black font-medium text-xs sm:text-sm lg:text-base group-hover/skill:font-semibold transition-all duration-300 flex-1">
+                      <span className="text-black font-medium text-xs sm:text-sm md:text-sm lg:text-base group-hover/skill:font-semibold transition-all duration-300 flex-1 truncate">
                         {skill}
                       </span>
                     </div>
                     
                     {/* Hover indicator */}
                     <motion.div 
-                      className="w-0 h-0.5 bg-black mt-2 transition-all duration-300 group-hover/skill:w-full"
+                      className="w-0 h-0.5 bg-black mt-1 sm:mt-2 transition-all duration-300 group-hover/skill:w-full"
                       initial={false}
                     />
                   </motion.div>
