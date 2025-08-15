@@ -6,42 +6,41 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Cover } from '@/components/ui/cover';
 import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
 import StackingCards from '@/components/ui/stacking-card';
-import { ReactLenis } from 'lenis/react';
 
 const skillsProjects = [
   {
     title: 'Frontend Development',
     description: 'Building beautiful, responsive, and interactive user interfaces with modern frameworks and cutting-edge technologies.',
     link: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&auto=format&fit=crop&q=60',
-    color: '#3b82f6',
+    color: 'white',
     skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Vite']
   },
   {
     title: 'Backend Development',
     description: 'Creating robust APIs, databases, and server-side solutions that power dynamic applications with scalability in mind.',
     link: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&auto=format&fit=crop&q=60',
-    color: '#059669',
+    color: 'white',
     skills: ['Node.js', 'Python', 'Express', 'Supabase', 'PostgreSQL', 'REST APIs']
   },
   {
     title: 'Mobile Development',
     description: 'Developing cross-platform mobile applications that deliver native-like performance and user experience.',
     link: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&auto=format&fit=crop&q=60',
-    color: '#dc2626',
+    color: 'white',
     skills: ['React Native', 'Flutter', 'Expo', 'iOS', 'Android', 'Firebase']
   },
   {
     title: 'DevOps & Cloud',
     description: 'Streamlining development workflows with CI/CD pipelines, containerization, and cloud infrastructure management.',
     link: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=500&auto=format&fit=crop&q=60',
-    color: '#7c3aed',
+    color: 'white',
     skills: ['Docker', 'AWS', 'Vercel', 'GitHub Actions', 'Kubernetes', 'Terraform']
   },
   {
     title: 'UI/UX Design',
     description: 'Crafting intuitive user experiences and visually appealing interfaces that bridge design and development seamlessly.',
     link: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&auto=format&fit=crop&q=60',
-    color: '#ea580c',
+    color: 'white',
     skills: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research', 'Design Systems']
   }
 ];
@@ -123,11 +122,10 @@ const Skills: React.FC = () => {
           </VerticalCutReveal>
           <Cover>skillset</Cover>.
         </h2>
+        
         {/* Stacking Cards Animation */}
         <div className="mt-20">
-          <ReactLenis root>
-            <StackingCards projects={skillsProjects} />
-          </ReactLenis>
+          <StackingCards projects={skillsProjects} />
         </div>
         
       </div>

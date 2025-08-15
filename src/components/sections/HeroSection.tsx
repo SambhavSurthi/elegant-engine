@@ -92,7 +92,7 @@ const HeroContent = memo(() => (
     <div className='mt-10 w-full'>
       <VelocityScroll
         text={MARQUEE_TEXT}
-        default_velocity={5}
+        default_velocity={4}
         className="font-bold text-neutral-900 dark:text-neutral-100 text-xl md:text-3xl"
       />
     </div>
