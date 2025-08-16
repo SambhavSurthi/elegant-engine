@@ -11,6 +11,7 @@ const projectsData = [
     technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind"],
     githubUrl: "https://github.com/username/ecommerce",
     liveUrl: "https://ecommerce-demo.com",
+    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=80",
   },
   {
     title: "Task Management App",
@@ -18,6 +19,7 @@ const projectsData = [
     technologies: ["React", "TypeScript", "Firebase", "Framer Motion"],
     githubUrl: "https://github.com/username/taskmanager",
     liveUrl: "https://taskmanager-demo.com",
+    imageUrl: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop&q=80",
   },
   {
     title: "AI Dashboard",
@@ -25,6 +27,7 @@ const projectsData = [
     technologies: ["Next.js", "Python", "TensorFlow", "Chart.js", "PostgreSQL"],
     githubUrl: "https://github.com/username/ai-dashboard",
     liveUrl: "https://ai-dashboard-demo.com",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
   },
   {
     title: "Social Media App",
@@ -32,6 +35,7 @@ const projectsData = [
     technologies: ["React Native", "GraphQL", "AWS", "Redis"],
     githubUrl: "https://github.com/username/social-app",
     liveUrl: "https://social-app-demo.com",
+    imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=80",
   },
   {
     title: "Portfolio Website",
@@ -39,6 +43,7 @@ const projectsData = [
     technologies: ["React", "GSAP", "Three.js", "Tailwind CSS"],
     githubUrl: "https://github.com/username/portfolio",
     liveUrl: "https://portfolio-demo.com",
+    imageUrl: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&auto=format&fit=crop&q=80",
   },
 ];
 

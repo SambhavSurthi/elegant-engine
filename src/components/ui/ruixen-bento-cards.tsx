@@ -13,6 +13,7 @@ interface ProjectCardProps {
   technologies: string[]
   githubUrl: string
   liveUrl: string
+  imageUrl: string
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -22,20 +23,32 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   technologies,
   githubUrl,
   liveUrl,
+  imageUrl,
 }) => {
   return (
     <div
       className={cn(
-        "relative border border-dashed border-zinc-400 dark:border-zinc-700 rounded-lg p-6 bg-white dark:bg-zinc-950 min-h-[200px]",
-        "flex flex-col justify-between",
+        "relative border border-dashed border-zinc-400 dark:border-zinc-700 rounded-lg overflow-hidden bg-white dark:bg-zinc-950 min-h-[200px]",
+        "flex flex-col",
         className
       )}
     >
       <CornerPlusIcons />
+      
+      {/* Project Image */}
+      <div className="relative h-32 w-full overflow-hidden">
+        <img 
+          src={imageUrl} 
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+      </div>
+      
       {/* Content */}
-      <div className="relative z-10 space-y-4">
+      <div className="relative z-10 p-6 flex-1 flex flex-col justify-between space-y-4">
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
             {title}
           </h3>
           <p className="text-gray-700 dark:text-gray-300 text-sm">
@@ -46,7 +59,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {/* Technologies */}
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech, index) => (
-            <Badge key={index} variant="outline" className="text-xs">
+            <Badge key={index} variant="outline" className="text-xs border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300">
               {tech}
             </Badge>
           ))}
@@ -57,7 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <Button 
             size="sm" 
             variant="outline"
-            className="bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0 hover:from-purple-600 hover:to-blue-600"
+            className="bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0 hover:from-purple-600 hover:to-blue-600 shadow-lg hover:shadow-xl transition-all duration-300"
             onClick={() => window.open(githubUrl, '_blank')}
           >
             <Github className="w-4 h-4 mr-1" />
@@ -65,7 +78,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </Button>
           <Button 
             size="sm"
-            className="bg-gradient-to-r from-green-500 to-teal-500 text-white hover:from-green-600 hover:to-teal-600"
+            className="bg-gradient-to-r from-green-500 to-teal-500 text-white hover:from-green-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-300"
             onClick={() => window.open(liveUrl, '_blank')}
           >
             <ExternalLink className="w-4 h-4 mr-1" />
@@ -107,8 +120,8 @@ interface ProjectsBentoProps {
 
 export default function ProjectsBento({ projects }: ProjectsBentoProps) {
   return (
-    <section className="bg-white dark:bg-black dark:bg-transparent border border-gray-200 dark:border-gray-800">
-      <div className="mx-auto container border border-gray-200 dark:border-gray-800 py-12 border-t-0 px-4">
+    <section className="bg-white dark:bg-black">
+      <div className="mx-auto container py-12 px-4">
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 auto-rows-auto gap-4">
           {projects.map((project, index) => {
