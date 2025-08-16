@@ -44,22 +44,16 @@ const projectsData = [
 
 const Projects: React.FC = () => {
   return (
-    <section className="w-full bg-white dark:bg-black py-20">
+    <section className="w-full bg-black dark:bg-black py-20">
       <div className="container mx-auto px-6">
         {/* Animated Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-6xl md:text-8xl font-bold text-black dark:text-white mb-8">
+        <div className="text-start mb-16">
+          <h2 className="text-6xl md:text-8xl font-semibold text-white dark:text-white mb-8">
             PROJECTS
           </h2>
           
           {/* Animated Explore All Projects Link */}
-          <div className="group inline-flex items-center gap-2 text-lg font-medium text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 cursor-pointer">
-            <span className="relative">
-              Explore All Projects
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-            </span>
-            <ExternalLink className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </div>
+          
         </div>
 
         {/* Projects Bento Grid */}
