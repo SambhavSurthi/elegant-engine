@@ -133,7 +133,10 @@ export default function ProjectsBento({ projects }: ProjectsBentoProps) {
 
         {/* Section Footer Heading */}
         <div className="max-w-2xl ml-auto text-right px-4 mt-6 lg:-mt-20">
-          <div className="group inline-flex items-center gap-2 text-2xl mb-4  mr-3 font-medium text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors duration-300 cursor-pointer">
+          <div 
+            className="group inline-flex items-center gap-2 text-2xl mb-4  mr-3 font-medium text-gray-300 dark:text-gray-300 hover:text-white dark:hover:text-white transition-colors duration-300 cursor-pointer"
+            onClick={() => window.location.href = '/allprojects'}
+          >
             <span className="relative">
               Explore All Projects
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>

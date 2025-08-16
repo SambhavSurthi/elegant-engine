@@ -137,11 +137,15 @@ const Skills: React.FC = () => {
         <Experience />
 
         </div>
-
         
       </div>
-
+      <div className='' >
+          
       <Projects />
+
+        </div>
+
+
     </section>
   );
 };
