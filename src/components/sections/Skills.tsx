@@ -7,6 +7,7 @@ import { Cover } from '@/components/ui/cover';
 import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
 import StackingCards from '@/components/ui/stacking-card';
 import Experience from './Experience';
+import Projects from './Projects';
 
 const skillsProjects = [
   {
@@ -140,7 +141,7 @@ const Skills: React.FC = () => {
         
       </div>
 
-      {/* Projects section moved to separate component */}
+      <Projects />
     </section>
   );
 };
