@@ -132,7 +132,7 @@ const Skills: React.FC = () => {
 
         <div className='' >
 
-        {/* Add the Experiemce Time Line Here */}
+        {/* Add the Experience Time Line Here */}
         <Experience />
 
         </div>
