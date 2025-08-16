@@ -140,9 +140,7 @@ const Skills: React.FC = () => {
         
       </div>
 
-      <div className='' >
-        <h1 className='text-9xl text-white' >PROJECTS</h1>
-      </div>
+      {/* Projects section moved to separate component */}
     </section>
   );
 };
