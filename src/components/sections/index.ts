@@ -7,3 +7,4 @@ export { default as Experience } from './Experience';
 export { default as Projects } from './Projects';
 export { default as AllProjects } from './AllProjects';
 export { default as CodeAndDev } from './CodeAndDev';
+export { default as Certifications } from './Certifications';

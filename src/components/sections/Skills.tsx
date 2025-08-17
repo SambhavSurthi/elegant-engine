@@ -12,6 +12,7 @@ import StackingCards from "@/components/ui/stacking-card";
 import Experience from "./Experience";
 import Projects from "./Projects";
 import CodeAndDev from "./CodeAndDev";
+import Certifications from "./Certifications";
 
 const skillsProjects = [
   {
@@ -186,9 +187,7 @@ const Skills: React.FC = () => {
       </div>
 
       <div>
-
-      <h1 className=" md:ml-16 md: text-8xl">Certifications</h1>
-        
+        <Certifications />
       </div>
     </section>
   );
