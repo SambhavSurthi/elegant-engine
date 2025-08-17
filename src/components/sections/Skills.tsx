@@ -178,10 +178,18 @@ const Skills: React.FC = () => {
       <div className="">
         <Projects />
       </div>
-      <h1 className=" md:ml-16 md: text-8xl" >DEV & DSA</h1>
+      <div>
+        <h1 className=" md:ml-16 md: text-8xl">DEV & DSA</h1>
 
-      {/* Coding Profiles */}
-      <CodeAndDev />
+        {/* Coding Profiles */}
+        <CodeAndDev />
+      </div>
+
+      <div>
+
+      <h1 className=" md:ml-16 md: text-8xl">Certifications</h1>
+        
+      </div>
     </section>
   );
 };
