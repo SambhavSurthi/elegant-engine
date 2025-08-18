@@ -14,8 +14,6 @@ const SmoothScroll = () => {
     const lenis = new Lenis({
       duration: 1.1, // gentle but responsive
       easing: (t: number) => 1 - Math.pow(1 - t, 3), // cubic out
-      smoothWheel: true,
-      smoothTouch: true,
       touchMultiplier: 1.2,
       autoRaf: false,
     });
@@ -37,8 +35,7 @@ const SmoothScroll = () => {
     return () => {
       lenis.off('scroll', onLenisScroll);
       cancelAnimationFrame(rafId);
-      // @ts-expect-error dispose exists at runtime
-      if (typeof lenis.destroy === 'function') lenis.destroy();
+      if (typeof (lenis as any).destroy === 'function') lenis.destroy();
     };
   }, []);
 

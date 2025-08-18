@@ -66,9 +66,9 @@ const HeroContent = memo(() => (
     </div>
     
     <div className='max-w-4xl text-center'>
-      <div className='mt-2 text-xl md:text-2xl font-semibold'>
+      <div className='mt-2 text-lg md:text-2xl font-semibold'>
         I build thoughtful end-to-end digital products with clean code and clear intent, made to be scalable, user-first, and
-        <span className='font-bold md:text-3xl text-2xl'>
+        <span className='font-bold md:text-3xl text-xl'>
           <FlipWords words={FLIP_WORDS} />
         </span>
       </div>
