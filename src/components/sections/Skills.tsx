@@ -205,6 +205,11 @@ const Skills: React.FC = () => {
           showTooltip={true}
         />
       </div>
+
+      {/* Gemini component */}
+      <div>
+        <h1>Gemini Component</h1>
+      </div>
     </section>
   );
 };
