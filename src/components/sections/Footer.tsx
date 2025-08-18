@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <div 
       className="relative w-full h-full text-black"
       style={{
-        background: 'radial-gradient(circle at 50% 50%, #f1f5f9 0%, #3b82f6 50%, #1e40af 100%)'
+        background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 20%, #ddd6fe 50%, #a855f7 80%, #7c3aed 100%)'
       }}
     >
       <div className="relative z-10">
