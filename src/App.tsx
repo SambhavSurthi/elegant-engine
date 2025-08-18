@@ -6,12 +6,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AllProjectsPage from "./pages/AllProjects";
 import NotFound from "./pages/NotFound";
+import SmoothScroll from "@/components/utils/SmoothScroll";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <SmoothScroll />
       <Toaster />
       <Sonner />
       <BrowserRouter>

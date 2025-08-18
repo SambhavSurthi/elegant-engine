@@ -114,3 +114,22 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
+
+/* Performance hints for smoother animations & scrolling */
+html, body {
+  /* allow natural scroll chaining to avoid trapped scroll in nested sections */
+  overscroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Avoid expensive box-shadows and paints on mobile during scroll */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Explicitly hint the GPU for transform-heavy regions */
+.will-change-transform {
+  will-change: transform;
+}

@@ -4,8 +4,7 @@ import { useTransform, motion, MotionValue } from 'motion/react';
 import React, { memo, useEffect } from 'react';
 import { preloadImages } from '@/components/utils/performance';
 import { CometCard } from '@/components/ui/comet-card';
-import Aboutme from './Aboutme';
-import Skills from './Skills';
+// Sections below are rendered outside this motion section to avoid scroll trapping
 
 interface ProjectsSectionProps {
   scrollYProgress: MotionValue<number>;
@@ -108,8 +107,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ scrollYProgress }) =>
     >
       <BackgroundGrid />
       <SectionContent />
-      <Aboutme/>
-      <Skills/>
     </motion.section>
   );
 };
