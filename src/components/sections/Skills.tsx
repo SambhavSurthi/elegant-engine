@@ -12,9 +12,6 @@ import StackingCards from "@/components/ui/stacking-card";
 import Experience from "./Experience";
 import Projects from "./Projects";
 import CodeAndDev from "./CodeAndDev";
-import Certifications from "./Certifications";
-import { InfiniteTextMarquee } from "@/components/ui/infinite-text-marquee";
-import GoogleGeminiEffectDemo from "@/components/ui/google-gemini-effect-demo";
 
 const skillsProjects = [
   {
@@ -181,34 +178,10 @@ const Skills: React.FC = () => {
       <div className="">
         <Projects />
       </div>
-      <div>
-        <h1 className=" md:ml-16 md: text-8xl">DEV & DSA</h1>
+      <h1 className=" md:ml-16 md: text-8xl" >DEV & DSA</h1>
 
-        {/* Coding Profiles */}
-        <CodeAndDev />
-      </div>
-
-      <div>
-        <Certifications />
-      </div>
-
-
-      {/* Add Marquee Here */}
-      <div className="py-5 border-t border-b border-white">
-        <InfiniteTextMarquee
-          text="Let's Build Something Amazing Together"
-          link="/contact"
-          speed={25}
-          tooltipText="Ready to collaborate? Let's create magic! 🚀💻"
-          fontSize="6rem"
-          textColor="white"
-          hoverColor="#3B82F6"
-          showTooltip={true}
-        />
-      </div>
-
-      {/* Gemini component */}
-      <GoogleGeminiEffectDemo />
+      {/* Coding Profiles */}
+      <CodeAndDev />
     </section>
   );
 };
