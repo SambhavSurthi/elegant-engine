@@ -13,6 +13,7 @@ import Experience from "./Experience";
 import Projects from "./Projects";
 import CodeAndDev from "./CodeAndDev";
 import Certifications from "./Certifications";
+import { InfiniteTextMarquee } from "@/components/ui/infinite-text-marquee";
 
 const skillsProjects = [
   {
@@ -188,6 +189,21 @@ const Skills: React.FC = () => {
 
       <div>
         <Certifications />
+      </div>
+
+
+      {/* Add Marquee Here */}
+      <div className="py-5 border-t border-b border-white">
+        <InfiniteTextMarquee
+          text="Let's Build Something Amazing Together"
+          link="/contact"
+          speed={25}
+          tooltipText="Ready to collaborate? Let's create magic! 🚀💻"
+          fontSize="6rem"
+          textColor="white"
+          hoverColor="#3B82F6"
+          showTooltip={true}
+        />
       </div>
     </section>
   );

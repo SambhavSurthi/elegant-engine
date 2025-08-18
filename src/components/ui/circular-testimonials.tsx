@@ -38,11 +38,11 @@ interface CircularTestimonialsProps {
 function calculateGap(width: number) {
   const minWidth = 1024;
   const maxWidth = 1456;
-  const minGap = 60;
-  const maxGap = 86;
+  const minGap = 80;
+  const maxGap = 120;
   if (width <= minWidth) return minGap;
   if (width >= maxWidth)
-    return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));
+    return Math.max(minGap, maxGap + 0.08018 * (width - maxWidth));
   return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
 }
 
@@ -275,7 +275,7 @@ export const CircularTestimonials = ({
       <style>{`
         .testimonial-container {
           width: 100%;
-          max-width: 56rem;
+          max-width: 80rem;
           padding: 2rem;
         }
         .testimonial-grid {
@@ -285,7 +285,7 @@ export const CircularTestimonials = ({
         .image-container {
           position: relative;
           width: 100%;
-          height: 24rem;
+          height: 28rem;
           perspective: 1000px;
         }
         .testimonial-image {
@@ -333,9 +333,52 @@ export const CircularTestimonials = ({
         @media (min-width: 768px) {
           .testimonial-grid {
             grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+          }
+          .image-container {
+            height: 36rem !important;
           }
           .arrow-buttons {
             padding-top: 0;
+          }
+        }
+        @media (min-width: 1024px) {
+          .testimonial-grid {
+            gap: 10rem;
+          }
+          .image-container {
+            height: 42rem !important;
+          }
+          .name {
+            font-size: 2.5rem !important;
+          }
+          .designation {
+            font-size: 1.125rem !important;
+          }
+          .quote {
+            font-size: 1.25rem !important;
+          }
+        }
+        @media (min-width: 1280px) {
+          .testimonial-grid {
+            gap: 12rem;
+          }
+          .image-container {
+            height: 48rem !important;
+          }
+          .name {
+            font-size: 3rem !important;
+          }
+          .designation {
+            font-size: 1.25rem !important;
+          }
+          .quote {
+            font-size: 1.375rem !important;
+          }
+        }
+        @media (min-width: 1536px) {
+          .image-container {
+            height: 52rem !important;
           }
         }
       `}</style>

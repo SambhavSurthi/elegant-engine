@@ -28,7 +28,7 @@ const certificationsData: Certification[] = [
     year: "2024",
     description: "Comprehensive knowledge of MongoDB development including data modeling, CRUD operations, aggregation framework, and application development best practices.",
     verificationUrl: "https://learn.mongodb.com/learning-paths/mongodb-associate-developer-path",
-    badgeUrl: "https://images.credly.com/size/340x340/images/e5c85d7f-4e50-4b71-a0d0-de42b2f6d2d5/image.png"
+    badgeUrl: "https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png"
   },
   {
     name: "Oracle AI Foundations Associate",
@@ -36,7 +36,7 @@ const certificationsData: Certification[] = [
     year: "2024",
     description: "Understanding of artificial intelligence concepts, machine learning fundamentals, and Oracle's AI services. Covers AI ethics, data science basics, and practical AI applications.",
     verificationUrl: "https://education.oracle.com/oracle-ai-foundations-associate/pexam_1Z0-1122-23",
-    badgeUrl: "https://images.credly.com/size/340x340/images/b296f9ac-dbd3-4788-8204-0cb72687ec92/image.png"
+    badgeUrl: "https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png"
   }
 ];
 
@@ -54,18 +54,18 @@ const Certifications: React.FC = () => {
     <section className="w-full bg-black text-white py-20">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-start mb-16">
           <h2 className="text-6xl md:text-8xl font-semibold text-white mb-8">
             CERTIFICATIONS
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl ">
             Professional certifications that validate my expertise in cloud computing, database development, and artificial intelligence.
           </p>
         </div>
 
         {/* Certifications Carousel */}
-        <div className="flex justify-center items-center min-h-[600px]">
-          <div className="max-w-6xl w-full">
+        <div className="flex justify-center items-center min-h-[400px]">
+          <div className="max-w-8xl w-full">
             <CustomCertificationCarousel certifications={transformedCertifications} />
           </div>
         </div>
@@ -95,7 +95,7 @@ const CustomCertificationCarousel: React.FC<CertificationCarouselProps> = ({ cer
       <style>{`
         .certification-container {
           width: 100%;
-          max-width: 70rem;
+          max-width: 100rem;
           padding: 2rem;
           margin: 0 auto;
         }
@@ -106,8 +106,8 @@ const CustomCertificationCarousel: React.FC<CertificationCarouselProps> = ({ cer
         }
         .image-container {
           position: relative;
-          width: 100%;
-          height: 20rem;
+          width: 600px;
+          height: 400px;
           perspective: 1000px;
         }
         .certification-image {
@@ -116,7 +116,8 @@ const CustomCertificationCarousel: React.FC<CertificationCarouselProps> = ({ cer
           height: 100%;
           object-fit: contain;
           border-radius: 1rem;
-          background: white;
+          // change the background cooler here 
+          background: transparent;              
           padding: 2rem;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
@@ -251,7 +252,7 @@ const CustomCertificationCarousel: React.FC<CertificationCarouselProps> = ({ cer
           <div className="certification-content">
             <div>
               <h3 className="cert-name">{activeCertification.name}</h3>
-              <span className="cert-code">{activeCertification.designation}</span>
+              <span className="text-zinc-400">{activeCertification.designation}</span>
               <p className="cert-description">{activeCertification.quote}</p>
               <a 
                 href={activeCertification.verificationUrl}
