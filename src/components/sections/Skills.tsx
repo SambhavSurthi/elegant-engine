@@ -13,6 +13,7 @@ import Experience from "./Experience";
 import Projects from "./Projects";
 import CodeAndDev from "./CodeAndDev";
 import Certifications from "./Certifications";
+import GoogleGeminiEffectDemo from "@/components/ui/google-gemini-effect-demo";
 
 const skillsProjects = [
   {
@@ -196,8 +197,8 @@ const Skills: React.FC = () => {
 
       {/* Google Gemini Spl component */}
       <div>
-      <h1 className=" text-5xl md:ml-16 md:text-8xl">Google Gemini Spl Component</h1>
-
+        <h1 className=" text-5xl md:ml-16 md:text-8xl">Google Gemini Spl Component</h1>
+        <GoogleGeminiEffectDemo />
       </div>
     </section>
   );
