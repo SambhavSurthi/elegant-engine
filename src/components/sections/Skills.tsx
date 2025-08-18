@@ -15,6 +15,7 @@ import CodeAndDev from "./CodeAndDev";
 import Certifications from "./Certifications";
 import GoogleGeminiEffectDemo from "@/components/ui/google-gemini-effect-demo";
 import { InfiniteTextMarquee } from "@/components/ui/infinite-text-marquee";
+import Footer from "./Footer";
 
 const skillsProjects = [
   {
@@ -215,7 +216,7 @@ const Skills: React.FC = () => {
       </div>
 
       <div className=" h-[31rem] md:h-[31rem]  text-black bg-white">
-        <h1 className=" text-5xl md:ml-16 md:text-8xl">Footer</h1>
+        <Footer />
       </div>
     </section>
   );
