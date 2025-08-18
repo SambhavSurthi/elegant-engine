@@ -14,6 +14,7 @@ import Projects from "./Projects";
 import CodeAndDev from "./CodeAndDev";
 import Certifications from "./Certifications";
 import { InfiniteTextMarquee } from "@/components/ui/infinite-text-marquee";
+import GoogleGeminiEffectDemo from "@/components/ui/google-gemini-effect-demo";
 
 const skillsProjects = [
   {
@@ -207,9 +208,7 @@ const Skills: React.FC = () => {
       </div>
 
       {/* Gemini component */}
-      <div>
-        <h1>Gemini Component</h1>
-      </div>
+      <GoogleGeminiEffectDemo />
     </section>
   );
 };
