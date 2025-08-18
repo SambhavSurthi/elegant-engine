@@ -75,7 +75,7 @@ const HeroContent = memo(() => (
     </div>
 
     {/* Buttons */}
-    <div className='mt-8 flex items-center justify-center gap-4'>
+    {/* <div className='mt-8 flex items-center justify-center gap-4'>
       <LiquidButton />
       
       <a href="#explore">
@@ -86,16 +86,16 @@ const HeroContent = memo(() => (
           <span>Explore me</span>
         </HoverBorderGradient>
       </a>
-    </div>
+    </div> */}
 
     {/* Marquee */}
-    <div className='mt-10 w-full'>
+    {/* <div className='mt-10 w-full'>
       <VelocityScroll
         text={MARQUEE_TEXT}
         default_velocity={4}
         className="font-bold text-neutral-900 dark:text-neutral-100 text-xl md:text-3xl"
       />
-    </div>
+    </div> */}
   </div>
 ));
 
