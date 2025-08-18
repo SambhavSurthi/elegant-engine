@@ -15,6 +15,7 @@ import CodeAndDev from "./CodeAndDev";
 import Certifications from "./Certifications";
 import { InfiniteTextMarquee } from "@/components/ui/infinite-text-marquee";
 import GoogleGeminiEffectDemo from "@/components/ui/google-gemini-effect-demo";
+import Footer from "./Footer";
 
 const skillsProjects = [
   {
@@ -192,7 +193,6 @@ const Skills: React.FC = () => {
         <Certifications />
       </div>
 
-
       {/* Add Marquee Here */}
       <div className="py-5 border-t border-b border-white">
         <InfiniteTextMarquee
@@ -207,8 +207,16 @@ const Skills: React.FC = () => {
         />
       </div>
 
-      {/* Gemini component */}
-      <GoogleGeminiEffectDemo />
+      <div>
+        {/* Gemini component */}
+        <GoogleGeminiEffectDemo />
+      </div>
+
+
+      {/* Footer div */}
+      <div className="h-[30rem] bg-white" >
+        <Footer />
+      </div>
     </section>
   );
 };
