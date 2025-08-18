@@ -195,7 +195,7 @@ const Skills: React.FC = () => {
         <Certifications />
       </div>
 
-      {/* Google Gemini Spl component */}
+      {/* Google Gemini Spl components */}
       <div>
         <h1 className=" text-5xl md:ml-16 md:text-8xl">Google Gemini Spl Component</h1>
         <GoogleGeminiEffectDemo />
