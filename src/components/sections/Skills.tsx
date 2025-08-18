@@ -14,6 +14,7 @@ import Projects from "./Projects";
 import CodeAndDev from "./CodeAndDev";
 import Certifications from "./Certifications";
 import GoogleGeminiEffectDemo from "@/components/ui/google-gemini-effect-demo";
+import { InfiniteTextMarquee } from "@/components/ui/infinite-text-marquee";
 
 const skillsProjects = [
   {
@@ -196,9 +197,15 @@ const Skills: React.FC = () => {
       </div>
 
       {/* Marquee */}
-      <div>
-        
-
+      <div className="overflow-x-hidden border rounded-xl">
+        <InfiniteTextMarquee
+          text="Let's Build Something Amazing"
+          link="/"
+          speed={20}
+          tooltipText="Ready to Code! 🚀"
+          fontSize="8rem"
+          showTooltip={true}
+        />
       </div>
 
       {/* Google Gemini Spl components */}
