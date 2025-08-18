@@ -29,7 +29,7 @@ export const InfiniteTextMarquee: React.FC<InfiniteTextMarqueeProps> = ({
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [rotation, setRotation] = useState(0);
-  const maxRotation = 8;
+  const maxRotation = 10;
  
   useEffect(() => {
     if (!showTooltip) return;

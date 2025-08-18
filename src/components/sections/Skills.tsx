@@ -189,32 +189,32 @@ const Skills: React.FC = () => {
         <CodeAndDev />
       </div>
 
-
       {/* Certification */}
       <div className="mt-5">
-      <h1 className=" text-5xl md:ml-16 md:text-8xl">Certifications</h1>
+        <h1 className=" text-5xl md:ml-16 md:text-8xl">Certifications</h1>
         <Certifications />
       </div>
 
       {/* Marquee */}
-      <div className="overflow-x-hidden border rounded-xl">
+      <div className="overflow-x-hidden md:mt-20">
         <InfiniteTextMarquee
           text="Let's Build Something Amazing"
           link="/"
           speed={20}
-          tooltipText="Ready to Code! 🚀"
-          fontSize="8rem"
+          tooltipText="some tooltip"
+          fontSize="8rem "
           showTooltip={true}
+          // textColor="white"
+          
         />
       </div>
 
       {/* Google Gemini Spl components */}
       <div>
-        <h1 className=" text-5xl md:ml-16 md:text-8xl">Google Gemini Spl Component</h1>
         <GoogleGeminiEffectDemo />
       </div>
 
-      <div className=" h-[31rem] md:h-[31rem]  text-black bg-white" >
+      <div className=" h-[31rem] md:h-[31rem]  text-black bg-white">
         <h1 className=" text-5xl md:ml-16 md:text-8xl">Footer</h1>
       </div>
     </section>
