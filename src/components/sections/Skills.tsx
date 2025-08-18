@@ -200,6 +200,10 @@ const Skills: React.FC = () => {
         <h1 className=" text-5xl md:ml-16 md:text-8xl">Google Gemini Spl Component</h1>
         <GoogleGeminiEffectDemo />
       </div>
+
+      <div className=" h-[31rem] md:h-[31rem]  text-black bg-white" >
+        <h1 className=" text-5xl md:ml-16 md:text-8xl">Footer</h1>
+      </div>
     </section>
   );
 };
