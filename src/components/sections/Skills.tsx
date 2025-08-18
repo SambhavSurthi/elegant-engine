@@ -215,7 +215,7 @@ const Skills: React.FC = () => {
         <GoogleGeminiEffectDemo />
       </div>
 
-      <div className=" h-[31rem] md:h-[31rem]  text-black bg-white">
+      <div className=" h-[31rem] md:h-[31rem]  text-black ">
         <Footer />
       </div>
     </section>

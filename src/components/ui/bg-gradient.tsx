@@ -18,7 +18,7 @@ export const Component = ({
   return (
     <div 
       className={cn(
-        "absolute inset-0 w-full h-full -z-10 bg-white",
+        "absolute inset-0 w-full h-full -z-100 bg-white",
         className
       )}
       style={{
