@@ -197,7 +197,8 @@ const Skills: React.FC = () => {
 
       {/* Marquee */}
       <div>
-        <h1 className=" text-5xl md:ml-16 md:text-8xl">Marquee</h1>
+        
+
       </div>
 
       {/* Google Gemini Spl components */}
