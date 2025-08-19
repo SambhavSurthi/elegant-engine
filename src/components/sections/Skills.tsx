@@ -31,6 +31,12 @@ const skillsProjects = [
       "Tailwind CSS",
       "Framer Motion",
       "Vite",
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vite",
     ],
   },
   {
@@ -215,7 +221,7 @@ const Skills: React.FC = () => {
         <GoogleGeminiEffectDemo />
       </div>
 
-      <div className=" h-[31rem] md:h-[31rem]  text-black ">
+      <div className=" h-full md:h-[30rem]  text-black ">
         <Footer />
       </div>
     </section>

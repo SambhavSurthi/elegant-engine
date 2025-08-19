@@ -120,7 +120,7 @@ const Aboutme: React.FC = () => {
           <br />
 
           <TextRevealByWord
-            className=""
+            className="text-4xl"
             text={`I’m a pre-final year Computer Science and Engineering undergrad at KL Deemed to be University, India — a student, developer, and creative problem solver.
             
             
