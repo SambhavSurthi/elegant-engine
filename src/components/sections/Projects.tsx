@@ -44,7 +44,7 @@ const projectsData = [
 
 const Projects: React.FC = () => {
   return (
-    <section className="w-full bg-black dark:bg-black py-20">
+    <section className="w-full bg-black dark:bg-black py-20" id="projects">
       <div className="container mx-auto px-6">
         {/* Animated Header */}
         <div className="text-start mb-16">

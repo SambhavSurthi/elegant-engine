@@ -2,11 +2,13 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { FlowButton } from "./flow-button";
+import { useNavigate } from "react-router-dom";
 
 export const MagneticButton = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (buttonRef.current) {
@@ -24,12 +26,17 @@ export const MagneticButton = () => {
     setIsHovered(false);
   };
 
+  const handleClick = () => {
+    navigate("/contact");
+  };
+
   return (
     <motion.div
       ref={buttonRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       animate={{
         x: position.x,
         y: position.y,

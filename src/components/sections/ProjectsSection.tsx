@@ -102,6 +102,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ scrollYProgress }) =>
 
   return (
     <motion.section
+      
       style={{ scale, rotate }}
       className='relative h-screen bg-gradient-to-t to-[#1a1919] from-[#06060e] text-white will-change-transform'
     >

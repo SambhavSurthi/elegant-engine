@@ -35,7 +35,7 @@ const CERTIFICATIONS: CertificationItem[] = [
 
 const Certifications: React.FC = () => {
   return (
-    <section className="w-full bg-black text-white">
+    <section id="certificates" className="w-full bg-black text-white">
       <AnimatedTestimonials items={CERTIFICATIONS} autoplay className="" />
     </section>
   );

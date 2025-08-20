@@ -70,7 +70,7 @@ const Aboutme: React.FC = () => {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="group bg-[#06060e]">
+    <footer id="about" ref={sectionRef} className="group bg-[#06060e]">
       <h1 className="text-[16vw] mb-12 lg:mb-0 md:mb-0 translate-y-20 leading-[100%] uppercase font-semibold text-center transition-all ease-linear">
         <VerticalCutReveal
           ref={titleAnimRef}

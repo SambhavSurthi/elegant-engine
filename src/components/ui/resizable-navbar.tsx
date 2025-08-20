@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -73,9 +74,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
         React.isValidElement(child)
           ? React.cloneElement(
               child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
+              { visible }
             )
-          : child,
+          : child
       )}
     </motion.div>
   );
@@ -103,7 +104,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-1.5 lg:flex dark:bg-transparent",
         visible && "bg-white/80 dark:bg-neutral-950/80",
-        className,
+        className
       )}
     >
       {children}
@@ -119,7 +120,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       onMouseLeave={() => setHovered(null)}
       className={cn(
         "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
-        className,
+        className
       )}
     >
       {items.map((item, idx) => (
@@ -136,7 +137,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
               className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
             />
           )}
-          <span className="relative z-20">{item.name}</span>
+          <span className="relative">{item.name}</span>
         </a>
       ))}
     </motion.div>
@@ -165,7 +166,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       className={cn(
         "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-1.5 lg:hidden",
         visible && "bg-white/80 dark:bg-neutral-950/80",
-        className,
+        className
       )}
     >
       {children}
@@ -181,7 +182,7 @@ export const MobileNavHeader = ({
     <div
       className={cn(
         "flex w-full flex-row items-center justify-between",
-        className,
+        className
       )}
     >
       {children}
@@ -204,7 +205,7 @@ export const MobileNavMenu = ({
           exit={{ opacity: 0 }}
           className={cn(
             "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
-            className,
+            className
           )}
         >
           {children}
@@ -230,70 +231,85 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
-      href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
-    >
-      <div className="w-8 h-8 rounded-full border flex items-center justify-center">
-        <img src="/Logo-removebg-preview.png" alt="" />
-      </div>
-      <span className="text-lg font-semibold text-black dark:text-white">Sambhav Surthi</span>
-    </a>
+    <div className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal">
+      <motion.div
+        className="w-8 h-8 rounded-full border flex items-center justify-center cursor-pointer"
+        whileHover={{ rotate: 360 }}
+        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      >
+        <img src="/Logo-removebg-preview.png" alt="Logo" />
+      </motion.div>
+      <a
+        href="/"
+        className="relative text-lg font-semibold text-black dark:text-white before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-[4px] before:bg-black before:scale-x-0 before:origin-right before:transition-transform before:duration-500 hover:before:scale-x-100 hover:before:origin-left"
+      >
+        Sambhav Surthi
+      </a>
+    </div>
   );
 };
 
 export const MagneticButton = () => {
   const [isHovered, setIsHovered] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!buttonRef.current) return;
-    
+
     const rect = buttonRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    
+
     buttonRef.current.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
   };
 
   const handleMouseLeave = () => {
     if (!buttonRef.current) return;
-    buttonRef.current.style.transform = 'translate(0px, 0px)';
+    buttonRef.current.style.transform = "translate(0px, 0px)";
     setIsHovered(false);
   };
 
   return (
-    <motion.button
-      ref={buttonRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      className={cn(
-        "relative overflow-hidden rounded-full px-6 py-3 font-medium transition-all duration-300 ease-out border",
-        isHovered ? "bg-black text-white border-black" : "bg-white text-black border-gray-200"
-      )}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <div className="relative overflow-hidden w-32">
-        {!isHovered ? (
-          <motion.div
-            className="whitespace-nowrap flex"
-            animate={{ x: [-200, 0] }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            <span className="inline-block">Let's Connect → Let's Connect → Let's Connect → </span>
-          </motion.div>
-        ) : (
-          <div className="text-center">
-            Let's Connect →
-          </div>
+    <div className="relative z-[1000] cursor-pointer" onClick={() => navigate("/contact")}>
+      <motion.button
+        ref={buttonRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => navigate("/contact")}
+        className={cn(
+          "relative overflow-hidden rounded-full px-6 py-3 font-medium transition-all duration-300 ease-out border",
+          isHovered
+            ? "bg-black text-white border-black"
+            : "bg-white text-black border-gray-200"
         )}
-      </div>
-    </motion.button>
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <div
+          className="relative overflow-hidden w-32"
+          onClick={() => navigate("/contact")}
+        >
+          {!isHovered ? (
+            <motion.div
+              className="whitespace-nowrap flex"
+              animate={{ x: [-200, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              <span className="inline-block" onClick={() => navigate("/contact")}>
+                Let's Connect → Let's Connect → Let's Connect →
+              </span>
+            </motion.div>
+          ) : (
+            <div className="text-center" onClick={() => navigate("/contact")} >Let's Connect →</div>
+          )}
+        </div>
+      </motion.button>
+    </div>
   );
 };
