@@ -120,16 +120,13 @@ const Aboutme: React.FC = () => {
           <br />
 
           <TextRevealByWord
-            className="text-4xl"
+            className="text-xl md:text-4xl"
             text={`I’m a pre-final year Computer Science and Engineering undergrad at KL Deemed to be University, India — a student, developer, and creative problem solver.
             
             
 
             
-            Passionate about web development, design, and critical thinking, I enjoy crafting elegant solutions with clean code. I have hands-on experience in full-stack development using Spring Boot with React, MERN stack, and Python Django, along with a solid foundation in data structures and algorithms.  
-            
-            
-            
+            Passionate about web development, design, and critical thinking, I enjoy crafting elegant solutions with clean code. I have hands-on experience in full-stack development using Spring Boot with React, MERN stack, and Python Django, along with a solid foundation in data structures and algorithms. 
             Currently, I’m diving into Artificial Intelligence and Machine Learning, aiming to shift my career toward building intelligent, data-driven solutions. In my free time, I channel my creativity into designing — from website components to interactive UI elements.`}
           />
 
