@@ -190,8 +190,8 @@ const Skills: React.FC = () => {
       </div>
 
       <div>
-        <h1 className=" md:ml-16 md: text-8xl">Code in Motion</h1>
-        <p className="text-xl mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16 ">From solving algorithms on LeetCode and CodeChef to building real-world projects on GitHub, I grow through both problem-solving and development.</p>
+        <h1 className="ml-4 md:ml-16 md: text-8xl">Code In Motion</h1>
+        <p className="text-xl ml-4 mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16 ">From solving algorithms on LeetCode and CodeChef to building real-world projects on GitHub, I grow through both problem-solving and development.</p>
 
         {/* Coding Profiles */}
         <CodeAndDev />
@@ -199,8 +199,8 @@ const Skills: React.FC = () => {
 
       {/* Certification */}
       <div className="mt-5">
-        <h1 className=" text-5xl mt-5 md:ml-16 md:text-8xl">Milestones of Learning</h1>
-        <p className="text-xl mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16 ">Each certification represents knowledge gained and expertise earned—strengthening my foundation in technology and beyond.</p>
+        <h1 className="ml-4 text-5xl mt-5 md:ml-16 md:text-8xl">Milestones of Learning</h1>
+        <p className="text-xl ml-4 mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16 ">Each certification represents knowledge gained and expertise earned—strengthening my foundation in technology and beyond.</p>
         <Certifications />
       </div>
 
