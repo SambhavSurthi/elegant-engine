@@ -154,7 +154,7 @@ const Skills: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full  bg-black text-white">
+    <section ref={sectionRef} id="skills" className="w-full  bg-black text-white">
       <div
         ref={containerRef}
         className="container md:pl-10 mx-auto px-6 tracking-wide py-20"
