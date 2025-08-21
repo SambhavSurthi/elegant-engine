@@ -1,41 +1,46 @@
-'use client';
+"use client";
 
-import React, { memo } from 'react';
-import ProjectsBento from '@/components/ui/ruixen-bento-cards';
-import { ExternalLink } from 'lucide-react';
+import React, { memo } from "react";
+import ProjectsBento from "@/components/ui/ruixen-bento-cards";
+import { ExternalLink } from "lucide-react";
 
 const projectsData = [
   {
     title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
+    description:
+      "A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
     technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind"],
     githubUrl: "https://github.com/username/ecommerce",
     liveUrl: "https://ecommerce-demo.com",
   },
   {
     title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates, drag-and-drop functionality, and team features.",
+    description:
+      "Collaborative task management tool with real-time updates, drag-and-drop functionality, and team features.",
     technologies: ["React", "TypeScript", "Firebase", "Framer Motion"],
     githubUrl: "https://github.com/username/taskmanager",
     liveUrl: "https://taskmanager-demo.com",
   },
   {
     title: "AI Dashboard",
-    description: "Analytics dashboard with AI-powered insights, data visualization, and predictive modeling for business intelligence.",
+    description:
+      "Analytics dashboard with AI-powered insights, data visualization, and predictive modeling for business intelligence.",
     technologies: ["Next.js", "Python", "TensorFlow", "Chart.js", "PostgreSQL"],
     githubUrl: "https://github.com/username/ai-dashboard",
     liveUrl: "https://ai-dashboard-demo.com",
   },
   {
     title: "Social Media App",
-    description: "Modern social platform with real-time messaging, content sharing, and advanced privacy controls.",
+    description:
+      "Modern social platform with real-time messaging, content sharing, and advanced privacy controls.",
     technologies: ["React Native", "GraphQL", "AWS", "Redis"],
     githubUrl: "https://github.com/username/social-app",
     liveUrl: "https://social-app-demo.com",
   },
   {
     title: "Portfolio Website",
-    description: "Personal portfolio showcasing creative projects with smooth animations and responsive design.",
+    description:
+      "Personal portfolio showcasing creative projects with smooth animations and responsive design.",
     technologies: ["React", "GSAP", "Three.js", "Tailwind CSS"],
     githubUrl: "https://github.com/username/portfolio",
     liveUrl: "https://portfolio-demo.com",
@@ -49,11 +54,10 @@ const Projects: React.FC = () => {
         {/* Animated Header */}
         <div className="text-start mb-16">
           <h2 className="text-6xl md:text-8xl font-semibold text-white dark:text-white mb-8">
-            PROJECTS
+            Building Ideas into Reality
           </h2>
-          
+          <p className="text-xl text-zinc-600 md:text-xl md:max-w-[60%] ">From concept to execution, I create projects that not only showcase skills but also bring meaningful solutions to life.</p>
           {/* Animated Explore All Projects Link */}
-          
         </div>
 
         {/* Projects Bento Grid */}
