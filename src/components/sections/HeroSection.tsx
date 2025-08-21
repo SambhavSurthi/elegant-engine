@@ -7,6 +7,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 import { Liquid } from "@/components/ui/button-1";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 import {
   LIQUID_COLORS,
@@ -26,7 +27,13 @@ const BackgroundGrid = memo(() => (
 
 BackgroundGrid.displayName = "BackgroundGrid";
 
-// Memoized liquid button component
+// Mock resumes list – replace URLs with your actual public paths or remote links
+const RESUMES: { name: string; url: string; fileName?: string }[] = [
+  { name: "Primary Resume", url: "/resume.pdf", fileName: "Sambhav_Surthi_Resume.pdf" },
+  { name: "Alternate Resume", url: "/resume-alt.pdf", fileName: "Sambhav_Surthi_Resume_Alt.pdf" },
+];
+
+// Memoized liquid button component (used as PopoverTrigger via asChild)
 const LiquidButton = memo(() => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -82,7 +89,48 @@ const HeroContent = memo(() => (
 
     {/* Buttons (only visible on md and above) */}
     <div className="mt-8 hidden md:flex items-center justify-center gap-4">
-      <LiquidButton />
+      <Popover>
+        <PopoverTrigger asChild>
+          <LiquidButton />
+        </PopoverTrigger>
+        <PopoverContent
+          sideOffset={10}
+          className="w-[20rem] p-0 max-h-[60vh] overflow-y-auto overscroll-contain"
+          onWheelCapture={(e) => e.stopPropagation()}
+          onTouchMoveCapture={(e) => e.stopPropagation()}
+        >
+          <div className="p-4">
+            <h3 className="text-base font-semibold mb-3">Download Resume</h3>
+            <ul className="space-y-3">
+              {RESUMES.map((r) => (
+                <li key={r.name} className="flex items-center justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium truncate">{r.name}</p>
+                    <p className="text-xs text-muted-foreground truncate">{r.fileName ?? r.url}</p>
+                  </div>
+                  <button
+                    className="shrink-0 inline-flex items-center justify-center rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      try {
+                        const anchor = document.createElement("a");
+                        anchor.href = r.url;
+                        anchor.setAttribute("download", r.fileName ?? "");
+                        document.body.appendChild(anchor);
+                        anchor.click();
+                        document.body.removeChild(anchor);
+                      } catch {}
+                    }}
+                  >
+                    Download
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </PopoverContent>
+      </Popover>
 
       <a href="#explore">
         <HoverBorderGradient
