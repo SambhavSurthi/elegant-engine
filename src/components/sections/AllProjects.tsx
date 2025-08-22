@@ -3,6 +3,7 @@
 import React, { memo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { projectsData } from '@/data/project-data';
 import {
   Github,
   ExternalLink,
@@ -82,53 +83,8 @@ const techIcons: { [key: string]: React.ReactNode } = {
   'Design Systems': <PaletteIcon className="w-3 h-3" />,
 };
 
-// Project data with year
-const allProjectsData = [
-  {
-    title: 'E-Commerce Platform',
-    description:
-      'Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind'],
-    githubUrl: 'https://github.com/username/ecommerce',
-    liveUrl: 'https://ecommerce-demo.com',
-    icon: <Globe className="h-4 w-4 text-neutral-500" />,
-    category: 'Full-Stack',
-    status: 'Live',
-    year: '2024',
-    image:
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=80',
-  },
-  {
-    title: 'Task Management App',
-    description:
-      'Collaborative task management tool with real-time updates, drag-and-drop functionality, and team features.',
-    technologies: ['React', 'TypeScript', 'Firebase', 'Framer Motion'],
-    githubUrl: 'https://github.com/username/taskmanager',
-    liveUrl: 'https://taskmanager-demo.com',
-    icon: <Code className="h-4 w-4 text-neutral-500" />,
-    category: 'Frontend',
-    status: 'Live',
-    year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=80',
-  },
-
-  {
-    title: 'Task Management App',
-    description:
-      'Collaborative task management tool with real-time updates, drag-and-drop functionality, and team features.',
-    technologies: ['React', 'TypeScript', 'Firebase', 'Framer Motion'],
-    githubUrl: 'https://github.com/username/taskmanager',
-    liveUrl: 'https://taskmanager-demo.com',
-    icon: <Code className="h-4 w-4 text-neutral-500" />,
-    category: 'Frontend',
-    status: 'Live',
-    year: '2023',
-    image:
-      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=80',
-  },
-  // ... add rest with year + image
-];
+// Use projectsData from project-data.ts - shows all projects (both mainScreen: true and false)
+const allProjectsData = projectsData;
 
 const AllProjects: React.FC = () => {
   return (
@@ -193,7 +149,6 @@ const AllProjects: React.FC = () => {
                 {/* Project Details */}
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    {project.icon}
                     <span className="text-sm text-zinc-400">
                       {project.category}
                     </span>

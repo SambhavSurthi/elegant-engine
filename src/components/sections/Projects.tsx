@@ -3,7 +3,8 @@
 import React, { memo, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ProjectsBento from "@/components/ui/ruixen-bento-cards";
+// import ProjectsBento from "@/components/ui/ruixen-bento-cards";
+import ProjectHorizontalScroll from "@/components/sections/ProjectHorizontalScroll";
 import { ExternalLink } from "lucide-react";
 import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
@@ -114,8 +115,20 @@ const Projects: React.FC = () => {
           </div>
         </div>
 
-        {/* Projects Bento Grid */}
-        <ProjectsBento projects={projectsData} />
+        {/* Projects Horizontal Scroll (GSAP) */}
+        <div className="relative -mx-6">
+          <ProjectHorizontalScroll />
+        </div>
+
+        {/* Keep previous Bento layout commented as requested */}
+        {/**
+         * Previous bento grid implementation preserved for reference.
+         *
+         * <ProjectsBento projects={projectsData} />
+         */}
+
+        {/* Add the horizontal scrollable projects */}
+        
       </div>
     </section>
   );

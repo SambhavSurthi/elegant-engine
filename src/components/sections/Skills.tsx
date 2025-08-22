@@ -249,7 +249,7 @@ const Skills: React.FC = () => {
       </div>
 
       <div ref={codeInMotionRef}>
-        <h1 className="ml-4 md:ml-16 md: text-8xl">
+        <h1 className="ml-4 md:ml-16 mt-10 md: text-8xl">
           <VerticalCutReveal
             ref={codeTitleAnimRef}
             splitBy="characters"
