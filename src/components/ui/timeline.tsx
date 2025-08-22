@@ -4,7 +4,11 @@ import {
   useTransform,
   motion,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
+import { TextRevealByWord } from "@/components/ui/text-reveal";
 
 interface TimelineEntry {
   title: string;
@@ -15,6 +19,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
+  const titleAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const paragraphAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const [isSectionActive, setIsSectionActive] = useState(false);
 
   useEffect(() => {
     if (ref.current) {
@@ -29,6 +36,36 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const containerEl = containerRef.current;
+      if (!containerEl) return;
+
+      const toActive = () => {
+        titleAnimRef.current?.startAnimation();
+        paragraphAnimRef.current?.startAnimation();
+        setIsSectionActive(true);
+      };
+
+      const toInactive = () => {
+        titleAnimRef.current?.reset();
+        paragraphAnimRef.current?.reset();
+        setIsSectionActive(false);
+      };
+
+      ScrollTrigger.create({
+        trigger: containerEl,
+        start: "top center",
+        onEnter: toActive,
+        onLeaveBack: toInactive,
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -46,11 +83,25 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-5xl md:text-7xl mb-4 text-white dark:text-black max-w-4xl">
-          Professional Experience
+          <VerticalCutReveal
+            ref={titleAnimRef}
+            splitBy="characters"
+            staggerDuration={0.01}
+            staggerFrom="center"
+            transition={{ type: "spring", stiffness: 230, damping: 26 }}
+            containerClassName="inline-block"
+            elementLevelClassName="will-change-transform"
+            autoStart={false}
+          >
+            Professional Experience
+          </VerticalCutReveal>
         </h2>
-        <p className="text-neutral-300 dark:text-neutral-700 text-sm md:text-xl max-w-sm">
-          My journey in software development and the skills I've acquired along the way.
-        </p>
+        <div className="text-neutral-300 dark:text-neutral-700 text-sm md:text-xl max-w-lg">
+          <TextRevealByWord
+            className=""
+            text="My journey in software development and the skills I've acquired along the way."
+          />
+        </div>
       </div>
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">

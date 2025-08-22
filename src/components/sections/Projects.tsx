@@ -1,8 +1,12 @@
 "use client";
 
-import React, { memo } from "react";
+import React, { memo, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectsBento from "@/components/ui/ruixen-bento-cards";
 import { ExternalLink } from "lucide-react";
+import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
+import { TextRevealByWord } from "@/components/ui/text-reveal";
 
 const projectsData = [
   {
@@ -48,16 +52,66 @@ const projectsData = [
 ];
 
 const Projects: React.FC = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const titleAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const paragraphAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const [isSectionActive, setIsSectionActive] = useState(false);
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const sectionEl = sectionRef.current;
+      if (!sectionEl) return;
+
+      const toActive = () => {
+        titleAnimRef.current?.startAnimation();
+        paragraphAnimRef.current?.startAnimation();
+        setIsSectionActive(true);
+      };
+
+      const toInactive = () => {
+        titleAnimRef.current?.reset();
+        paragraphAnimRef.current?.reset();
+        setIsSectionActive(false);
+      };
+
+      ScrollTrigger.create({
+        trigger: sectionEl,
+        start: "top center",
+        onEnter: toActive,
+        onLeaveBack: toInactive,
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full bg-black dark:bg-black py-20" id="projects">
+    <section ref={sectionRef} className="w-full bg-black dark:bg-black py-20" id="projects">
       <div className="container mx-auto px-6">
         {/* Animated Header */}
         <div className="text-start mb-16">
           <h2 className="text-6xl md:text-8xl font-semibold text-white dark:text-white mb-8">
-            Building Ideas into Reality
+            <VerticalCutReveal
+              ref={titleAnimRef}
+              splitBy="characters"
+              staggerDuration={0.03}
+              staggerFrom="center"
+              transition={{ type: "spring", stiffness: 230, damping: 26 }}
+              containerClassName="inline-block"
+              elementLevelClassName="will-change-transform"
+              autoStart={false}
+            >
+              Building Ideas into Reality
+            </VerticalCutReveal>
           </h2>
-          <p className="text-xl text-zinc-600 md:text-xl md:max-w-[60%] ">From concept to execution, I create projects that not only showcase skills but also bring meaningful solutions to life.</p>
-          {/* Animated Explore All Projects Link */}
+          <div className="text-xl text-zinc-600 md:text-xl md:max-w-[60%]">
+            <TextRevealByWord
+              className=""
+              text="From concept to execution, I create projects that not only showcase skills but also bring meaningful solutions to life."
+            />
+          </div>
         </div>
 
         {/* Projects Bento Grid */}

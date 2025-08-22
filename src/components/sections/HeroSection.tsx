@@ -198,9 +198,11 @@ const LiquidButton = memo(() => {
 
   return (
     <ResumePopover>
+      {/* Desktop / Laptop Version */}
       <a
         href="#"
-        className="relative inline-block sm:w-44 w-40 h-[2.7em] mx-auto group dark:bg-black bg-white dark:border-white border-black border-2 rounded-lg overflow-hidden"
+        className="hidden sm:inline-block relative w-44 h-[2.7em] mx-auto group dark:bg-black bg-white 
+               dark:border-white border-black border-2 rounded-lg overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         aria-label="Resume"
@@ -221,6 +223,32 @@ const LiquidButton = memo(() => {
         <span className="absolute inset-0 rounded-lg bg-transparent cursor-pointer grid place-items-center text-white font-semibold">
           Resume
         </span>
+      </a>
+
+      {/* Mobile Version */}
+      <a
+        href="#"
+        className="sm:hidden relative inline-flex items-center justify-center gap-2 w-40 h-[2.7em] mx-auto
+             rounded-lg bg-black text-white font-semibold transition-all duration-300 
+             hover:scale-105 hover:bg-gray-900 active:scale-95"
+        aria-label="Resume"
+      >
+        Resume
+        {/* SVG icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 16v-8m0 8l-4-4m4 4l4-4M4 16v4h16v-4"
+          />
+        </svg>
       </a>
     </ResumePopover>
   );
@@ -295,7 +323,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollYProgress }) => {
       <BackgroundGrid />
 
       {/* Left Pulse Beams - positioned beside the text */}
-      <div className="absolute top-[82%] left-0   md:left-0 md:top-1/2 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
+      <div className="absolute hidden md:block top-[82%] left-0   md:left-0 md:top-1/2 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
         <PulseBeams
           beams={leftBeams}
           gradientColors={gradientColors}
@@ -308,7 +336,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollYProgress }) => {
       </div>
 
       {/* Right Pulse Beams - positioned beside the text */}
-      <div className="absolute right-4 top-0  md:top-7 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
+      <div className="absolute hidden md:block right-4 top-0  md:top-7 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
         <PulseBeams
           beams={rightBeams}
           gradientColors={gradientColors}

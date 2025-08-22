@@ -16,6 +16,7 @@ import Certifications from "./Certifications";
 import GoogleGeminiEffectDemo from "@/components/ui/google-gemini-effect-demo";
 import { InfiniteTextMarquee } from "@/components/ui/infinite-text-marquee";
 import Footer from "./Footer";
+import { TextRevealByWord } from "@/components/ui/text-reveal";
 
 const skillsProjects = [
   {
@@ -99,6 +100,18 @@ const Skills: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleAnimRef = useRef<VerticalCutRevealRef | null>(null);
   const [isTitleActive, setIsTitleActive] = useState(false);
+  
+  // Code In Motion section refs
+  const codeInMotionRef = useRef<HTMLDivElement | null>(null);
+  const codeTitleAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const codeParagraphAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const [isCodeSectionActive, setIsCodeSectionActive] = useState(false);
+  
+  // Milestones section refs
+  const milestonesRef = useRef<HTMLDivElement | null>(null);
+  const milestonesTitleAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const milestonesParagraphAnimRef = useRef<VerticalCutRevealRef | null>(null);
+  const [isMilestonesSectionActive, setIsMilestonesSectionActive] = useState(false);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -148,6 +161,52 @@ const Skills: React.FC = () => {
         onEnter: toDark,
         onLeaveBack: toLight,
       });
+
+      // Code In Motion section animation
+      const codeInMotionEl = codeInMotionRef.current;
+      if (codeInMotionEl) {
+        const toCodeActive = () => {
+          codeTitleAnimRef.current?.startAnimation();
+          codeParagraphAnimRef.current?.startAnimation();
+          setIsCodeSectionActive(true);
+        };
+
+        const toCodeInactive = () => {
+          codeTitleAnimRef.current?.reset();
+          codeParagraphAnimRef.current?.reset();
+          setIsCodeSectionActive(false);
+        };
+
+        ScrollTrigger.create({
+          trigger: codeInMotionEl,
+          start: "top center",
+          onEnter: toCodeActive,
+          onLeaveBack: toCodeInactive,
+        });
+      }
+
+      // Milestones section animation
+      const milestonesEl = milestonesRef.current;
+      if (milestonesEl) {
+        const toMilestonesActive = () => {
+          milestonesTitleAnimRef.current?.startAnimation();
+          milestonesParagraphAnimRef.current?.startAnimation();
+          setIsMilestonesSectionActive(true);
+        };
+
+        const toMilestonesInactive = () => {
+          milestonesTitleAnimRef.current?.reset();
+          milestonesParagraphAnimRef.current?.reset();
+          setIsMilestonesSectionActive(false);
+        };
+
+        ScrollTrigger.create({
+          trigger: milestonesEl,
+          start: "top center",
+          onEnter: toMilestonesActive,
+          onLeaveBack: toMilestonesInactive,
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -189,18 +248,54 @@ const Skills: React.FC = () => {
         <Projects />
       </div>
 
-      <div>
-        <h1 className="ml-4 md:ml-16 md: text-8xl">Code In Motion</h1>
-        <p className="text-xl ml-4 mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16 ">From solving algorithms on LeetCode and CodeChef to building real-world projects on GitHub, I grow through both problem-solving and development.</p>
+      <div ref={codeInMotionRef}>
+        <h1 className="ml-4 md:ml-16 md: text-8xl">
+          <VerticalCutReveal
+            ref={codeTitleAnimRef}
+            splitBy="characters"
+            staggerDuration={0.03}
+            staggerFrom="center"
+            transition={{ type: "spring", stiffness: 230, damping: 26 }}
+            containerClassName="inline-block"
+            elementLevelClassName="will-change-transform"
+            autoStart={false}
+          >
+            Code In Motion
+          </VerticalCutReveal>
+        </h1>
+        <div className="text-xl ml-4 mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16">
+          <TextRevealByWord
+            className=""
+            text="From solving algorithms on LeetCode and CodeChef to building real-world projects on GitHub, I grow through both problem-solving and development."
+          />
+        </div>
 
         {/* Coding Profiles */}
         <CodeAndDev />
       </div>
 
       {/* Certification */}
-      <div className="mt-5">
-        <h1 className="ml-4 text-5xl mt-5 md:ml-16 md:text-8xl">Milestones of Learning</h1>
-        <p className="text-xl ml-4 mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16 ">Each certification represents knowledge gained and expertise earned—strengthening my foundation in technology and beyond.</p>
+      <div ref={milestonesRef} className="mt-5">
+        <h1 className="ml-4 text-5xl mt-5 md:ml-16 md:text-8xl">
+          <VerticalCutReveal
+            ref={milestonesTitleAnimRef}
+            splitBy="characters"
+            staggerDuration={0.03}
+            staggerFrom="center"
+            transition={{ type: "spring", stiffness: 230, damping: 26 }}
+            containerClassName="inline-block"
+            elementLevelClassName="will-change-transform"
+            autoStart={false}
+          >
+            Milestones of Learning
+          </VerticalCutReveal>
+        </h1>
+        <div className="text-xl ml-4 mt-4 text-zinc-600 md:text-xl md:max-w-[60%] md:ml-16">
+          <TextRevealByWord
+            className=""
+            text="Each certification represents knowledge gained and expertise earned—strengthening my foundation in technology and beyond."
+          />
+        </div>
         <Certifications />
       </div>
 

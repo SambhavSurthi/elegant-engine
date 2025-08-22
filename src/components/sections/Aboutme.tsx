@@ -89,7 +89,7 @@ const Aboutme: React.FC = () => {
         ref={containerRef}
         className="bg-black text-white  h-full relative z-10 grid place-content-center "
       >
-        <h1 className="text-8xl md:ml-20 md:mr-20  mt-12 ">
+        <h1 className="text-8xl ml-4 md:ml-20 md:mr-20  mt-12 ">
           <VerticalCutReveal
             ref={subtitleAnimRef}
             splitBy="characters"
