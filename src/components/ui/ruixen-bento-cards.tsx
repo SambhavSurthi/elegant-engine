@@ -3,7 +3,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { AnimatedBlackButton } from "@/components/ui/animated-black-button";
 import { Github, ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
@@ -54,23 +54,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {/* Buttons */}
         <div className="flex gap-2 pt-2">
-          <Button
-            size="sm"
-            variant="outline"
-            className="bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0 hover:from-purple-600 hover:to-blue-600"
+          <AnimatedBlackButton
+            variant="primary"
             onClick={() => window.open(githubUrl, "_blank")}
           >
-            <Github className="w-4 h-4 mr-1" />
+            <Github className="w-4 h-4" />
             GitHub
-          </Button>
-          <Button
-            size="sm"
-            className="bg-gradient-to-r from-green-500 to-teal-500 text-white hover:from-green-600 hover:to-teal-600"
+          </AnimatedBlackButton>
+          <AnimatedBlackButton
+            variant="secondary"
             onClick={() => window.open(liveUrl, "_blank")}
           >
-            <ExternalLink className="w-4 h-4 mr-1" />
+            <ExternalLink className="w-4 h-4" />
             Live Preview
-          </Button>
+          </AnimatedBlackButton>
         </div>
       </div>
     </div>

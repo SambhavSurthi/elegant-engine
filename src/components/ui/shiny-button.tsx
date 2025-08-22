@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { motion, type AnimationProps } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface ShinyButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ShinyButtonProps {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 export const ShinyButton: React.FC<ShinyButtonProps> = ({
