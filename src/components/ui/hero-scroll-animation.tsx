@@ -128,7 +128,7 @@ const Section2: React.FC<SectionProps> = ({ scrollYProgress }) => {
         <h1 className='text-4xl md:text-6xl leading-[100%] py-6 md:py-10 font-semibold  tracking-tight '>
         Turning ideas into elegant code,<br /> and code into meaningful experiences.
         </h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+        {/* <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
         <CometCard className="[transform-style:preserve-3d]">
             <div className="relative w-full h-full">
               <img
@@ -166,7 +166,7 @@ const Section2: React.FC<SectionProps> = ({ scrollYProgress }) => {
               />
             </div>
           </CometCard>
-        </div>
+        </div> */}
       </article>
     </motion.section>
   );

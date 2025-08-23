@@ -55,6 +55,80 @@
       name="twitter:image"
       content="/lovable-uploads/c2011f8c-5fdb-4e8c-84ee-4da7ae2eba27.png"
     />
+
+    <!-- AGGRESSIVE IMAGE PRELOADING - Load project images immediately -->
+    <link rel="preload" as="image" href="/personal/MyPic1.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/personal/MyPic2.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/personal/MyPic3.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/personal/MyPic4.jpg" fetchpriority="high" />
+    
+    <!-- DNS prefetch for faster connections -->
+    <link rel="dns-prefetch" href="/" />
+    <link rel="preconnect" href="/" />
+    
+    <!-- Additional preloading strategies -->
+    <link rel="prefetch" href="/personal/MyPic1.jpg" />
+    <link rel="prefetch" href="/personal/MyPic2.jpg" />
+    <link rel="prefetch" href="/personal/MyPic3.jpg" />
+    <link rel="prefetch" href="/personal/MyPic4.jpg" />
+    
+    <!-- Force image loading with hidden img tags -->
+    <img src="/personal/MyPic1.jpg" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
+    <img src="/personal/MyPic2.jpg" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
+    <img src="/personal/MyPic3.jpg" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
+    <img src="/personal/MyPic4.jpg" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" />
+    
+    <!-- Additional force loading with multiple instances -->
+    <img src="/personal/MyPic1.jpg" style="display:none" />
+    <img src="/personal/MyPic2.jpg" style="display:none" />
+    <img src="/personal/MyPic3.jpg" style="display:none" />
+    <img src="/personal/MyPic4.jpg" style="display:none" />
+    
+    <!-- Force load images immediately when HTML is parsed -->
+    <script>
+      (function() {
+        console.log('🚀 HTML: Force loading images immediately...');
+        const images = [
+          '/personal/MyPic1.jpg',
+          '/personal/MyPic2.jpg',
+          '/personal/MyPic3.jpg',
+          '/personal/MyPic4.jpg'
+        ];
+        
+        // Create multiple instances to force loading
+        images.forEach(src => {
+          for (let i = 0; i < 3; i++) {
+            const img = new Image();
+            img.src = src;
+            img.fetchPriority = 'high';
+          }
+        });
+        
+        // Also use fetch to force download
+        images.forEach(src => {
+          fetch(src, { method: 'GET', mode: 'no-cors' }).catch(() => {});
+        });
+        
+        // Create hidden DOM elements for most aggressive loading
+        images.forEach(src => {
+          const img = document.createElement('img');
+          img.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-9999;';
+          img.src = src;
+          img.fetchPriority = 'high';
+          document.body.appendChild(img);
+          
+          // Clean up after loading
+          img.onload = function() {
+            console.log('✅ HTML: Image loaded:', src);
+            setTimeout(() => {
+              if (document.body.contains(img)) {
+                document.body.removeChild(img);
+              }
+            }, 2000);
+          };
+        });
+      })();
+    </script>
   </head>
 
   <body>
