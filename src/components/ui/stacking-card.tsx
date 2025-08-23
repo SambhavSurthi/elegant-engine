@@ -168,14 +168,14 @@ export const Card = ({
                       borderWidth={2}
                       movementDuration={1.5}
                     />
-                    <div className="relative flex items-center gap-1 sm:gap-2 lg:gap-3">
+                    <div className="relative  flex items-center gap-1 sm:gap-2 lg:gap-3">
                       {IconComponent && (
                         <motion.div
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
                         >
                           <IconComponent 
-                            className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-black/80 group-hover/skill:text-black transition-colors duration-300 flex-shrink-0" 
+                            className="w-3 h-3 hidden md:block sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-black/80 group-hover/skill:text-black transition-colors duration-300 flex-shrink-0" 
                           />
                         </motion.div>
                       )}
