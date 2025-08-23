@@ -18,17 +18,12 @@ import {
   MARQUEE_TEXT,
 } from "@/components/constants/colors";
 
-// Pulse beams configuration for left and right sides - following grid patterns
+// ---------------- Left Pulse Beams ----------------
 const leftBeams = [
   {
     path: "M50 200 L150 200 L150 300 L250 300 L250 400 L350 400",
     gradientConfig: {
-      initial: {
-        x1: "0%",
-        x2: "0%",
-        y1: "80%",
-        y2: "100%",
-      },
+      initial: { x1: "0%", x2: "0%", y1: "80%", y2: "100%" },
       animate: {
         x1: ["0%", "0%", "200%"],
         x2: ["0%", "0%", "180%"],
@@ -48,12 +43,7 @@ const leftBeams = [
   {
     path: "M100 150 L200 150 L200 250 L300 250 L300 350 L400 350",
     gradientConfig: {
-      initial: {
-        x1: "0%",
-        x2: "0%",
-        y1: "80%",
-        y2: "100%",
-      },
+      initial: { x1: "0%", x2: "0%", y1: "80%", y2: "100%" },
       animate: {
         x1: ["20%", "100%", "100%"],
         x2: ["0%", "90%", "90%"],
@@ -73,12 +63,7 @@ const leftBeams = [
   {
     path: "M75 100 L175 100 L175 200 L275 200 L275 300 L375 300",
     gradientConfig: {
-      initial: {
-        x1: "-40%",
-        x2: "-10%",
-        y1: "0%",
-        y2: "20%",
-      },
+      initial: { x1: "-40%", x2: "-10%", y1: "0%", y2: "20%" },
       animate: {
         x1: ["40%", "0%", "0%"],
         x2: ["10%", "0%", "0%"],
@@ -97,16 +82,12 @@ const leftBeams = [
   },
 ];
 
+// ---------------- Right Pulse Beams ----------------
 const rightBeams = [
   {
     path: "M450 200 L350 200 L350 300 L250 300 L250 400 L150 400",
     gradientConfig: {
-      initial: {
-        x1: "0%",
-        x2: "0%",
-        y1: "80%",
-        y2: "100%",
-      },
+      initial: { x1: "0%", x2: "0%", y1: "80%", y2: "100%" },
       animate: {
         x1: ["20%", "100%", "100%"],
         x2: ["0%", "90%", "90%"],
@@ -126,18 +107,8 @@ const rightBeams = [
   {
     path: "M400 150 L300 150 L300 250 L200 250 L200 350 L100 350",
     gradientConfig: {
-      initial: {
-        x1: "40%",
-        x2: "50%",
-        y1: "160%",
-        y2: "180%",
-      },
-      animate: {
-        x1: "0%",
-        x2: "10%",
-        y1: "-40%",
-        y2: "-20%",
-      },
+      initial: { x1: "40%", x2: "50%", y1: "160%", y2: "180%" },
+      animate: { x1: "0%", x2: "10%", y1: "-40%", y2: "-20%" },
       transition: {
         duration: 3.2,
         repeat: Infinity,
@@ -151,12 +122,7 @@ const rightBeams = [
   {
     path: "M425 100 L325 100 L325 200 L225 200 L225 300 L125 300",
     gradientConfig: {
-      initial: {
-        x1: "0%",
-        x2: "0%",
-        y1: "80%",
-        y2: "100%",
-      },
+      initial: { x1: "0%", x2: "0%", y1: "80%", y2: "100%" },
       animate: {
         x1: ["0%", "0%", "200%"],
         x2: ["0%", "0%", "180%"],
@@ -185,20 +151,18 @@ interface HeroSectionProps {
   scrollYProgress: MotionValue<number>;
 }
 
-// Memoized background grid component for performance
+// Background grid
 const BackgroundGrid = memo(() => (
   <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_90%_60%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 ));
-
 BackgroundGrid.displayName = "BackgroundGrid";
 
-// Memoized liquid button component
+// Liquid button
 const LiquidButton = memo(() => {
   const [isHovered, setIsHovered] = useState(false);
-
   return (
     <ResumePopover>
-      {/* Desktop / Laptop Version */}
+      {/* Desktop */}
       <a
         href="#"
         className="hidden sm:inline-block relative w-44 h-[2.7em] mx-auto group dark:bg-black bg-white 
@@ -225,7 +189,7 @@ const LiquidButton = memo(() => {
         </span>
       </a>
 
-      {/* Mobile Version */}
+      {/* Mobile */}
       <a
         href="#"
         className="sm:hidden relative inline-flex items-center justify-center gap-2 w-40 h-[2.7em] mx-auto
@@ -234,7 +198,6 @@ const LiquidButton = memo(() => {
         aria-label="Resume"
       >
         Resume
-        {/* SVG icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-5 h-5"
@@ -253,11 +216,10 @@ const LiquidButton = memo(() => {
     </ResumePopover>
   );
 });
-
 LiquidButton.displayName = "LiquidButton";
 
-// Memoized hero content component
-const HeroContent = memo(() => (
+// Hero Content
+const HeroContent = memo(({ marqueeRotate }: { marqueeRotate: MotionValue<number> }) => (
   <div className="w-full px-6 flex flex-col items-center justify-center gap-6">
     <div className="flex flex-wrap items-center justify-center gap-3">
       <span className="text-6xl md:text-8xl font-sans font-bold tracking-tight text-center">
@@ -276,10 +238,9 @@ const HeroContent = memo(() => (
       </div>
     </div>
 
-    {/* Buttons (only visible on md and above) */}
+    {/* Buttons */}
     <div className="md:mt-8 flex items-center justify-center gap-4">
       <LiquidButton />
-
       <div className="hidden md:block">
         <ShinyButton
           onClick={() => {
@@ -294,26 +255,27 @@ const HeroContent = memo(() => (
       </div>
     </div>
 
-    {/* Marquee (only visible on md and above) */}
+    {/* Marquee */}
     <div className="mt-10 w-full hidden md:block">
-      <VelocityScroll
-        text={MARQUEE_TEXT}
-        default_velocity={4}
-        className="font-bold text-neutral-900 dark:text-neutral-100 text-xl md:text-3xl"
-      />
+      <motion.div style={{ rotate: marqueeRotate }} className="w-full">
+        <VelocityScroll
+          text={MARQUEE_TEXT}
+          default_velocity={4}
+          className="font-bold text-neutral-900 dark:text-neutral-100 text-xl md:text-3xl"
+        />
+      </motion.div>
     </div>
   </div>
 ));
-
 HeroContent.displayName = "HeroContent";
 
+// ---------------- Hero Section ----------------
 const HeroSection: React.FC<HeroSectionProps> = ({ scrollYProgress }) => {
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8], {
-    clamp: false,
-  });
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5], {
-    clamp: false,
-  });
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8], { clamp: false });
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5], { clamp: false });
+
+  // Marquee tilt → starts diagonal (-6deg) then aligns straight (0deg)
+  const marqueeRotate = useTransform(scrollYProgress, [0, 0.2], [-4, 0]);
 
   return (
     <motion.section
@@ -322,8 +284,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollYProgress }) => {
     >
       <BackgroundGrid />
 
-      {/* Left Pulse Beams - positioned beside the text */}
-      <div className="absolute hidden md:block top-[82%] left-0   md:left-0 md:top-1/2 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
+      {/* Left Pulse Beams */}
+      <div className="absolute hidden md:block top-[82%] left-0 md:left-0 md:top-1/2 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
         <PulseBeams
           beams={leftBeams}
           gradientColors={gradientColors}
@@ -335,8 +297,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollYProgress }) => {
         />
       </div>
 
-      {/* Right Pulse Beams - positioned beside the text */}
-      <div className="absolute hidden md:block right-4 top-0  md:top-7 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
+      {/* Right Pulse Beams */}
+      <div className="absolute hidden md:block right-4 top-0 md:top-7 transform -translate-y-1/2 w-64 h-96 pointer-events-none">
         <PulseBeams
           beams={rightBeams}
           gradientColors={gradientColors}
@@ -348,10 +310,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollYProgress }) => {
         />
       </div>
 
-      {/* Vertical Scroll Indicator */}
+      {/* Scroll Indicator */}
       <VerticalScrollIndicator />
 
-      <HeroContent />
+      <HeroContent marqueeRotate={marqueeRotate} />
     </motion.section>
   );
 };
