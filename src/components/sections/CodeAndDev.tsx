@@ -7,16 +7,42 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Loader2, Github as GithubIcon } from "lucide-react";
 import { ProblemsAnalyticsCard } from "@/components/ui/problems-analytics-card";
-import { Chart, type ChartConfig, ChartTooltip, ChartTooltipContent } from "@/components/ui/radar-chart";
+import {
+  Chart,
+  type ChartConfig,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/radar-chart";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
-import { ChartContainer, ChartTooltip as LineChartTooltip, ChartTooltipContent as LineChartTooltipContent } from "@/components/ui/line-chart";
+import {
+  ChartContainer,
+  ChartTooltip as LineChartTooltip,
+  ChartTooltipContent as LineChartTooltipContent,
+} from "@/components/ui/line-chart";
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
-import { Chart as RadialChart, ChartTooltip as RadialChartTooltip, ChartTooltipContent as RadialChartTooltipContent } from "@/components/ui/radial-chart";
+import {
+  Chart as RadialChart,
+  ChartTooltip as RadialChartTooltip,
+  ChartTooltipContent as RadialChartTooltipContent,
+} from "@/components/ui/radial-chart";
 import { RadialBar, RadialBarChart } from "recharts";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
-import { AnimatedCard, CardBody, CardDescription as AnimatedCardDescription, CardTitle as AnimatedCardTitle, CardVisual, Visual2 } from "@/components/ui/animated-card-diagram";
+import {
+  AnimatedCard,
+  CardBody,
+  CardDescription as AnimatedCardDescription,
+  CardTitle as AnimatedCardTitle,
+  CardVisual,
+  Visual2,
+} from "@/components/ui/animated-card-diagram";
 
 // Types for API response (Coding profile)
 interface BasicStats {
@@ -81,28 +107,38 @@ interface GithubUser {
 // Types for GitHub calendar data
 interface GithubCalendarResponse {
   total: number;
-  contributions: Array<Array<{
-    date: string;
-    intensity: string;
-    count: number;
-  }>>;
+  contributions: Array<
+    Array<{
+      date: string;
+      intensity: string;
+      count: number;
+    }>
+  >;
 }
 
-const CODING_API_URL = "https://scraping-codolio.onrender.com/codolio/SambhavSurthi";
+const CODING_API_URL =
+  "https://scraping-codolio.onrender.com/codolio/SambhavSurthi";
 const CODING_CACHE_KEY = "coding_profile_cache_v1";
 
 const GITHUB_API_URL = "https://api.github.com/users/SambhavSurthi";
 const GITHUB_CACHE_KEY = "github_profile_cache_v1";
 
-const GITHUB_CALENDAR_API_URL = "https://gh-calendar.rschristian.dev/user/SambhavSurthi?limit=1000";
+const GITHUB_CALENDAR_API_URL =
+  "https://gh-calendar.rschristian.dev/user/SambhavSurthi?limit=1000";
 const GITHUB_CALENDAR_CACHE_KEY = "github_calendar_cache_v1";
 
-function getCached<T>(key: string): { payload: T | null; updatedAt: number | null } {
+function getCached<T>(key: string): {
+  payload: T | null;
+  updatedAt: number | null;
+} {
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return { payload: null, updatedAt: null };
     const parsed = JSON.parse(raw);
-    return { payload: parsed.payload as T, updatedAt: parsed.updatedAt as number };
+    return {
+      payload: parsed.payload as T,
+      updatedAt: parsed.updatedAt as number,
+    };
   } catch {
     return { payload: null, updatedAt: null };
   }
@@ -110,7 +146,10 @@ function getCached<T>(key: string): { payload: T | null; updatedAt: number | nul
 
 function setCached<T>(key: string, payload: T) {
   try {
-    localStorage.setItem(key, JSON.stringify({ payload, updatedAt: Date.now() }));
+    localStorage.setItem(
+      key,
+      JSON.stringify({ payload, updatedAt: Date.now() })
+    );
   } catch {}
 }
 
@@ -139,7 +178,10 @@ async function fetchGithubCalendar(): Promise<GithubCalendarResponse> {
 const LoadingSkeleton: React.FC = () => (
   <div className="grid gap-6 md:grid-cols-2">
     {Array.from({ length: 4 }).map((_, idx) => (
-      <div key={idx} className="rounded-lg border border-zinc-800 bg-zinc-900 p-6 animate-pulse h-64" />
+      <div
+        key={idx}
+        className="rounded-lg border border-zinc-800 bg-zinc-900 p-6 animate-pulse h-64"
+      />
     ))}
   </div>
 );
@@ -212,21 +254,22 @@ const CodeAndDev: React.FC = () => {
     }
   }, [githubCalendarQuery.data]);
 
-  const githubCalendar = githubCalendarQuery.data ?? cachedGithubCalendar ?? null;
+  const githubCalendar =
+    githubCalendarQuery.data ?? cachedGithubCalendar ?? null;
 
   // Transform GitHub data for radial chart
   const radialChartData = useMemo(() => {
     if (!github || !githubCalendar) return [];
     return [
-      { 
-        category: "Public Repos", 
-        value: github.public_repos, 
-        fill: "var(--color-repos)" 
+      {
+        category: "Public Repos",
+        value: github.public_repos,
+        fill: "var(--color-repos)",
       },
-      { 
-        category: "Total Contributions", 
-        value: githubCalendar.total, 
-        fill: "var(--color-contributions)" 
+      {
+        category: "Total Contributions",
+        value: githubCalendar.total,
+        fill: "var(--color-contributions)",
       },
     ];
   }, [github, githubCalendar]);
@@ -254,8 +297,7 @@ const CodeAndDev: React.FC = () => {
     if (!streakData) return [] as { metric: string; value: number }[];
     return [
       { metric: "Questions", value: streakData.totalQuestions },
-      
-      
+
       { metric: "Max Streak", value: streakData.maxStreak },
       { metric: "Submissions", value: streakData.totalSubmissions },
       { metric: "Current Streak", value: streakData.currentStreak },
@@ -295,17 +337,24 @@ const CodeAndDev: React.FC = () => {
   const recentHeatmap = useMemo(() => {
     if (!profile) return [] as HeatmapEntry[];
     const heat = profile.data.heatmap ?? [];
-    console.log('Raw heatmap data:', heat);
-    
+    console.log("Raw heatmap data:", heat);
+
     // Ensure we have data and take the last 7 entries
     if (heat.length === 0) {
-      console.log('No heatmap data available');
+      console.log("No heatmap data available");
       return [];
     }
-    
+
     // Take last 7 entries (most recent week) - ensure we get exactly 7 days
     const last7Days = heat.slice(-7);
-    console.log('Heatmap data:', heat.length, 'total entries, last 7:', last7Days.length, 'entries:', last7Days);
+    console.log(
+      "Heatmap data:",
+      heat.length,
+      "total entries, last 7:",
+      last7Days.length,
+      "entries:",
+      last7Days
+    );
     return last7Days;
   }, [profile]);
 
@@ -317,7 +366,12 @@ const CodeAndDev: React.FC = () => {
       submissions: entry.submissions,
       date: entry.date,
     }));
-    console.log('Line chart data:', transformed.length, 'entries:', transformed);
+    console.log(
+      "Line chart data:",
+      transformed.length,
+      "entries:",
+      transformed
+    );
     return transformed;
   }, [recentHeatmap]);
 
@@ -332,7 +386,11 @@ const CodeAndDev: React.FC = () => {
 
   const handleRefresh = async () => {
     toast.info("Updating coding profiles...");
-    await Promise.all([codingQuery.refetch(), githubQuery.refetch(), githubCalendarQuery.refetch()]);
+    await Promise.all([
+      codingQuery.refetch(),
+      githubQuery.refetch(),
+      githubCalendarQuery.refetch(),
+    ]);
     toast.success("Coding profiles updated");
   };
 
@@ -350,13 +408,18 @@ const CodeAndDev: React.FC = () => {
     return "bg-emerald-400";
   };
 
-  const isFetchingAny = codingQuery.isFetching || githubQuery.isFetching || githubCalendarQuery.isFetching;
+  const isFetchingAny =
+    codingQuery.isFetching ||
+    githubQuery.isFetching ||
+    githubCalendarQuery.isFetching;
 
   return (
     <section className="w-full bg-black text-white py-16">
       <div className="container mx-auto px-6">
         <div className="mb-6 flex items-center justify-between gap-4">
-          <div className="text-sm text-zinc-400">Last updated: {updatedAtText}</div>
+          <div className="text-sm text-zinc-400">
+            Last updated: {updatedAtText}
+          </div>
           <Button
             onClick={handleRefresh}
             className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
@@ -364,7 +427,8 @@ const CodeAndDev: React.FC = () => {
           >
             {isFetchingAny ? (
               <span className="inline-flex items-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin" /> Refreshing
+                <Loader2 className="h-4 w-4 animate-spin text-gray-600" />
+                Refreshing
               </span>
             ) : (
               <span>Refresh</span>
@@ -377,7 +441,13 @@ const CodeAndDev: React.FC = () => {
         ) : (
           <div className="grid gap-6 md:grid-cols-2">
             {/* Row 1: Problems Solved Analytics Card */}
-            <ProblemsAnalyticsCard total={total} easy={easy} medium={medium} hard={hard} className="w-full" />
+            <ProblemsAnalyticsCard
+              total={total}
+              easy={easy}
+              medium={medium}
+              hard={hard}
+              className="w-full"
+            />
 
             {/* Row 1: Streak & Activity (Radar) */}
             <div className="rounded-lg border border-zinc-900 bg-black p-6">
@@ -403,12 +473,22 @@ const CodeAndDev: React.FC = () => {
                     </div>
                   </div> */}
 
-                  <Chart config={chartConfig} className="mx-auto aspect-square max-h-[420px]">
+                  <Chart
+                    config={chartConfig}
+                    className="mx-auto aspect-square max-h-[420px]"
+                  >
                     <RadarChart data={radarData}>
-                      <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+                      <ChartTooltip
+                        cursor={false}
+                        content={<ChartTooltipContent />}
+                      />
                       <PolarAngleAxis dataKey="metric" />
                       <PolarGrid />
-                      <Radar dataKey="value" fill="var(--color-value)" fillOpacity={0.5} />
+                      <Radar
+                        dataKey="value"
+                        fill="var(--color-value)"
+                        fillOpacity={0.5}
+                      />
                     </RadarChart>
                   </Chart>
                 </>
@@ -440,7 +520,10 @@ const CodeAndDev: React.FC = () => {
               </CardHeader>
               <CardContent>
                 {lineChartData.length > 0 ? (
-                  <ChartContainer config={lineChartConfig} className="mx-auto aspect-video max-h-[400px] w-full">
+                  <ChartContainer
+                    config={lineChartConfig}
+                    className="mx-auto aspect-video max-h-[400px] w-full"
+                  >
                     <LineChart
                       accessibilityLayer
                       data={lineChartData}
@@ -449,18 +532,24 @@ const CodeAndDev: React.FC = () => {
                         right: 12,
                       }}
                     >
-                      <CartesianGrid vertical={false} stroke="rgba(255,255,255,0.1)" />
+                      <CartesianGrid
+                        vertical={false}
+                        stroke="rgba(255,255,255,0.1)"
+                      />
                       <XAxis
                         dataKey="day"
                         tickLine={false}
                         axisLine={false}
                         tickMargin={8}
-                        tick={{ fill: 'rgba(255,255,255,0.7)', fontSize: 10 }}
+                        tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 10 }}
                         interval={0} // Show all ticks
                         tickFormatter={(value) => {
                           // Format date from DD/MM/YYYY to DD/MM
-                          if (typeof value === 'string' && value.includes('/')) {
-                            const parts = value.split('/');
+                          if (
+                            typeof value === "string" &&
+                            value.includes("/")
+                          ) {
+                            const parts = value.split("/");
                             if (parts.length === 3) {
                               return `${parts[0]}/${parts[1]}`;
                             }
@@ -481,13 +570,43 @@ const CodeAndDev: React.FC = () => {
                         filter="url(#rainbow-line-glow)"
                       />
                       <defs>
-                        <linearGradient id="rainbow-gradient" x1="0" y1="0" x2="1" y2="0">
-                          <stop offset="0%" stopColor="#0B84CE" stopOpacity={0.8} />
-                          <stop offset="20%" stopColor="#224CD1" stopOpacity={0.8} />
-                          <stop offset="40%" stopColor="#3A11C7" stopOpacity={0.8} />
-                          <stop offset="60%" stopColor="#7107C6" stopOpacity={0.8} />
-                          <stop offset="80%" stopColor="#C900BD" stopOpacity={0.8} />
-                          <stop offset="100%" stopColor="#D80155" stopOpacity={0.8} />
+                        <linearGradient
+                          id="rainbow-gradient"
+                          x1="0"
+                          y1="0"
+                          x2="1"
+                          y2="0"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor="#0B84CE"
+                            stopOpacity={0.8}
+                          />
+                          <stop
+                            offset="20%"
+                            stopColor="#224CD1"
+                            stopOpacity={0.8}
+                          />
+                          <stop
+                            offset="40%"
+                            stopColor="#3A11C7"
+                            stopOpacity={0.8}
+                          />
+                          <stop
+                            offset="60%"
+                            stopColor="#7107C6"
+                            stopOpacity={0.8}
+                          />
+                          <stop
+                            offset="80%"
+                            stopColor="#C900BD"
+                            stopOpacity={0.8}
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor="#D80155"
+                            stopOpacity={0.8}
+                          />
                         </linearGradient>
                         <filter
                           id="rainbow-line-glow"
@@ -497,7 +616,11 @@ const CodeAndDev: React.FC = () => {
                           height="140%"
                         >
                           <feGaussianBlur stdDeviation="8" result="blur" />
-                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                          <feComposite
+                            in="SourceGraphic"
+                            in2="blur"
+                            operator="over"
+                          />
                         </filter>
                       </defs>
                     </LineChart>
@@ -511,7 +634,7 @@ const CodeAndDev: React.FC = () => {
             {/* Row 2: GitHub Animated Card */}
             <AnimatedCard className="border-zinc-900 bg-black text-white w-full">
               <CardVisual>
-                <Visual2 
+                <Visual2
                   mainColor="#3B82F6"
                   secondaryColor="#10B981"
                   mainValue={github?.public_repos || 0}
@@ -521,7 +644,7 @@ const CodeAndDev: React.FC = () => {
                 />
               </CardVisual>
               <CardBody className="flex flex-col justify-between">
-                <div >
+                <div>
                   <AnimatedCardTitle>GitHub Overview</AnimatedCardTitle>
                 </div>
                 <AnimatedCardDescription>
@@ -531,7 +654,14 @@ const CodeAndDev: React.FC = () => {
                     <span>•</span>
                     <span>{github?.name || github?.login}</span>
                     <span>•</span>
-                    <a href={github?.html_url} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">View Profile</a>
+                    <a
+                      href={github?.html_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-emerald-400 hover:underline"
+                    >
+                      View Profile
+                    </a>
                   </div>
                 </AnimatedCardDescription>
               </CardBody>
