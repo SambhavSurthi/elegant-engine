@@ -114,7 +114,10 @@ const Skills: React.FC = () => {
   const [isMilestonesSectionActive, setIsMilestonesSectionActive] = useState(false);
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Register ScrollTrigger plugin
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
 
     const ctx = gsap.context(() => {
       const sectionEl = sectionRef.current;
