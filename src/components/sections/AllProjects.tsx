@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo } from 'react';
+import React, { memo, useState, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { projectsData } from '@/data/project-data';
@@ -87,6 +87,40 @@ const techIcons: { [key: string]: React.ReactNode } = {
 const allProjectsData = projectsData;
 
 const AllProjects: React.FC = () => {
+  // Filter state
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedStatus, setSelectedStatus] = useState<string>('all');
+  const [selectedYear, setSelectedYear] = useState<string>('all');
+  const [selectedTechnology, setSelectedTechnology] = useState<string>('all');
+
+  // Get unique values for filters
+  const categories = useMemo(() => ['all', ...Array.from(new Set(allProjectsData.map(p => p.category).filter(Boolean)))], [allProjectsData]);
+  const statuses = useMemo(() => ['all', ...Array.from(new Set(allProjectsData.map(p => p.status).filter(Boolean)))], [allProjectsData]);
+  const years = useMemo(() => ['all', ...Array.from(new Set(allProjectsData.map(p => p.year).filter(Boolean)))], [allProjectsData]);
+  const technologies = useMemo(() => {
+    const allTechs = allProjectsData.flatMap(p => p.technologies);
+    return ['all', ...Array.from(new Set(allTechs))];
+  }, [allProjectsData]);
+
+  // Filter projects based on selected filters
+  const filteredProjects = useMemo(() => {
+    return allProjectsData.filter(project => {
+      const categoryMatch = selectedCategory === 'all' || project.category === selectedCategory;
+      const statusMatch = selectedStatus === 'all' || project.status === selectedStatus;
+      const yearMatch = selectedYear === 'all' || project.year === selectedYear;
+      const techMatch = selectedTechnology === 'all' || project.technologies.includes(selectedTechnology);
+      
+      return categoryMatch && statusMatch && yearMatch && techMatch;
+    });
+  }, [allProjectsData, selectedCategory, selectedStatus, selectedYear, selectedTechnology]);
+
+  // Reset all filters
+  const resetFilters = () => {
+    setSelectedCategory('all');
+    setSelectedStatus('all');
+    setSelectedYear('all');
+    setSelectedTechnology('all');
+  };
   return (
     <section className="w-full bg-black dark:bg-black py-20">
       <div className="container relative mx-auto px-6">
@@ -115,10 +149,102 @@ const AllProjects: React.FC = () => {
           </div>
         </div>
 
+        {/* Filter Bar */}
+        <div className="mt-16 mb-8">
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 backdrop-blur-sm">
+            <div className="flex flex-col gap-4">
+              {/* Filter Header */}
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-white">Filter Projects</h3>
+                <button
+                  onClick={resetFilters}
+                  className="text-sm text-zinc-400 hover:text-white transition-colors px-3 py-1 rounded-lg hover:bg-zinc-800"
+                >
+                  Reset Filters
+                </button>
+              </div>
+              
+              {/* Filter Controls */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* Category Filter */}
+                <div className="space-y-2">
+                  <label className="text-xs text-zinc-400 uppercase tracking-wider">Category</label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent"
+                  >
+                    {categories.map((category) => (
+                      <option key={category} value={category} className="bg-zinc-800 text-white">
+                        {category === 'all' ? 'All Categories' : category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Status Filter */}
+                <div className="space-y-2">
+                  <label className="text-xs text-zinc-400 uppercase tracking-wider">Status</label>
+                  <select
+                    value={selectedStatus}
+                    onChange={(e) => setSelectedStatus(e.target.value)}
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent"
+                  >
+                    {statuses.map((status) => (
+                      <option key={status} value={status} className="bg-zinc-800 text-white">
+                        {status === 'all' ? 'All Statuses' : status}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Year Filter */}
+                <div className="space-y-2">
+                  <label className="text-xs text-zinc-400 uppercase tracking-wider">Year</label>
+                  <select
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent"
+                  >
+                    {years.map((year) => (
+                      <option key={year} value={year} className="bg-zinc-800 text-white">
+                        {year === 'all' ? 'All Years' : year}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Technology Filter */}
+                <div className="space-y-2">
+                  <label className="text-xs text-zinc-400 uppercase tracking-wider">Technology</label>
+                  <select
+                    value={selectedTechnology}
+                    onChange={(e) => setSelectedTechnology(e.target.value)}
+                    className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:border-transparent"
+                  >
+                    {technologies.map((tech) => (
+                      <option key={tech} value={tech} className="bg-zinc-800 text-white">
+                        {tech === 'all' ? 'All Technologies' : tech}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Results Count */}
+              <div className="pt-2 border-t border-zinc-800">
+                <p className="text-sm text-zinc-400">
+                  Showing <span className="text-white font-medium">{filteredProjects.length}</span> of <span className="text-white font-medium">{allProjectsData.length}</span> projects
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Project Grid */}
-        <div className="mt-16">
+        <div className="mt-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allProjectsData.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <div
                 key={index}
                 className="bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden hover:border-zinc-700 transition-colors"
@@ -184,14 +310,17 @@ const AllProjects: React.FC = () => {
                       <Github className="w-4 h-4 mr-1" />
                       GitHub
                     </Button>
-                    <Button
-                      size="sm"
-                      className="bg-black hover:bg-gray-900 text-white border border-gray-700 hover:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                      onClick={() => window.open(project.liveUrl, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-1" />
-                      Live Preview
-                    </Button>
+                    {/* Only show Live button if project has isLive: true */}
+                    {project.isLive && (
+                      <Button
+                        size="sm"
+                        className="bg-black hover:bg-gray-900 text-white border border-gray-700 hover:border-gray-600 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-1" />
+                        Live Preview
+                      </Button>
+                    )}
                   </div>
                 </div>
               </div>

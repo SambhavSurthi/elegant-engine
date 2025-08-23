@@ -235,7 +235,8 @@ const ProjectHorizontalScroll: React.FC = () => {
                         <Github className="h-3 w-3" /> GitHub
                       </button>
                     )}
-                    {project.liveUrl && (
+                    {/* Only show Live button if project has isLive: true */}
+                    {project.isLive && (
                       <button
                         onClick={() => window.open(project.liveUrl!, "_blank")}
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/70 hover:bg-zinc-900 transition-colors text-xs"
@@ -297,7 +298,8 @@ const ProjectHorizontalScroll: React.FC = () => {
                         <Github className="h-4 w-4" /> GitHub
                       </button>
                     )}
-                    {project.liveUrl && (
+                    {/* Only show Live button if project has isLive: true */}
+                    {project.isLive && (
                       <button
                         onClick={() => window.open(project.liveUrl!, "_blank")}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-600 bg-zinc-800/80 hover:bg-zinc-700/80 transition-colors text-white backdrop-blur-sm"

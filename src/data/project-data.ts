@@ -10,6 +10,7 @@ export type ProjectItem = {
   year?: string;
   image?: string;
   mainScreen: boolean; // true = show in horizontal scroll, false = only in all projects
+  isLive: boolean; // true = show live button, false = hide live button
 };
 
 export const projectsData: ProjectItem[] = [
@@ -27,6 +28,7 @@ export const projectsData: ProjectItem[] = [
     image:
       "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
     mainScreen: true, // Show in horizontal scroll
+    isLive: false, // Has live demo
   },
   {
     id: "taskmanager",
@@ -42,6 +44,7 @@ export const projectsData: ProjectItem[] = [
     image:
       "/project-images/Bond - Agency website.jpg",
     mainScreen: true, // Show in horizontal scroll
+    isLive: false, // Has live demo
   },
   {
     id: "ai-dashboard",
@@ -63,6 +66,7 @@ export const projectsData: ProjectItem[] = [
     image:
       "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
     mainScreen: false, // Only show in all projects
+    isLive: false, // No live demo
   },
   {
     id: "social-app",
@@ -78,6 +82,7 @@ export const projectsData: ProjectItem[] = [
     image:
       "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
     mainScreen: false, // Only show in all projects
+    isLive: false, // No live demo
   },
   {
     id: "portfolio",
@@ -93,6 +98,7 @@ export const projectsData: ProjectItem[] = [
     image:
       "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
     mainScreen: true, // Show in horizontal scroll
+    isLive: true, // Has live demo
   },
 ];
 
