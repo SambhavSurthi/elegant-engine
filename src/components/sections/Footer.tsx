@@ -259,7 +259,8 @@ const Footer: React.FC = () => {
     if (React.isValidElement(icon)) {
       return React.cloneElement(icon as React.ReactElement, {
         className:
-          "w-4 h-4 text-neutral-700 transition-colors duration-200 group-hover:text-neutral-900",
+          "w-4 h-4 text-neutral-800 transition-colors duration-200 group-hover:text-neutral-900",
+        style: { fill: 'currentColor' }
       });
     }
     return icon;
@@ -301,17 +302,14 @@ const Footer: React.FC = () => {
 
         {/* Social Links - Only visible on mobile */}
         <div className="block md:hidden px-6 py-6">
-          <h3 className="text-xl font-semibold text-neutral-900">
-            Social Links
-          </h3>
-          <div className="mt-4 space-y-6">
-            {/* Social */}
+          <div className="mt-4 space-y-8">
+            {/* Social Media */}
             <div>
-              <h4 className="text-sm font-medium uppercase tracking-wide text-neutral-500 mb-2">
-                Social
+              <h4 className="text-sm font-medium uppercase tracking-wide text-neutral-500 mb-4">
+                Social Media
               </h4>
-              <ul className="grid grid-rows-2 grid-flow-col auto-cols-max gap-x-4 gap-y-2">
-                {socialLinks.map((item) => (
+              <ul className="grid grid-cols-2 gap-3">
+                {socialLinks.slice(0, 6).map((item) => (
                   <li key={`${item.title}-${item.href}`} className="group">
                     <a
                       href={item.href}
@@ -319,39 +317,67 @@ const Footer: React.FC = () => {
                       rel={
                         item.href.startsWith("http") ? "noreferrer" : undefined
                       }
-                      className="relative inline-flex items-center gap-1 text-neutral-800 transition-colors duration-200 hover:text-neutral-900 after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-neutral-800 after:transition-all after:duration-300 hover:after:w-full"
+                      className="relative inline-flex items-center gap-2 text-neutral-800 transition-colors duration-200 hover:text-neutral-900 after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-neutral-800 after:transition-all after:duration-300 hover:after:w-full"
                     >
                       <span className="inline-flex">
                         {renderMobileIcon(item.icon)}
                       </span>
-                      <span>{item.title}</span>
+                      <span className="text-sm">{item.title}</span>
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Coding Profiles */}
+            {/* Coding Platforms */}
             <div>
-              <h4 className="text-sm font-medium uppercase tracking-wide text-neutral-500 mb-2">
-                Navigation
+              <h4 className="text-sm font-medium uppercase tracking-wide text-neutral-500 mb-4">
+                Coding Platforms
               </h4>
-              <ul className="space-y-2">
-                {navLinks.map((item) => (
+              <ul className="grid grid-cols-2 gap-3">
+                {socialLinks.slice(6).map((item) => (
                   <li key={`${item.title}-${item.href}`} className="group">
                     <a
                       href={item.href}
-                      className="relative inline-flex items-center gap-1 text-neutral-800 transition-colors duration-200 hover:text-neutral-900 after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-neutral-800 after:transition-all after:duration-300 hover:after:w-full"
+                      target={item.href.startsWith("http") ? "_blank" : "_self"}
+                      rel={
+                        item.href.startsWith("http") ? "noreferrer" : undefined
+                      }
+                      className="relative inline-flex items-center gap-2 text-neutral-800 transition-colors duration-200 hover:text-neutral-900 after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-neutral-800 after:transition-all after:duration-300 hover:after:w-full"
                     >
                       <span className="inline-flex">
                         {renderMobileIcon(item.icon)}
                       </span>
-                      <span>{item.title}</span>
+                      <span className="text-sm">{item.title}</span>
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
+
+            {/* Navigation */}
+            {navLinks.length > 0 && (
+              <div>
+                <h4 className="text-sm font-medium uppercase tracking-wide text-neutral-500 mb-4">
+                  Navigation
+                </h4>
+                <ul className="space-y-3">
+                  {navLinks.map((item) => (
+                    <li key={`${item.title}-${item.href}`} className="group">
+                      <a
+                        href={item.href}
+                        className="relative inline-flex items-center gap-2 text-neutral-800 transition-colors duration-200 hover:text-neutral-900 after:content-[''] after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-neutral-800 after:transition-all after:duration-300 hover:after:w-full"
+                      >
+                        <span className="inline-flex">
+                          {renderMobileIcon(item.icon)}
+                        </span>
+                        <span className="text-sm">{item.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
 
