@@ -11,6 +11,7 @@
   z-index: 2147483647;
   filter: drop-shadow(0 0 1px rgba(0,0,0,.35)) drop-shadow(0 0 2px rgba(0,0,0,.2));
   will-change: transform;
+  /* CURSOR ALIGNMENT FIX: Transform will be set dynamically in JavaScript for proper centering */
   transform: translate3d(0, 0, 0);
   opacity: 0;
   transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
@@ -25,6 +26,8 @@
 .custom-cursor.interactive {
   width: 60px !important;
   height: 60px !important;
+  /* INTERACTIVE CURSOR ALIGNMENT: Ensure smooth size transition without affecting positioning */
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
 }
 
 /* Icon container for the arrow */
@@ -66,6 +69,12 @@
 /* Hide native cursor when custom cursor is active */
 html[data-has-custom-cursor="true"] * {
   cursor: none !important;
+}
+
+/* Override custom cursor for dock elements */
+html[data-has-custom-cursor="true"] .dock-no-custom-cursor,
+html[data-has-custom-cursor="true"] .dock-no-custom-cursor * {
+  cursor: auto !important;
 }
 
 /* Ensure the cursor is always visible above other elements */

@@ -47,8 +47,8 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
         return;
       }
 
-      // Check if target is interactive
-      const isInteractiveElement = target.closest('a, button, [role="button"], input[type="submit"], [data-cursor="interactive"]');
+      // INTERACTIVE STATE DETECTION: Check if target is interactive (buttons, links, etc.)
+      const isInteractiveElement = target.closest('a, button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"], select, textarea, [tabindex], [data-cursor="interactive"]');
       setIsInteractive(!!isInteractiveElement);
     };
 
@@ -70,7 +70,15 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
           displayRef.current.y += (mouseRef.current.y - displayRef.current.y) * lerpFactor;
         }
 
-        cursorRef.current.style.transform = `translate3d(${displayRef.current.x}px, ${displayRef.current.y}px, 0)`;
+        // INTERACTIVE CURSOR ALIGNMENT FIX: Get actual computed size from DOM for precise centering
+        const computedStyle = window.getComputedStyle(cursorRef.current);
+        const actualWidth = parseFloat(computedStyle.width);
+        const actualHeight = parseFloat(computedStyle.height);
+        const offsetX = actualWidth / 2; // Half the actual width to center horizontally
+        const offsetY = actualHeight / 2; // Half the actual height to center vertically
+        
+        // Apply the transform with precise centering based on actual cursor dimensions
+        cursorRef.current.style.transform = `translate3d(${displayRef.current.x - offsetX}px, ${displayRef.current.y - offsetY}px, 0)`;
       }
       
       animationFrameRef.current = requestAnimationFrame(animateCursor);

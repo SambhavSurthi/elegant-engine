@@ -382,13 +382,13 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Dock Section - Only visible on desktop */}
-        <div className="hidden md:block py-8">
+        {/* <div className="hidden md:block py-8">
           <div className="flex justify-center">
             <Dock className="items-end pb-3">
               {dockItems.map((item, idx) => (
                 <DockItem
                   key={idx}
-                  className="aspect-square rounded-full  bg-neutral-800 dark:bg-gray-200 hover:bg-neutral-700 dark:hover:bg-gray-300 transition-colors"
+                  className="aspect-square rounded-full bg-neutral-800 dark:bg-gray-200 hover:bg-neutral-700 dark:hover:bg-gray-300 transition-colors group cursor-pointer"
                 >
                   <DockLabel>{item.title}</DockLabel>
                   <DockIcon>
@@ -398,11 +398,45 @@ const Footer: React.FC = () => {
                       rel={
                         item.href.startsWith("http") ? "noreferrer" : undefined
                       }
+                      className="w-full h-full flex items-center justify-center"
                     >
-                      {item.icon}
+                      <div className="transition-transform duration-200 group-hover:scale-110">
+                        {item.icon}
+                      </div>
                     </a>
                   </DockIcon>
                 </DockItem>
+              ))}
+            </Dock>
+          </div>
+        </div> */}
+
+<div className="hidden md:block py-8">
+          <div className="flex justify-center">
+            <Dock className="items-end pb-3">
+              {dockItems.map((item, idx) => (
+                <a
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : "_self"}
+                rel={
+                  item.href.startsWith("http") ? "noreferrer" : undefined
+                }
+                className=""
+              >
+                <DockItem
+                  key={idx}
+                  className="aspect-square rounded-full bg-neutral-800 dark:bg-gray-200 hover:bg-neutral-700 dark:hover:bg-gray-300 transition-colors group cursor-pointer"
+                >
+                  <DockLabel>{item.title}</DockLabel>
+                  <DockIcon>
+                    
+                      <div className="transition-transform duration-200 group-hover:scale-150">
+                        {item.icon}
+                      </div>
+                    
+                  </DockIcon>
+                </DockItem>
+                </a>
               ))}
             </Dock>
           </div>
