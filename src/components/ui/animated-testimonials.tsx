@@ -34,7 +34,7 @@ export const AnimatedTestimonials: React.FC<Props> = ({
 
   useEffect(() => {
     if (!autoplay) return;
-    const id = setInterval(handleNext, 5000);
+    const id = setInterval(handleNext, 15000);
     return () => clearInterval(id);
   }, [autoplay]);
 
@@ -151,21 +151,31 @@ export const AnimatedTestimonials: React.FC<Props> = ({
             </div>
           </motion.div>
 
+          <a
+            href="https://www.credly.com/users/sambhav-surthi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative inline-block text-lg font-medium text-blue-400 transition-colors duration-300 hover:text-blue-300
+             after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-48"
+          >
+            Explore All Certificates
+          </a>
+
           {/* Arrows */}
           <div className="flex gap-4 pt-8 md:pt-0">
             <button
               onClick={handlePrev}
               aria-label="Previous"
-              className="h-8 w-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center group/button hover:bg-neutral-700 transition"
+              className="h-16 w-16 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center group/button hover:bg-neutral-700 transition"
             >
-              <IconArrowLeft className="h-5 w-5 text-neutral-100 group-hover/button:rotate-12 transition-transform duration-300" />
+              <IconArrowLeft className="h-8 w-8 text-neutral-100 group-hover/button:rotate-12 transition-transform duration-300" />
             </button>
             <button
               onClick={handleNext}
               aria-label="Next"
-              className="h-8 w-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center group/button hover:bg-neutral-700 transition"
+              className="h-16 w-16 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center group/button hover:bg-neutral-700 transition"
             >
-              <IconArrowRight className="h-5 w-5 text-neutral-100 group-hover/button:-rotate-12 transition-transform duration-300" />
+              <IconArrowRight className="h-8 w-8 text-neutral-100 group-hover/button:-rotate-12 transition-transform duration-300" />
             </button>
           </div>
         </div>

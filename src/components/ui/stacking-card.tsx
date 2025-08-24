@@ -16,19 +16,29 @@ import {
   SiExpress,
   SiMongodb,
   SiPostgresql,
+  SiMysql,
+  SiSqlite,
   SiPython,
   SiDjango,
   SiFastapi,
+  SiSpringboot,
   SiDocker,
   SiGit,
   SiGithub,
-  SiFigma,
   SiHtml5,
   SiCss3,
-  SiVuedotjs,
-  SiAngular,
-  SiSupabase,
+  SiSass,
+  SiGooglecloud,
+  SiJenkins,
+  SiC,
+  SiCplusplus,
 } from "react-icons/si";
+
+import { FaJava, FaAws, FaSquareRootAlt } from "react-icons/fa";
+import { MdAnimation } from "react-icons/md"; // GSAP placeholder
+import { TbBrandFramer } from "react-icons/tb"; // Framer Motion
+import { GiPanda } from "react-icons/gi"; // Pandas placeholder
+import { BiScatterChart } from "react-icons/bi"; // Matplotlib placeholder
 
 interface ProjectData {
   title: string;
@@ -48,18 +58,29 @@ const techIcons: Record<string, any> = {
   Express: SiExpress,
   MongoDB: SiMongodb,
   PostgreSQL: SiPostgresql,
+  MySQL: SiMysql,
+  SQLite: SiSqlite,
   Python: SiPython,
   Django: SiDjango,
   FastAPI: SiFastapi,
+  "Spring Boot": SiSpringboot,
+  Java: FaJava,
+  C: SiC,
+  "C++": SiCplusplus,
   Docker: SiDocker,
   Git: SiGit,
   GitHub: SiGithub,
-  Figma: SiFigma,
-  HTML5: SiHtml5,
-  CSS3: SiCss3,
-  "Vue.js": SiVuedotjs,
-  Angular: SiAngular,
-  Supabase: SiSupabase,
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  SCSS: SiSass,
+  AWS: FaAws,
+  GCP: SiGooglecloud,
+  Jenkins: SiJenkins,
+  GSAP: MdAnimation,
+  "Framer Motion": TbBrandFramer,
+  NumPy: FaSquareRootAlt,
+  Pandas: GiPanda,
+  Matplotlib: BiScatterChart,
 };
 
 interface CardProps {

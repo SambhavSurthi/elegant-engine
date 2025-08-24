@@ -10,24 +10,11 @@ export const resumeData: ResumeData[] = [
   {
     id: "fullstack",
     title: "Full-Stack Developer",
-    description: "React, Node.js, TypeScript, MongoDB, AWS",
-    downloadUrl: "/resumes/Sambhav_Surthi_FullStack_Resume.pdf",
-    fileName: "Sambhav_Surthi_FullStack_Resume.pdf"
+    description: "MERN, Spring Boot, Django, C, C++, Java, Python, SQL, AWS, Git",
+    downloadUrl: "/resumes/SambhavSurthiCV.pdf",
+    fileName: "Sambhav_Surthi_FullStack_CV.pdf"
   },
-  {
-    id: "aiml",
-    title: "AI/ML Engineer",
-    description: "Python, TensorFlow, PyTorch, Scikit-learn, AWS",
-    downloadUrl: "/resumes/Sambhav_Surthi_AIML_Resume.pdf",
-    fileName: "Sambhav_Surthi_AIML_Resume.pdf"
-  },
-  {
-    id: "devops",
-    title: "DevOps Engineer",
-    description: "Docker, Kubernetes, AWS, CI/CD, Terraform",
-    downloadUrl: "/resumes/Sambhav_Surthi_DevOps_Resume.pdf",
-    fileName: "Sambhav_Surthi_DevOps_Resume.pdf"
-  },
+
 
 ];
 

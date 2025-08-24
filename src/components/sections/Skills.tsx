@@ -19,80 +19,50 @@ import Footer from "./Footer";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
 
 const skillsProjects = [
-  {
-    title: "Frontend Development",
-    description:
-      "Building beautiful, responsive, and interactive user interfaces with modern frameworks and cutting-edge technologies.",
-    link: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&auto=format&fit=crop&q=60",
-    color: "white",
-    skills: [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vite",
-      "React",
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vite",
-    ],
-  },
-  {
-    title: "Backend Development",
-    description:
-      "Creating robust APIs, databases, and server-side solutions that power dynamic applications with scalability in mind.",
-    link: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&auto=format&fit=crop&q=60",
-    color: "white",
-    skills: [
-      "Node.js",
-      "Python",
-      "Express",
-      "Supabase",
-      "PostgreSQL",
-      "REST APIs",
-    ],
-  },
-  {
-    title: "Mobile Development",
-    description:
-      "Developing cross-platform mobile applications that deliver native-like performance and user experience.",
-    link: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&auto=format&fit=crop&q=60",
-    color: "white",
-    skills: ["React Native", "Flutter", "Expo", "iOS", "Android", "Firebase"],
-  },
-  {
-    title: "DevOps & Cloud",
-    description:
-      "Streamlining development workflows with CI/CD pipelines, containerization, and cloud infrastructure management.",
-    link: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=500&auto=format&fit=crop&q=60",
-    color: "white",
-    skills: [
-      "Docker",
-      "AWS",
-      "Vercel",
-      "GitHub Actions",
-      "Kubernetes",
-      "Terraform",
-    ],
-  },
-  {
-    title: "UI/UX Design",
-    description:
-      "Crafting intuitive user experiences and visually appealing interfaces that bridge design and development seamlessly.",
-    link: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&auto=format&fit=crop&q=60",
-    color: "white",
-    skills: [
-      "Figma",
-      "Adobe XD",
-      "Sketch",
-      "Prototyping",
-      "User Research",
-      "Design Systems",
-    ],
-  },
+  
+    {
+      "title": "Programming Languages",
+      "description": "Core programming languages for problem solving, system development, and application building.",
+      "link": "https://images.unsplash.com/photo-1581091870622-4c4f50b5374b?w=500&auto=format&fit=crop&q=60",
+      "color": "white",
+      "skills": ["C", "C++", "Java", "Python", "JavaScript"]
+    },
+    {
+      "title": "Frontend Development",
+      "description": "Building beautiful, responsive, and interactive user interfaces with modern frameworks and cutting-edge technologies.",
+      "link": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&auto=format&fit=crop&q=60",
+      "color": "white",
+      "skills": ["HTML", "CSS", "React", "GSAP", "Framer Motion", "Tailwind CSS", "SCSS"]
+    },
+    {
+      "title": "Backend Development",
+      "description": "Developing robust and scalable server-side applications and APIs.",
+      "link": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=60",
+      "color": "white",
+      "skills": ["Django", "Express", "Node.js", "Spring Boot"]
+    },
+    {
+      "title": "Databases",
+      "description": "Managing structured and unstructured data with relational and NoSQL databases.",
+      "link": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&auto=format&fit=crop&q=60",
+      "color": "white",
+      "skills": ["MongoDB", "MySQL", "PostgreSQL", "SQLite"]
+    },
+    {
+      "title": "Cloud & DevOps",
+      "description": "Deploying, scaling, and automating applications with cloud services and DevOps tools.",
+      "link": "",
+      "color": "white",
+      "skills": ["AWS", "GCP", "Docker", "Jenkins", "Git", "GitHub"]
+    },
+    {
+      "title": "Artificial Intelligence & Data Science",
+      "description": "Analyzing and visualizing data, and applying AI/ML techniques with Python libraries.",
+      "link": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=500&auto=format&fit=crop&q=60",
+      "color": "white",
+      "skills": ["NumPy", "Pandas", "Matplotlib"]
+    }
+  
 ];
 
 const Skills: React.FC = () => {
@@ -306,10 +276,10 @@ const Skills: React.FC = () => {
       <div className="overflow-x-hidden md:mt-20">
         <InfiniteTextMarquee
           text="Let's Build Something Amazing"
-          link="/"
+          link="/contact"
           speed={20}
-          tooltipText="some tooltip"
-          fontSize="8rem "
+          tooltipText="Click to Connect with me 😉"
+          fontSize="8rem"
           showTooltip={true}
           // textColor="white"
           

@@ -6,30 +6,39 @@ import { AnimatedTestimonials, type CertificationItem } from "@/components/ui/an
 const CERTIFICATIONS: CertificationItem[] = [
   {
     name: "AWS Certified Cloud Practitioner",
-    code: "AWS-CLF-XXXX",
+    code: "CLF-C02",
     year: "2024",
     description:
       "Validates foundational cloud fluency on AWS, including global infrastructure, pricing, security, and architectural principles.",
-    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&auto=format&fit=crop&q=80",
-    verifyLink: "https://aws.amazon.com/certification/",
+    src: "/certificates/aws-cp-badge.png",
+    verifyLink: "https://www.credly.com/badges/a9630c84-218c-425f-b6cc-b806c8623edc/public_url",
   },
   {
     name: "MongoDB Associate Developer",
-    code: "MDB-DEV-XXXX",
-    year: "2024",
+    code: "C100DEV",
+    year: "2025",
     description:
       "Demonstrates proficiency with MongoDB schema design, CRUD operations, aggregation framework, indexing, and performance basics.",
-    src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&auto=format&fit=crop&q=80",
-    verifyLink: "https://www.mongodb.com/certification",
+    src: "/certificates/mongodb-associate-dev.png",
+    verifyLink: "https://www.credly.com/badges/f4fe14d2-f518-4ea9-9c38-004879f66736/public_url",
   },
   {
-    name: "Oracle AI Foundations Associate",
-    code: "ORCL-AI-XXXX",
+    name: "Oracle Cloud Infrastructure 2025 AI Foundations Associate",
+    code: "1Z0-1122-25",
     year: "2024",
     description:
       "Covers core AI concepts, ethical AI practices, and applied ML/AI services in Oracle Cloud for intelligent, data-driven solutions.",
-    src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1000&auto=format&fit=crop&q=80",
-    verifyLink: "https://education.oracle.com/",
+    src: "/certificates/Oracle-badge.png",
+    verifyLink: "https://1drv.ms/b/s!Ar01bx9Pqte4bbbGyExm0TSaTY4?e=PaoJoU",
+  },
+  {
+    name: "Salesforce AI Associate",
+    code: "ES-450",
+    year: "2024",
+    description:
+      "Covers fundamental AI concepts, ethical and responsible AI use, and practical applications of AI within the Salesforce ecosystem to drive productivity, customer engagement, and intelligent decision-making.",
+    src: "/certificates/salesforce-ai-associate.png",
+    verifyLink: "https://www.salesforce.com/trailblazer/te1qukta3z525w3gqy",
   },
 ];
 

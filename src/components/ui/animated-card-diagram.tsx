@@ -95,7 +95,7 @@ export function Visual2({
   mainColor = "#8b5cf6",
   secondaryColor = "#fbbf24",
   gridColor = "#80808015",
-  mainValue = 28,
+  mainValue = 50,
   secondaryValue = 383,
   mainLabel = "Public Repos",
   secondaryLabel = "Contributions",
