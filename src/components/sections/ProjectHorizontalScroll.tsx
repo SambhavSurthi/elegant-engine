@@ -250,63 +250,93 @@ const ProjectHorizontalScroll: React.FC = () => {
 
               {/* Desktop Layout - Full image with hover overlay */}
               <div className="hidden md:block relative h-full w-full group">
-                {/* Full-size background image */}
-                <div className="absolute inset-0" data-media>
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
-                    loading="lazy"
-                  />
-                  {/* Dark overlay that becomes more transparent on hover */}
-                  <div className="absolute inset-0 bg-black/40 transition-all duration-500 group-hover:bg-black/20" />
-                </div>
-
-                {/* Content overlay - appears on hover */}
-                <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0" data-body>
-                  {/* Category and year */}
-                  <div className="text-sm text-black mb-3">
-                    {project.category} {project.year ? `• ${project.year}` : ""}
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-4xl font-bold text-black mb-4">{project.title}</h3>
-                  
-                  {/* Description */}
-                  <p className="text-zinc-800 text-lg leading-relaxed mb-6 max-w-2xl">{project.description}</p>
-
-                  {/* Tech Chips */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        data-chip
-                        className="px-3 py-1.5 rounded-full border border-zinc-600 bg-zinc-800/80 text-zinc-200 text-sm backdrop-blur-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                {/* Clickable wrapper for the entire card */}
+                <div 
+                  className="absolute inset-0 cursor-pointer"
+                  onClick={() => {
+                    if (project.isLive && project.liveUrl) {
+                      window.open(project.liveUrl, "_blank");
+                    } else if (project.githubUrl) {
+                      window.open(project.githubUrl, "_blank");
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      if (project.isLive && project.liveUrl) {
+                        window.open(project.liveUrl, "_blank");
+                      } else if (project.githubUrl) {
+                        window.open(project.githubUrl, "_blank");
+                      }
+                    }
+                  }}
+                >
+                  {/* Full-size background image */}
+                  <div className="absolute inset-0" data-media>
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
+                      loading="lazy"
+                    />
+                    {/* Dark overlay that becomes more transparent on hover */}
+                    <div className="absolute inset-0 bg-black/40 transition-all duration-500 group-hover:bg-black/20" />
                   </div>
 
-                  {/* Actions */}
-                  <div className="flex gap-3">
-                    {project.githubUrl && (
-                      <button
-                        onClick={() => window.open(project.githubUrl!, "_blank")}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-600 bg-zinc-800/80 hover:bg-zinc-700/80 transition-colors text-white backdrop-blur-sm"
-                      >
-                        <Github className="h-4 w-4" /> GitHub
-                      </button>
-                    )}
-                    {/* Only show Live button if project has isLive: true */}
-                    {project.isLive && (
-                      <button
-                        onClick={() => window.open(project.liveUrl!, "_blank")}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-600 bg-zinc-800/80 hover:bg-zinc-700/80 transition-colors text-white backdrop-blur-sm"
-                      >
-                        <ExternalLink className="h-4 w-4" /> Live
-                      </button>
-                    )}
+                  {/* Content overlay - appears on hover */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0" data-body>
+                    {/* Category and year */}
+                    <div className="text-sm text-black mb-3">
+                      {project.category} {project.year ? `• ${project.year}` : ""}
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-4xl font-bold text-black mb-4">{project.title}</h3>
+                    
+                    {/* Description */}
+                    <p className="text-zinc-800 text-lg leading-relaxed mb-6 max-w-2xl">{project.description}</p>
+
+                    {/* Tech Chips */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          data-chip
+                          className="px-3 py-1.5 rounded-full border border-zinc-600 bg-zinc-800/80 text-zinc-200 text-sm backdrop-blur-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex gap-3">
+                      {project.githubUrl && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(project.githubUrl!, "_blank");
+                          }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-600 bg-zinc-800/80 hover:bg-zinc-700/80 transition-colors text-white backdrop-blur-sm"
+                        >
+                          <Github className="h-4 w-4" /> GitHub
+                        </button>
+                      )}
+                      {/* Only show Live button if project has isLive: true */}
+                      {project.isLive && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(project.liveUrl!, "_blank");
+                          }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-600 bg-zinc-800/80 hover:bg-zinc-700/80 transition-colors text-white backdrop-blur-sm"
+                        >
+                          <ExternalLink className="h-4 w-4" /> Live
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
