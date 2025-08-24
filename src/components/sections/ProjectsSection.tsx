@@ -4,6 +4,8 @@ import { useTransform, motion, MotionValue } from 'motion/react';
 import React, { memo, useEffect } from 'react';
 import { preloadImages } from '@/components/utils/performance';
 import { CometCard } from '@/components/ui/comet-card';
+import { useState } from "react";
+
 // Sections below are rendered outside this motion section to avoid scroll trapping
 
 interface ProjectsSectionProps {
@@ -61,7 +63,7 @@ ProjectImage.displayName = 'ProjectImage';
 
 // Memoized projects grid component
 const ProjectsGrid = memo(() => (
-  <div className='grid grid-cols-4 gap-2 sm:gap-3 md:gap-4'>
+  <div className='grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4'>
     {PROJECT_IMAGES.map((image, index) => (
       <CometCard key={index} className='[transform-style:preserve-3d]'>
         <div className='relative w-full aspect-[3/4]'>
@@ -105,11 +107,20 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ scrollYProgress }) =>
     preloadImages(imageSrcs).catch(console.error);
   }, []);
 
+  const [isLaptop, setIsLaptop] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsLaptop(window.innerWidth >= 1024);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   return (
     <motion.section
-      
-      style={{ scale, rotate }}
-      className='relative h-screen bg-gradient-to-t to-[#1a1919] from-[#06060e] text-white will-change-transform'
+      // style={{ scale, rotate }}
+      style={isLaptop ? { scale, rotate } : {}}
+      className="relative h-screen bg-gradient-to-t to-[#1a1919] from-[#06060e] text-white will-change-transform"
     >
       <BackgroundGrid />
       <SectionContent />
