@@ -3,7 +3,10 @@
 import React, { memo, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { VerticalCutReveal, type VerticalCutRevealRef } from "@/components/ui/vertical-cut-reveal";
+import {
+  VerticalCutReveal,
+  type VerticalCutRevealRef,
+} from "@/components/ui/vertical-cut-reveal";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
 import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 
@@ -105,7 +108,7 @@ const Aboutme: React.FC = () => {
         </h1>
 
         <div className="md:ml-20 md:mr-20  ml-5 mr-5 text-3xl  md:text-5xl mt-10">
-          <h2 className="leading-tight">
+          {/* <h2 className="leading-tight">
             Hi, I’m {" "}
             <span className="inline-block align-baseline">
               <AnimatedText
@@ -116,7 +119,29 @@ const Aboutme: React.FC = () => {
                 underlineClassName="text-current"
               />
             </span>
+          </h2> */}
+
+          <h2 className="leading-tight">
+            Hi, I’m {" "}
+            <span className="inline-block align-baseline">
+              {/* Animated only on laptop */}
+              <span className="hidden md:inline">
+                <AnimatedText
+                  text=" Sambhav Surthi"
+                  isActive={isNameActive}
+                  className="inline-flex align-baseline"
+                  textClassName="text-inherit font-semibold"
+                  underlineClassName="text-current"
+                />
+              </span>
+
+              {/* Static text only on mobile */}
+              <span className="inline md:hidden font-semibold">
+                Sambhav Surthi
+              </span>
+            </span>
           </h2>
+
           <br />
 
           <TextRevealByWord
