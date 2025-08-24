@@ -1,0 +1,125 @@
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 2147483647;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.35)) drop-shadow(0 0 2px rgba(0,0,0,.2));
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
+  /* Ensure cursor is visible on all backgrounds */
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.visible {
+  opacity: 1;
+}
+
+.custom-cursor.interactive {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+/* Icon container for the arrow */
+.cursor-icon-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cursor-arrow {
+  color: #000000;
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.8);
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 0 1px rgba(255,255,255,0.8)) drop-shadow(0 0 2px rgba(255,255,255,0.6));
+}
+
+/* Arrow entry animation */
+.custom-cursor.interactive .cursor-arrow {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Arrow exit animation */
+.custom-cursor:not(.interactive) .cursor-arrow {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.8);
+  transition: all 0.1s ease;
+}
+
+/* Hide native cursor when custom cursor is active */
+html[data-has-custom-cursor="true"] * {
+  cursor: none !important;
+}
+
+/* Ensure the cursor is always visible above other elements */
+.custom-cursor {
+  mix-blend-mode: difference;
+}
+
+/* Smooth transitions for size changes */
+.custom-cursor.interactive .lucide {
+  transition: opacity 0.2s ease;
+}
+
+/* Ensure the cursor is visible on all backgrounds */
+.custom-cursor {
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.35)) drop-shadow(0 0 2px rgba(0,0,0,.2));
+}
+
+/* High contrast for the arrow icon */
+.custom-cursor.interactive .lucide {
+  filter: drop-shadow(0 0 1px rgba(255,255,255,0.8)) drop-shadow(0 0 2px rgba(255,255,255,0.6));
+}
+
+/* Additional safety measures */
+.custom-cursor {
+  /* Prevent any potential layout issues */
+  box-sizing: border-box;
+  /* Ensure smooth rendering */
+  backface-visibility: hidden;
+  /* Force hardware acceleration */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* Ensure cursor works in all contexts */
+.custom-cursor {
+  /* Override any potential conflicting styles */
+  cursor: none !important;
+  /* Ensure visibility */
+  visibility: visible !important;
+  /* Prevent any text selection issues */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .cursor-arrow {
+    transition: none !important;
+  }
+  
+  .custom-cursor.interactive .cursor-arrow {
+    transform: rotate(0deg) scale(1) !important;
+  }
+}

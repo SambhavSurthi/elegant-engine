@@ -8,12 +8,14 @@ import AllProjectsPage from "./pages/AllProjects";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import SmoothScroll from "@/components/utils/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <CustomCursor />
       <SmoothScroll />
       <Toaster />
       <Sonner />
