@@ -15,91 +15,109 @@ export type ProjectItem = {
 
 export const projectsData: ProjectItem[] = [
   {
-    id: "ecommerce",
-    title: "E-Commerce Platform",
+    id: "EasyStock",
+    title: "EasyStock - Inventory Management System",
     description:
-      "Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind"],
-    githubUrl: "https://github.com/username/ecommerce",
-    liveUrl: "https://ecommerce-demo.com",
-    category: "Full-Stack",
-    status: "Live",
-    year: "2024",
-    image:
-      "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
-    mainScreen: true, // Show in horizontal scroll
-    isLive: false, // Has live demo
-  },
-  {
-    id: "taskmanager",
-    title: "Task Management App",
-    description:
-      "Collaborative task management tool with real-time updates, drag-and-drop functionality, and team features.",
-    technologies: ["React", "TypeScript", "Firebase", "Framer Motion"],
-    githubUrl: "https://github.com/username/taskmanager",
-    liveUrl: "https://taskmanager-demo.com",
-    category: "Frontend",
-    status: "Live",
-    year: "2023",
-    image:
-      "/project-images/Bond - Agency website.jpg",
-    mainScreen: true, // Show in horizontal scroll
-    isLive: false, // Has live demo
-  },
-  {
-    id: "ai-dashboard",
-    title: "AI Dashboard",
-    description:
-      "Analytics dashboard with AI-powered insights, data visualization, and predictive modeling for business intelligence.",
+      "A full-stack Inventory Management System designed for small and medium businesses. Features include real-time billing, role-based employee access, advanced product filtering, and analytics through an admin dashboard. Integrated with AWS for cloud storage, Razorpay for payments, and secured using JWT authentication. Built with React, TailwindCSS, Shadcn, Spring Boot, and MySQL on AWS RDS.",
     technologies: [
-      "Next.js",
-      "Python",
-      "TensorFlow",
-      "Chart.js",
-      "PostgreSQL",
+      "React",
+      "TailwindCSS",
+      "Shadcn",
+      "SpringBoot",
+      "Postman",
+      "AWS",
+      "RazorPay",
+      "MySQL",
+      "git",
     ],
-    githubUrl: "https://github.com/username/ai-dashboard",
-    liveUrl: "https://ai-dashboard-demo.com",
-    category: "Data/AI",
-    status: "Prototype",
-    year: "2023",
-    image:
-      "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
-    mainScreen: false, // Only show in all projects
-    isLive: false, // No live demo
-  },
-  {
-    id: "social-app",
-    title: "Social Media App",
-    description:
-      "Modern social platform with real-time messaging, content sharing, and advanced privacy controls.",
-    technologies: ["React Native", "GraphQL", "AWS", "Redis"],
-    githubUrl: "https://github.com/username/social-app",
-    liveUrl: "https://social-app-demo.com",
-    category: "Mobile",
-    status: "In Progress",
-    year: "2022",
-    image:
-      "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
-    mainScreen: false, // Only show in all projects
-    isLive: false, // No live demo
-  },
-  {
-    id: "portfolio",
-    title: "Portfolio Website",
-    description:
-      "Personal portfolio showcasing creative projects with smooth animations and responsive design.",
-    technologies: ["React", "GSAP", "Three.js", "Tailwind CSS"],
-    githubUrl: "https://github.com/username/portfolio",
-    liveUrl: "https://portfolio-demo.com",
-    category: "Frontend",
+    githubUrl: "https://github.com/SambhavSurthi/IMS",
+    liveUrl: "",
+    category: "Web-Dev",
     status: "Live",
     year: "2024",
-    image:
-      "/project-images/team-nocoloco-YRUj8BENrVQ-unsplash.jpg",
+    image: "/project-images/EasyStock-IMS.png",
     mainScreen: true, // Show in horizontal scroll
+    isLive: false, // Has live demo
+  },
+  {
+    id: "aws-cp-quiz",
+    title: "AWS Certified Cloud Practitioner Quiz Portal",
+    description:
+      "An interactive quiz portal designed to help learners prepare for the AWS Certified Cloud Practitioner exam. Features practice quizzes, mock tests, instant feedback, and progress tracking to make exam preparation engaging and effective.",
+    technologies: ["React", "Tailwind CSS", "JavaScript", "git"],
+    githubUrl: "https://github.com/SambhavSurthi/AWSCP_Quiz_App",
+    liveUrl: "https://awscp-quiz.netlify.app/",
+    category: "Web-Dev",
+    status: "Live",
+    year: "2025",
+    image: "/project-images/AWS-Quiz-Banner.png",
+    mainScreen: true, // Only show in all projects
     isLive: true, // Has live demo
   },
+  {
+    id: "Bank-Management-System",
+    title: "Bank Management System (Python + Streamlit)",
+    description:
+      "A Python-based Bank Management System built with Object-Oriented Programming principles. It uses JSON files for local data storage (accounts, transactions, balances) and provides an interactive Streamlit frontend for managing banking operations. Designed to strengthen core programming concepts while delivering a functional banking simulation.",
+    technologies: ["Python", "Streamlit", "git"],
+    githubUrl:
+      "https://github.com/SambhavSurthi/Bank-Management-System-Using-Streamlit",
+    liveUrl:
+      "https://sambhavsurthi-bank-management-system-using-streamlit-app-ql8ati.streamlit.app/",
+    category: "Web-Dev",
+    status: "Live",
+    year: "2025",
+    image: "/project-images/BMS-banner-white.png",
+    mainScreen: true, // Only show in all projects
+    isLive: true, // Has live demo
+  },
+  {
+    id: "EduLink",
+    title: "EduLink - Student LMS",
+    description:
+      "Collaborative task management tool with real-time updates, drag-and-drop functionality, and team features.",
+    technologies: [
+      "HTML",
+      "CSS",
+      "JS",
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "git",
+    ],
+    githubUrl: "https://github.com/SambhavSurthi/EduLink",
+    liveUrl: "",
+    category: "Web-Dev",
+    status: "Live",
+    year: "2024",
+    image: "/project-images/EduLink.png",
+    mainScreen: true, // Show in horizontal scroll
+    isLive: false, // Has live demo
+  },
+
+  {
+    id: "DevDock",
+    title: "DevDock - Handle All Your Coding Profiles",
+    description:
+      "A unified developer portal that aggregates coding profiles from multiple platforms into one place. Built with Python and Playwright for data scraping, FastAPI for backend APIs, and React with TailwindCSS, Shadcn, GSAP, and Framer Motion for a sleek, animated frontend. DevDock helps developers showcase and manage their coding journey effortlessly from a single dashboard.",
+    technologies: [
+      "React",
+      "Python",
+      "Playwright",
+      "TailwindCSS",
+      "FastAPI",
+      "Git",
+      "Shadcn",
+      "GSAP",
+      "Framer Motion",
+    ],
+    githubUrl: "https://github.com/SambhavSurthi/Scraping-Codolio",
+    liveUrl: "",
+    category: "Web-Dev",
+    status: "In Progress",
+    year: "2025",
+    image: "/project-images/Codolio-banner.png",
+    mainScreen: false, // Only show in all projects
+    isLive: false, // No live demo
+  },
 ];
-
-

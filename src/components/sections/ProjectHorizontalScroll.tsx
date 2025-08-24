@@ -282,7 +282,7 @@ const ProjectHorizontalScroll: React.FC = () => {
                       loading="lazy"
                     />
                     {/* Dark overlay that becomes more transparent on hover */}
-                    <div className="absolute inset-0 bg-black/40 transition-all duration-500 group-hover:bg-black/20" />
+                    <div className="absolute inset-0 bg-black/40 transition-all duration-500 group-hover:bg-white/20" />
                   </div>
 
                   {/* Content overlay - appears on hover */}
@@ -296,7 +296,7 @@ const ProjectHorizontalScroll: React.FC = () => {
                     <h3 className="text-4xl font-bold text-black mb-4">{project.title}</h3>
                     
                     {/* Description */}
-                    <p className="text-zinc-800 text-lg leading-relaxed mb-6 max-w-2xl">{project.description}</p>
+                    <p className="text-zinc-900 text-lg leading-relaxed mb-6 max-w-2xl">{project.description}</p>
 
                     {/* Tech Chips */}
                     <div className="flex flex-wrap gap-2 mb-6">

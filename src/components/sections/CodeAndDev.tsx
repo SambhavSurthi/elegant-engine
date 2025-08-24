@@ -422,13 +422,30 @@ const CodeAndDev: React.FC = () => {
           </div>
           <Button
             onClick={handleRefresh}
-            className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
+            style={{ position: "relative" }}
             disabled={isFetchingAny}
+            className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
           >
             {isFetchingAny ? (
               <span className="inline-flex items-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin text-gray-600" />
+                <Loader2
+                  className="text-gray-400"
+                  style={{
+                    display: "inline-block",
+                    width: "1rem",
+                    height: "1rem",
+                    animation: "spin 1s linear infinite",
+                  }}
+                />
                 Refreshing
+                <style>
+                  {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}
+                </style>
               </span>
             ) : (
               <span>Refresh</span>
