@@ -655,10 +655,10 @@ const CodeAndDev: React.FC = () => {
                     <span>{github?.name || github?.login}</span>
                     <span>•</span>
                     <a
-                      href={github?.html_url}
+                      href="https://github.com/SambhavSurthi"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-emerald-400 hover:underline"
+                      className="text-emerald-400 cursor-pointer hover:underline"
                     >
                       View Profile
                     </a>

@@ -83,12 +83,24 @@ export const Card = ({
     >
       <motion.div
         style={{
-          backgroundColor: color,
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className={`group flex flex-col relative -top-[25%] h-[500px] sm:h-[450px] md:h-[500px] lg:h-[550px] w-[95%] sm:w-[90%] md:w-[85%] lg:w-[100%] rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 origin-top transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden`}
+        className={`group flex flex-col relative -top-[25%] h-[500px] sm:h-[450px] md:h-[500px] lg:h-[550px] w-[95%] sm:w-[90%] md:w-[85%] lg:w-[100%] rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 origin-top transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden bg-white relative`}
       >
+        {/* Dual Gradient Overlay Background */}
+        <div
+          className="absolute hidden md:block inset-0 z-0 rounded-xl"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
+              radial-gradient(circle 700px at 0% 20%, rgba(139,92,246,0.3), transparent),
+              radial-gradient(circle 500px at 90% 95%, rgba(59,130,246,0.3), transparent)
+            `,
+            backgroundSize: "48px 48px, 48px 48px, 100% 100%, 100% 100%",
+          }}
+        />
         {/* Spotlight Effect */}
         <Spotlight
           className="from-blue-100 via-blue-100 to-blue-100"
@@ -150,9 +162,9 @@ export const Card = ({
                   <motion.div
                     key={index}
                     className="relative group/skill bg-black/10 hover:bg-black/20 backdrop-blur-sm rounded-lg px-2 py-2 sm:px-3 sm:py-3 md:px-4 md:py-3 lg:px-5 lg:py-4 transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer border border-black/10"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                    initial={{ opacity: 1 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}
                     whileHover={{ 
                       scale: 1.05,
                       backgroundColor: "rgba(0, 0, 0, 0.15)"

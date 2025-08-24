@@ -63,7 +63,7 @@ export function CardDescription({ className, ...props }: CardDescriptionProps) {
   return (
     <p
       className={cn(
-        "text-sm text-neutral-500 dark:text-neutral-400",
+        "text-sm text-neutral-500 dark:text-neutral-400 z-20",
         className
       )}
       {...props}
