@@ -247,7 +247,7 @@ const Footer: React.FC = () => {
     },
   ];
 
-  // Deduplicate dock items and derive groups for mobile
+  // Deduplicate dock items and groups for mobile
   const uniqueDockItems = Array.from(
     new Map(dockItems.map((i) => [`${i.href}|${i.title}`, i])).values()
   );
