@@ -1,16 +1,34 @@
-'use client';
-import { ReactLenis } from 'lenis/react';
-import { useTransform, motion, useScroll, MotionValue } from 'motion/react';
-import { useRef, forwardRef } from 'react';
-import { cn } from '@/lib/utils';
-import { GlowingEffect } from '@/components/ui/glowing-effect';
-import { Spotlight } from '@/components/ui/spotlight';
-import { 
-  SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript,
-  SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiPython,
-  SiDjango, SiFastapi, SiDocker, SiGit, SiGithub, SiFigma,
-  SiHtml5, SiCss3, SiVuedotjs, SiAngular, SiSupabase
-} from 'react-icons/si';
+"use client";
+import { ReactLenis } from "lenis/react";
+import { useTransform, motion, useScroll, MotionValue } from "motion/react";
+import { useRef, forwardRef } from "react";
+import { cn } from "@/lib/utils";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { Spotlight } from "@/components/ui/spotlight";
+import { useMediaQuery } from "react-responsive";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiTypescript,
+  SiJavascript,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiPython,
+  SiDjango,
+  SiFastapi,
+  SiDocker,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiHtml5,
+  SiCss3,
+  SiVuedotjs,
+  SiAngular,
+  SiSupabase,
+} from "react-icons/si";
 
 interface ProjectData {
   title: string;
@@ -21,27 +39,27 @@ interface ProjectData {
 }
 
 const techIcons: Record<string, any> = {
-  'React': SiReact,
-  'Next.js': SiNextdotjs,
-  'Tailwind CSS': SiTailwindcss,
-  'TypeScript': SiTypescript,
-  'JavaScript': SiJavascript,
-  'Node.js': SiNodedotjs,
-  'Express': SiExpress,
-  'MongoDB': SiMongodb,
-  'PostgreSQL': SiPostgresql,
-  'Python': SiPython,
-  'Django': SiDjango,
-  'FastAPI': SiFastapi,
-  'Docker': SiDocker,
-  'Git': SiGit,
-  'GitHub': SiGithub,
-  'Figma': SiFigma,
-  'HTML5': SiHtml5,
-  'CSS3': SiCss3,
-  'Vue.js': SiVuedotjs,
-  'Angular': SiAngular,
-  'Supabase': SiSupabase,
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  "Tailwind CSS": SiTailwindcss,
+  TypeScript: SiTypescript,
+  JavaScript: SiJavascript,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  MongoDB: SiMongodb,
+  PostgreSQL: SiPostgresql,
+  Python: SiPython,
+  Django: SiDjango,
+  FastAPI: SiFastapi,
+  Docker: SiDocker,
+  Git: SiGit,
+  GitHub: SiGithub,
+  Figma: SiFigma,
+  HTML5: SiHtml5,
+  CSS3: SiCss3,
+  "Vue.js": SiVuedotjs,
+  Angular: SiAngular,
+  Supabase: SiSupabase,
 };
 
 interface CardProps {
@@ -70,23 +88,24 @@ export const Card = ({
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ['start end', 'start start'],
+    offset: ["start end", "start start"],
   });
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
+  const isLaptop = useMediaQuery({ minWidth: 1024 });
 
   return (
     <div
       ref={container}
-      className='h-screen flex items-center  justify-center sticky top-0'
+      className="h-screen flex items-center  justify-center sticky top-0"
     >
       <motion.div
         style={{
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className={`group flex flex-col relative -top-[25%] h-[500px] sm:h-[450px] md:h-[500px] lg:h-[550px] w-[95%] sm:w-[90%] md:w-[85%] lg:w-[100%] rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 origin-top transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden bg-white relative`}
+        className={`group flex flex-col -top-[25%] h-[500px] sm:h-[450px] md:h-[500px] lg:h-[550px] w-[95%] sm:w-[90%] md:w-[85%] lg:w-[100%] rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 origin-top transition-all duration-300 hover:shadow-2xl cursor-pointer overflow-hidden bg-white relative`}
       >
         {/* Dual Gradient Overlay Background */}
         <div
@@ -110,51 +129,50 @@ export const Card = ({
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.1),transparent_50%)]"></div>
         </div>
-        
+
         {/* Main Content Container */}
         <div className="relative z-10 flex flex-col md:flex-row h-full gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-          
-          {/* Left Section - TechStack Name & Description */}
-          <motion.div 
-            className="w-full md:w-1/2 flex flex-col md:flex md:flex-col md:justify-start md:mt-20 justify-center space-y-3 sm:space-y-4 lg:space-y-6"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          {/* Left Section */}
+          <motion.div
+            className="w-full md:w-1/2 flex flex-col md:justify-start md:mt-20 justify-center space-y-3 sm:space-y-4 lg:space-y-6"
+            initial={isLaptop ? { opacity: 0, x: -50 } : {}}
+            whileInView={isLaptop ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black leading-tight tracking-tight"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               {title}
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black/80 leading-relaxed font-medium"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={isLaptop ? { opacity: 0, y: 20 } : {}}
+              whileInView={isLaptop ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               {description}
             </motion.p>
           </motion.div>
 
-          {/* Right Section - Skills/Technologies */}
-          <motion.div 
+          {/* Right Section */}
+          <motion.div
             className="w-full md:w-1/2 flex flex-col justify-center"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={isLaptop ? { opacity: 0, x: 50 } : {}}
+            whileInView={isLaptop ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <motion.h3 
+            <motion.h3
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-black mb-3 sm:mb-4 lg:mb-6 tracking-wide"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={isLaptop ? { opacity: 0, y: -20 } : {}}
+              whileInView={isLaptop ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               Technologies & Tools
             </motion.h3>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
               {skills.map((skill, index) => {
                 const IconComponent = techIcons[skill];
@@ -165,9 +183,9 @@ export const Card = ({
                     initial={{ opacity: 1 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
-                      backgroundColor: "rgba(0, 0, 0, 0.15)"
+                      backgroundColor: "rgba(0, 0, 0, 0.15)",
                     }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -180,24 +198,20 @@ export const Card = ({
                       borderWidth={2}
                       movementDuration={1.5}
                     />
-                    <div className="relative  flex items-center gap-1 sm:gap-2 lg:gap-3">
+                    <div className="relative flex items-center gap-1 sm:gap-2 lg:gap-3">
                       {IconComponent && (
                         <motion.div
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
                         >
-                          <IconComponent 
-                            className="w-3 h-3 hidden md:block sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-black/80 group-hover/skill:text-black transition-colors duration-300 flex-shrink-0" 
-                          />
+                          <IconComponent className="w-3 h-3 hidden md:block sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-black/80 group-hover/skill:text-black transition-colors duration-300 flex-shrink-0" />
                         </motion.div>
                       )}
                       <span className="text-black font-medium text-sm sm:text-base md:text-base lg:text-lg group-hover/skill:font-semibold transition-all duration-300 flex-1 truncate">
                         {skill}
                       </span>
                     </div>
-                    
-                    {/* Hover indicator */}
-                    <motion.div 
+                    <motion.div
                       className="w-0 h-0.5 bg-black mt-1 sm:mt-2 transition-all duration-300 group-hover/skill:w-full"
                       initial={false}
                     />
@@ -205,18 +219,18 @@ export const Card = ({
                 );
               })}
             </div>
-            
-            {/* Floating accent element */}
-            <motion.div 
+
+            {/* Floating accent */}
+            <motion.div
               className="absolute top-4 right-4 w-20 h-20 bg-black/5 rounded-full blur-xl"
-              animate={{ 
+              animate={{
                 scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3]
+                opacity: [0.3, 0.6, 0.3],
               }}
-              transition={{ 
-                duration: 4, 
+              transition={{
+                duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             />
           </motion.div>
@@ -230,38 +244,43 @@ interface ComponentRootProps {
   projects: ProjectData[];
 }
 
-const StackingCards = forwardRef<HTMLElement, ComponentRootProps>(({ projects }, ref) => {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start start', 'end end'],
-  });
+const StackingCards = forwardRef<HTMLElement, ComponentRootProps>(
+  ({ projects }, ref) => {
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+      target: container,
+      offset: ["start start", "end end"],
+    });
 
-  return (
-    <main className='bg-black' ref={container}>
-      <section className='text-white w-full bg-black' style={{ height: `${projects.length * 100}vh` }}>
-        {projects.map((project, i) => {
-          const targetScale = 1 - (projects.length - i) * 0.05;
-          return (
-            <Card
-              key={`p_${i}`}
-              i={i}
-              url={project.link}
-              title={project.title}
-              color={project.color}
-              description={project.description}
-              skills={project.skills}
-              progress={scrollYProgress}
-              range={[i * 0.25, 1]}
-              targetScale={targetScale}
-            />
-          );
-        })}
-      </section>
-    </main>
-  );
-});
+    return (
+      <main className="bg-black" ref={container}>
+        <section
+          className="text-white w-full bg-black"
+          style={{ height: `${projects.length * 100}vh` }}
+        >
+          {projects.map((project, i) => {
+            const targetScale = 1 - (projects.length - i) * 0.05;
+            return (
+              <Card
+                key={`p_${i}`}
+                i={i}
+                url={project.link}
+                title={project.title}
+                color={project.color}
+                description={project.description}
+                skills={project.skills}
+                progress={scrollYProgress}
+                range={[i * 0.25, 1]}
+                targetScale={targetScale}
+              />
+            );
+          })}
+        </section>
+      </main>
+    );
+  }
+);
 
-StackingCards.displayName = 'StackingCards';
+StackingCards.displayName = "StackingCards";
 
 export default StackingCards;
