@@ -44,26 +44,36 @@
   pointer-events: none;
 }
 
+/* Arrow rotator container for smooth direction changes */
+.cursor-arrow-rotator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+}
+
 .cursor-arrow {
   color: #000000;
   opacity: 0;
-  transform: rotate(-45deg) scale(0.8);
-  transition: all 0.2s ease;
+  transform: scale(0.8);
+  transition: opacity 0.2s ease, transform 0.2s ease;
   filter: drop-shadow(0 0 1px rgba(255,255,255,0.8)) drop-shadow(0 0 2px rgba(255,255,255,0.6));
 }
 
 /* Arrow entry animation */
 .custom-cursor.interactive .cursor-arrow {
   opacity: 1;
-  transform: rotate(0deg) scale(1);
-  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1);
+  transition: opacity 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Arrow exit animation */
 .custom-cursor:not(.interactive) .cursor-arrow {
   opacity: 0;
-  transform: rotate(-45deg) scale(0.8);
-  transition: all 0.1s ease;
+  transform: scale(0.8);
+  transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
 /* Hide native cursor when custom cursor is active */
@@ -124,11 +134,12 @@ html[data-has-custom-cursor="true"] .dock-no-custom-cursor * {
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .custom-cursor,
-  .cursor-arrow {
+  .cursor-arrow,
+  .cursor-arrow-rotator {
     transition: none !important;
   }
   
   .custom-cursor.interactive .cursor-arrow {
-    transform: rotate(0deg) scale(1) !important;
+    transform: scale(1) !important;
   }
 }

@@ -1,32 +1,55 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowRight, ArrowUp, MoveUpRight } from 'lucide-react';
 import './CustomCursor.css';
 
-interface CustomCursorProps { }
-
-const CustomCursor: React.FC<CustomCursorProps> = () => {
+const CustomCursor: React.FC = () => {
   const [isInteractive, setIsInteractive] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [arrowRotation, setArrowRotation] = useState(0);
   const cursorRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>();
   const mouseRef = useRef({ x: 0, y: 0 });
   const displayRef = useRef({ x: 0, y: 0 });
+  const previousMouseRef = useRef({ x: 0, y: 0 });
+  const velocityRef = useRef({ x: 0, y: 0 });
 
   // Check if we should render the cursor (not on touch devices)
   const shouldRender = typeof window !== 'undefined' &&
     !window.matchMedia('(pointer: coarse)').matches;
+
+  // Check for reduced motion preference
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
 
   useEffect(() => {
     if (!shouldRender) return;
 
     let isMouseInside = false;
 
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      const newMousePosition = { x: e.clientX, y: e.clientY };
+      
+      // Calculate velocity if we have previous position and it's not the first movement
+      if (isMouseInside) {
+        velocityRef.current = {
+          x: newMousePosition.x - previousMouseRef.current.x,
+          y: newMousePosition.y - previousMouseRef.current.y,
+        };
+        
+        // Calculate arrow rotation based on velocity direction
+        // Only update if there's significant movement to avoid jitter and if user doesn't prefer reduced motion
+        if (!prefersReducedMotion && (Math.abs(velocityRef.current.x) > 1 || Math.abs(velocityRef.current.y) > 1)) {
+          const angle = Math.atan2(velocityRef.current.y, velocityRef.current.x) * (180 / Math.PI);
+          setArrowRotation(angle);
+        }
+      }
+      
+      previousMouseRef.current = { ...newMousePosition };
+      mouseRef.current = newMousePosition;
 
       if (!isMouseInside) {
         setIsVisible(true);
@@ -109,7 +132,7 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
 
       document.documentElement.removeAttribute('data-has-custom-cursor');
     };
-  }, [shouldRender]);
+  }, [shouldRender, prefersReducedMotion]);
 
   // Don't render on touch devices or if window is not available
   if (!shouldRender) {
@@ -122,12 +145,16 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
       className={`custom-cursor ${isVisible ? 'visible' : ''} ${isInteractive ? 'interactive' : ''}`}
     >
       {isInteractive && (
-        <div className="cursor-icon-container animate-[wiggle_1s_ease-in-out_infinite] [@keyframes_wiggle]{0%,100%{transform:rotate(-45deg);}50%{transform:rotate(45deg);}}">
-          <div className='rotate-45' >
-            <ArrowUp size={40} className="cursor-arrow " />
+        <div className="cursor-icon-container">
+          <div 
+            className="cursor-arrow-rotator"
+            style={{
+              transform: `rotate(${arrowRotation}deg)`,
+              transition: prefersReducedMotion ? 'none' : 'transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            }}
+          >
+            <ArrowUp size={40} className="cursor-arrow" />
           </div>
-          
-
         </div>
       )}
     </div>,
