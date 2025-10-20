@@ -278,7 +278,7 @@ const ProjectHorizontalScroll: React.FC = () => {
                     <img
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
+                      className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105 group-hover:blur-md "
                       loading="lazy"
                     />
                     {/* Dark overlay that becomes more transparent on hover */}
@@ -288,12 +288,12 @@ const ProjectHorizontalScroll: React.FC = () => {
                   {/* Content overlay - appears on hover */}
                   <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0" data-body>
                     {/* Category and year */}
-                    <div className="text-sm text-black mb-3">
+                    <div className="text-lg text-black mb-3">
                       {project.category} {project.year ? `• ${project.year}` : ""}
                     </div>
                     
                     {/* Title */}
-                    <h3 className="text-4xl font-bold text-black mb-4">{project.title}</h3>
+                    <h3 className="text-5xl font-bold text-black mb-4">{project.title}</h3>
                     
                     {/* Description */}
                     <p className="text-zinc-900 text-lg leading-relaxed mb-6 max-w-2xl">{project.description}</p>

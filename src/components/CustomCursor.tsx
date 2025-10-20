@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { MoveUpRight } from 'lucide-react';
+import { ArrowRight, ArrowUp, MoveUpRight } from 'lucide-react';
 import './CustomCursor.css';
 
-interface CustomCursorProps {}
+interface CustomCursorProps { }
 
 const CustomCursor: React.FC<CustomCursorProps> = () => {
   const [isInteractive, setIsInteractive] = useState(false);
@@ -14,20 +14,20 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
   const displayRef = useRef({ x: 0, y: 0 });
 
   // Check if we should render the cursor (not on touch devices)
-  const shouldRender = typeof window !== 'undefined' && 
+  const shouldRender = typeof window !== 'undefined' &&
     !window.matchMedia('(pointer: coarse)').matches;
 
   useEffect(() => {
     if (!shouldRender) return;
 
     let isMouseInside = false;
-    
+
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
-      
+
       if (!isMouseInside) {
         setIsVisible(true);
         isMouseInside = true;
@@ -41,7 +41,7 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      
+
       // Check if target should be ignored
       if (target.closest('[data-cursor="ignore"]')) {
         return;
@@ -76,11 +76,11 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
         const actualHeight = parseFloat(computedStyle.height);
         const offsetX = actualWidth / 2; // Half the actual width to center horizontally
         const offsetY = actualHeight / 2; // Half the actual height to center vertically
-        
+
         // Apply the transform with precise centering based on actual cursor dimensions
         cursorRef.current.style.transform = `translate3d(${displayRef.current.x - offsetX}px, ${displayRef.current.y - offsetY}px, 0)`;
       }
-      
+
       animationFrameRef.current = requestAnimationFrame(animateCursor);
     };
 
@@ -102,11 +102,11 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
       window.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
-      
+
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      
+
       document.documentElement.removeAttribute('data-has-custom-cursor');
     };
   }, [shouldRender]);
@@ -122,8 +122,12 @@ const CustomCursor: React.FC<CustomCursorProps> = () => {
       className={`custom-cursor ${isVisible ? 'visible' : ''} ${isInteractive ? 'interactive' : ''}`}
     >
       {isInteractive && (
-        <div className="cursor-icon-container">
-          <MoveUpRight size={26} className="cursor-arrow" />
+        <div className="cursor-icon-container animate-[wiggle_1s_ease-in-out_infinite] [@keyframes_wiggle]{0%,100%{transform:rotate(-45deg);}50%{transform:rotate(45deg);}}">
+          <div className='rotate-45' >
+            <ArrowUp size={40} className="cursor-arrow " />
+          </div>
+          
+
         </div>
       )}
     </div>,

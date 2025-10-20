@@ -30,7 +30,7 @@ export const projectsData: ProjectItem[] = [
       "MySQL",
       "git",
     ],
-    githubUrl: "https://github.com/SambhavSurthi/IMS",
+    githubUrl: "https://github.com/SambhavSurthi/InventoryMS",
     liveUrl: "",
     category: "Web-Dev",
     status: "Live",
