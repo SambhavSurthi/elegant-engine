@@ -117,7 +117,7 @@ interface GithubCalendarResponse {
 }
 
 const CODING_API_URL =
-  "https://scraping-codolio.onrender.com/codolio/SambhavSurthi";
+  "https://devdock.onrender.com/codolio/SambhavSurthi";
 const CODING_CACHE_KEY = "coding_profile_cache_v1";
 
 const GITHUB_API_URL = "https://api.github.com/users/SambhavSurthi";
